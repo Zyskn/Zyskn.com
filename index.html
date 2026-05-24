@@ -1,22 +1,215 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ZYSKN ★</title>
-  <style>
-    body{background:#000;color:#fff;font-family:system-ui,sans-serif;display:flex;align-items:center;justify-content:center;height:100vh;margin:0;text-align:center}
-    h1{font-size:20px;font-weight:400;letter-spacing:3px;margin:0}
-    p{opacity:.6;margin:24px 0;font-size:14px;letter-spacing:1px}
-    a{color:#fff;text-decoration:none;border-bottom:1px solid #fff;padding-bottom:2px;font-size:14px}
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZYSKN ★</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #000;
+            color: #fff;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            text-align: center;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        .logo {
+            font-size: 48px;
+            font-weight: 900;
+            letter-spacing: -2px;
+            margin-bottom: 8px;
+        }
+        .tagline {
+            font-size: 14px;
+            letter-spacing: 3px;
+            opacity: 0.6;
+            margin-bottom: 40px;
+            text-transform: uppercase;
+        }
+        .filters {
+            margin-bottom: 40px;
+        }
+        .filter-group {
+            margin-bottom: 16px;
+        }
+        .filter-title {
+            font-size: 12px;
+            opacity: 0.5;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .filter-btn {
+            background: transparent;
+            color: #fff;
+            border: 1px solid #333;
+            padding: 8px 16px;
+            margin: 4px;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .filter-btn:hover, .filter-btn.active {
+            background: #fff;
+            color: #000;
+            border-color: #fff;
+        }
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+            min-height: 200px;
+        }
+        .product {
+            text-align: left;
+            display: none;
+        }
+        .product.show {
+            display: block;
+        }
+        .product-img {
+            width: 100%;
+            aspect-ratio: 3/4;
+            object-fit: cover;
+            background: #111;
+            margin-bottom: 12px;
+        }
+        .product-name {
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 4px;
+            text-transform: uppercase;
+        }
+        .product-price {
+            font-size: 14px;
+            opacity: 0.7;
+            margin-bottom: 12px;
+        }
+        .btn {
+            display: block;
+            width: 100%;
+            background: #fff;
+            color: #000;
+            text-decoration: none;
+            padding: 12px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: none;
+            cursor: pointer;
+        }
+        .btn:hover {
+            opacity: 0.8;
+        }
+        .empty {
+            grid-column: 1 / -1;
+            opacity: 0.3;
+            font-size: 14px;
+            letter-spacing: 1px;
+            padding: 60px 0;
+            text-transform: uppercase;
+        }
+        .footer {
+            font-size: 12px;
+            opacity: 0.4;
+            margin-top: 80px;
+            letter-spacing: 1px;
+        }
+        .footer a {
+            color: #fff;
+            text-decoration: none;
+        }
+        @media (max-width: 480px) {
+            .products {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .logo {
+                font-size: 40px;
+            }
+        }
+    </style>
 </head>
 <body>
-  <div>
-    <h1>ZYSKN ★</h1>
-    <p>No restocks.</p>
-    <p>DROP 01</p>
-    <a href="https://instagram.com/zyskn.vtg">Instagram</a>
-  </div>
+    <div class="container">
+        <h1 class="logo">ZYSKN ★</h1>
+        <p class="tagline">Curated Vintage. No Restocks.</p>
+
+        <div class="filters">
+            <div class="filter-group">
+                <p class="filter-title">Categoría</p>
+                <button class="filter-btn active" onclick="filterProducts('all')">Todo</button>
+                <button class="filter-btn" onclick="filterProducts('tops')">Tops</button>
+                <button class="filter-btn" onclick="filterProducts('bottoms')">Bottoms</button>
+                <button class="filter-btn" onclick="filterProducts('outerwear')">Abrigos</button>
+            </div>
+            
+            <div class="filter-group">
+                <p class="filter-title">Tipo</p>
+                <button class="filter-btn" onclick="filterProducts('remeras')">Remeras</button>
+                <button class="filter-btn" onclick="filterProducts('hoodies')">Hoodies</button>
+                <button class="filter-btn" onclick="filterProducts('cargos')">Cargos</button>
+                <button class="filter-btn" onclick="filterProducts('jeans')">Jeans</button>
+                <button class="filter-btn" onclick="filterProducts('jackets')">Jackets</button>
+            </div>
+        </div>
+
+        <div class="products" id="product-grid">
+            <!-- PLANTILLA PARA COPIAR POR CADA PRODUCTO -->
+            <!--
+            <div class="product show" data-category="tops" data-type="remeras">
+                <img src="LINK_FOTO" alt="NOMBRE" class="product-img">
+                <h2 class="product-name">NOMBRE PRODUCTO</h2>
+                <p class="product-price">$PRECIO</p>
+                <a href="https://wa.me/5493544631553?text=Hola ZYSKN ★ Quiero el NOMBRE PRODUCTO" class="btn" target="_blank">Comprar</a>
+            </div>
+            -->
+
+            <p class="empty">Próximo drop cargando...</p>
+        </div>
+
+        <div class="footer">
+            <p>DROPS POR IG <a href="https://instagram.com/zyskn.vtg" target="_blank">@zyskn.vtg</a></p>
+            <p style="margin-top: 20px;">ZYSKN ★ 2026</p>
+        </div>
+    </div>
+
+    <script>
+        function filterProducts(filter) {
+            const products = document.querySelectorAll('.product');
+            const buttons = document.querySelectorAll('.filter-btn');
+            const emptyMsg = document.querySelector('.empty');
+            
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            let visibleCount = 0;
+            products.forEach(product => {
+                const category = product.getAttribute('data-category');
+                const type = product.getAttribute('data-type');
+                
+                if (filter === 'all' || category === filter || type === filter) {
+                    product.classList.add('show');
+                    visibleCount++;
+                } else {
+                    product.classList.remove('show');
+                }
+            });
+
+            if (emptyMsg) {
+                emptyMsg.style.display = visibleCount === 0 && products.length > 0 ? 'block' : 'none';
+            }
+        }
+    </script>
 </body>
 </html>
