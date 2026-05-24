@@ -14,12 +14,15 @@
             background: #000;
             color: #fff;
             font-family: 'Helvetica Neue', Arial, sans-serif;
-            text-align: center;
         }
         .container {
-            max-width: 900px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 40px 20px;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 40px;
         }
         .logo {
             font-size: 48px;
@@ -31,19 +34,19 @@
             font-size: 14px;
             letter-spacing: 3px;
             opacity: 0.6;
-            margin-bottom: 40px;
             text-transform: uppercase;
         }
         .filters {
-            margin-bottom: 40px;
+            text-align: center;
+            margin-bottom: 50px;
         }
         .filter-group {
-            margin-bottom: 16px;
+            margin-bottom: 20px;
         }
         .filter-title {
             font-size: 12px;
             opacity: 0.5;
-            margin-bottom: 8px;
+            margin-bottom: 12px;
             text-transform: uppercase;
             letter-spacing: 1px;
         }
@@ -51,9 +54,9 @@
             background: transparent;
             color: #fff;
             border: 1px solid #333;
-            padding: 8px 16px;
-            margin: 4px;
-            font-size: 11px;
+            padding: 8px 14px;
+            margin: 4px 3px;
+            font-size: 10px;
             text-transform: uppercase;
             letter-spacing: 1px;
             cursor: pointer;
@@ -66,16 +69,22 @@
         }
         .products {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
             min-height: 200px;
         }
         .product {
             text-align: left;
             display: none;
+            cursor: pointer;
+            position: relative;
         }
         .product.show {
             display: block;
+        }
+        .product-img-wrap {
+            position: relative;
+            overflow: hidden;
         }
         .product-img {
             width: 100%;
@@ -83,6 +92,22 @@
             object-fit: cover;
             background: #111;
             margin-bottom: 12px;
+            transition: transform 0.3s;
+        }
+        .product:hover .product-img {
+            transform: scale(1.03);
+        }
+        .sold-out-badge {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: #fff;
+            color: #000;
+            padding: 6px 12px;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
         }
         .product-name {
             font-size: 14px;
@@ -101,16 +126,22 @@
             background: #fff;
             color: #000;
             text-decoration: none;
-            padding: 12px;
+            padding: 14px;
             font-size: 11px;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 1px;
             border: none;
             cursor: pointer;
+            text-align: center;
         }
         .btn:hover {
             opacity: 0.8;
+        }
+        .btn.disabled {
+            background: #222;
+            color: #666;
+            cursor: not-allowed;
         }
         .empty {
             grid-column: 1 / -1;
@@ -119,59 +150,169 @@
             letter-spacing: 1px;
             padding: 60px 0;
             text-transform: uppercase;
+            text-align: center;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.95);
+            z-index: 1000;
+            overflow-y: auto;
+            padding: 40px 20px;
+        }
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .modal-content {
+            background: #000;
+            max-width: 900px;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            position: relative;
+            border: 1px solid #222;
+        }
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 30px;
+            cursor: pointer;
+            z-index: 10;
+            line-height: 1;
+        }
+        .modal-img {
+            width: 100%;
+            aspect-ratio: 3/4;
+            object-fit: cover;
+        }
+        .modal-info {
+            padding: 40px 40px 40px 0;
+            text-align: left;
+        }
+        .modal-name {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+        }
+        .modal-price {
+            font-size: 20px;
+            margin-bottom: 24px;
+        }
+        .modal-desc {
+            font-size: 14px;
+            opacity: 0.7;
+            margin-bottom: 24px;
+            line-height: 1.6;
+        }
+        .size-title {
+            font-size: 12px;
+            opacity: 0.5;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .sizes {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+        }
+        .size-btn {
+            border: 1px solid #333;
+            background: transparent;
+            color: #fff;
+            padding: 10px 16px;
+            font-size: 12px;
+            cursor: pointer;
+        }
+        .size-btn.active, .size-btn:hover {
+            background: #fff;
+            color: #000;
         }
         .footer {
             font-size: 12px;
             opacity: 0.4;
             margin-top: 80px;
             letter-spacing: 1px;
+            text-align: center;
         }
         .footer a {
             color: #fff;
             text-decoration: none;
         }
-        @media (max-width: 480px) {
+        @media (max-width: 768px) {
+            .modal-content {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+            .modal-info {
+                padding: 20px;
+            }
             .products {
                 grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
             }
-            .logo {
-                font-size: 40px;
+            .filter-btn {
+                padding: 7px 10px;
+                font-size: 9px;
             }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1 class="logo">ZYSKN ★</h1>
-        <p class="tagline">Curated Vintage. No Restocks.</p>
+        <header>
+            <h1 class="logo">ZYSKN ★</h1>
+            <p class="tagline">Curated Vintage. No Restocks.</p>
+        </header>
 
         <div class="filters">
             <div class="filter-group">
-                <p class="filter-title">Categoría</p>
+                <p class="filter-title">Filtrar</p>
                 <button class="filter-btn active" onclick="filterProducts('all')">Todo</button>
-                <button class="filter-btn" onclick="filterProducts('tops')">Tops</button>
-                <button class="filter-btn" onclick="filterProducts('bottoms')">Bottoms</button>
-                <button class="filter-btn" onclick="filterProducts('outerwear')">Abrigos</button>
-            </div>
-            
-            <div class="filter-group">
-                <p class="filter-title">Tipo</p>
                 <button class="filter-btn" onclick="filterProducts('remeras')">Remeras</button>
+                <button class="filter-btn" onclick="filterProducts('camisas')">Camisas</button>
+                <button class="filter-btn" onclick="filterProducts('chombas')">Chombas</button>
+                <button class="filter-btn" onclick="filterProducts('casacas')">Casacas Deportivas</button>
+                <button class="filter-btn" onclick="filterProducts('sweaters')">Sweaters</button>
+                <button class="filter-btn" onclick="filterProducts('polars')">Polars</button>
+                <button class="filter-btn" onclick="filterProducts('polos')">Polos</button>
                 <button class="filter-btn" onclick="filterProducts('hoodies')">Hoodies</button>
-                <button class="filter-btn" onclick="filterProducts('cargos')">Cargos</button>
+                <button class="filter-btn" onclick="filterProducts('camperas')">Camperas</button>
+                <button class="filter-btn" onclick="filterProducts('pantalones')">Pantalones</button>
                 <button class="filter-btn" onclick="filterProducts('jeans')">Jeans</button>
-                <button class="filter-btn" onclick="filterProducts('jackets')">Jackets</button>
+                <button class="filter-btn" onclick="filterProducts('bermudas')">Bermudas</button>
+                <button class="filter-btn" onclick="filterProducts('mallas')">Mallas</button>
+                <button class="filter-btn" onclick="filterProducts('shorts')">Shorts</button>
             </div>
         </div>
 
         <div class="products" id="product-grid">
-            <!-- PLANTILLA PARA COPIAR POR CADA PRODUCTO -->
+            <!-- PLANTILLA: COPIÁ ESTO POR CADA PRODUCTO -->
             <!--
-            <div class="product show" data-category="tops" data-type="remeras">
-                <img src="LINK_FOTO" alt="NOMBRE" class="product-img">
-                <h2 class="product-name">NOMBRE PRODUCTO</h2>
-                <p class="product-price">$PRECIO</p>
-                <a href="https://wa.me/5493544631553?text=Hola ZYSKN ★ Quiero el NOMBRE PRODUCTO" class="btn" target="_blank">Comprar</a>
+            <div class="product show" 
+                 data-category="remeras" 
+                 data-name="VINTAGE TEE 001"
+                 data-price="25000"
+                 data-desc="Remera vintage original 90s. Algodón 100%. Fit oversized. Única pieza."
+                 data-img="LINK_FOTO"
+                 data-sizes="S,M,L,XL"
+                 data-soldout="false"
+                 onclick="openModal(this)">
+                <div class="product-img-wrap">
+                    <img src="LINK_FOTO" alt="NOMBRE" class="product-img">
+                </div>
+                <h2 class="product-name">VINTAGE TEE 001</h2>
+                <p class="product-price">$25.000</p>
             </div>
             -->
 
@@ -181,6 +322,22 @@
         <div class="footer">
             <p>DROPS POR IG <a href="https://instagram.com/zyskn.vtg" target="_blank">@zyskn.vtg</a></p>
             <p style="margin-top: 20px;">ZYSKN ★ 2026</p>
+        </div>
+    </div>
+
+    <!-- MODAL PRODUCTO -->
+    <div class="modal" id="productModal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeModal()">&times;</span>
+            <img src="" alt="" class="modal-img" id="modalImg">
+            <div class="modal-info">
+                <h2 class="modal-name" id="modalName"></h2>
+                <p class="modal-price" id="modalPrice"></p>
+                <p class="modal-desc" id="modalDesc"></p>
+                <p class="size-title">Talle</p>
+                <div class="sizes" id="modalSizes"></div>
+                <a href="#" class="btn" id="modalBtn" target="_blank">Comprar por WhatsApp</a>
+            </div>
         </div>
     </div>
 
@@ -196,9 +353,8 @@
             let visibleCount = 0;
             products.forEach(product => {
                 const category = product.getAttribute('data-category');
-                const type = product.getAttribute('data-type');
                 
-                if (filter === 'all' || category === filter || type === filter) {
+                if (filter === 'all' || category === filter) {
                     product.classList.add('show');
                     visibleCount++;
                 } else {
@@ -209,6 +365,57 @@
             if (emptyMsg) {
                 emptyMsg.style.display = visibleCount === 0 && products.length > 0 ? 'block' : 'none';
             }
+        }
+
+        function openModal(el) {
+            const modal = document.getElementById('productModal');
+            const name = el.getAttribute('data-name');
+            const price = el.getAttribute('data-price');
+            const desc = el.getAttribute('data-desc');
+            const img = el.getAttribute('data-img');
+            const sizes = el.getAttribute('data-sizes').split(',');
+            const soldout = el.getAttribute('data-soldout') === 'true';
+
+            document.getElementById('modalName').textContent = name;
+            document.getElementById('modalPrice').textContent = '$' + Number(price).toLocaleString('es-AR');
+            document.getElementById('modalDesc').textContent = desc;
+            document.getElementById('modalImg').src = img;
+
+            const sizesContainer = document.getElementById('modalSizes');
+            sizesContainer.innerHTML = '';
+            sizes.forEach(size => {
+                const btn = document.createElement('button');
+                btn.className = 'size-btn';
+                btn.textContent = size;
+                btn.onclick = () => {
+                    document.querySelectorAll('.size-btn').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                };
+                sizesContainer.appendChild(btn);
+            });
+
+            const modalBtn = document.getElementById('modalBtn');
+            if (soldout) {
+                modalBtn.textContent = 'Sold Out';
+                modalBtn.classList.add('disabled');
+                modalBtn.removeAttribute('href');
+            } else {
+                modalBtn.textContent = 'Comprar por WhatsApp';
+                modalBtn.classList.remove('disabled');
+                modalBtn.href = https://wa.me/5493544631553?text=Hola ZYSKN ★ Quiero el ${name};
+            }
+
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            document.getElementById('productModal').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        document.getElementById('productModal').onclick = function(e) {
+            if (e.target === this) closeModal();
         }
     </script>
 </body>
