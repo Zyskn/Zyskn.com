@@ -23,9 +23,11 @@
             --accent:#000;
             --gray:#f5f5f5;
             --text-muted:#666;
-            --cyan:#52d7ff;
-            --magenta:#d6007f;
+            --text-light:#999;
+            --cyan:#00b8e6; /* Celeste más intenso/oscuro */
+            --magenta:#b3006a; /* Magenta más intenso/oscuro */
             --whatsapp:#25D366;
+            --user-green:#4ade80;
             --danger:#c8003c;
             --transition:all .35s cubic-bezier(.165,.84,.44,1);
         }
@@ -40,21 +42,7 @@
             overflow-x:hidden;
         }
 
-        body::before{
-            content:'';
-            position:fixed;
-            top:50%;
-            left:50%;
-            transform:translate(-50%,-50%);
-            width:70vw;
-            height:70vw;
-            max-width:600px;
-            max-height:600px;
-            background:url('https://i.imgur.com/AoRv9TN.png') center/contain no-repeat;
-            opacity:.03;
-            z-index:-1;
-            pointer-events:none;
-        }
+        /* Eliminado el cuadrado gris del fondo (body::before) */
 
         .container{max-width:1400px;margin:0 auto;padding:0 20px}
 
@@ -63,34 +51,48 @@
             justify-content:space-between;
             align-items:center;
             gap:20px;
-            padding:20px 0;
+            padding:30px 0;
             position:sticky;
             top:0;
             background:rgba(255,255,255,.92);
             backdrop-filter:blur(10px);
             z-index:100;
-            margin-bottom:28px;
+            margin-bottom:35px;
             border-bottom:1px solid #f0f0f0;
         }
 
+        .logo-container{
+            display:flex;
+            align-items:baseline;
+            gap:10px;
+            cursor:pointer;
+        }
+
         .logo{
-            font-size:22px;
+            font-size:26px;
             font-weight:900;
             letter-spacing:-1px;
             text-transform:uppercase;
-            cursor:pointer;
             white-space:nowrap;
         }
 
-        .nav-actions{display:flex;align-items:center;gap:20px}
-        .main-filters{display:flex;gap:15px;align-items:center}
+        .slogan{
+            font-size:12px;
+            font-weight:400;
+            color:var(--text-light);
+            letter-spacing:0;
+            text-transform:uppercase;
+        }
+
+        .nav-actions{display:flex;align-items:center;gap:25px}
+        .main-filters{display:flex;gap:20px;align-items:center}
 
         .filter-btn{
             background:transparent;
             color:#000;
             border:none;
             padding:5px 0;
-            font-size:11px;
+            font-size:12px;
             text-transform:uppercase;
             letter-spacing:1px;
             cursor:pointer;
@@ -101,7 +103,7 @@
 
         .filter-btn:hover,.filter-btn.active{opacity:1}
 
-        .utility-actions{display:flex;gap:10px;align-items:center;position:relative}
+        .utility-actions{display:flex;gap:15px;align-items:center;position:relative}
 
         .icon-btn{
             background:none;
@@ -116,11 +118,24 @@
             color:#000;
         }
 
-        .icon-btn svg{width:19px;height:19px;stroke:currentColor;fill:none;stroke-width:2}
-        .search-btn{color:var(--cyan)}
-        .search-btn:hover{transform:translateY(-1px);filter:brightness(.85)}
+        .icon-btn svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2}
+        
+        .search-btn:hover{color:var(--cyan);transform:translateY(-1px)}
         .cart-btn:hover{color:var(--magenta)}
-        .user-btn.active,.user-btn:hover{color:#111;background:#f5f5f5;border-radius:50%}
+        
+        .user-btn-logged:hover{color:var(--user-green)}
+
+        .auth-nav-text{
+            font-size:11px;
+            font-weight:800;
+            text-transform:uppercase;
+            letter-spacing:1px;
+            cursor:pointer;
+            opacity:0.6;
+            transition:var(--transition);
+            white-space:nowrap;
+        }
+        .auth-nav-text:hover{opacity:1}
 
         .cart-count{
             position:absolute;
@@ -142,7 +157,7 @@
         .search-container{
             position:absolute;
             right:0;
-            top:calc(100% + 12px);
+            top:calc(100% + 15px);
             width:330px;
             background:#fff;
             padding:15px;
@@ -156,10 +171,33 @@
         .search-input{width:100%;padding:12px;border:1px solid #eee;font-size:12px;outline:none;text-transform:uppercase}
         .search-hint{font-size:10px;text-transform:uppercase;letter-spacing:1px;color:var(--text-muted);margin-top:8px}
 
-        .sub-wrapper{overflow:hidden;max-height:0;transition:max-height .5s ease;text-align:center}
-        .sub-wrapper.show{max-height:120px;margin-bottom:38px}
-        .sub-filters{display:none;justify-content:center;flex-wrap:wrap;gap:15px;padding:10px 0 18px}
-        .sub-filters.show{display:flex}
+        /* Slide Animation for Categories */
+        .sub-wrapper{
+            overflow:hidden;
+            max-height:0;
+            transition:max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            text-align:center;
+            background: #fff;
+        }
+        .sub-wrapper.show{
+            max-height:150px; /* Ajustado para dar espacio al slide */
+            margin-bottom:38px;
+        }
+        .sub-filters{
+            display:none;
+            justify-content:center;
+            flex-wrap:wrap;
+            gap:15px;
+            padding:20px 0;
+            transform: translateY(-20px);
+            opacity: 0;
+            transition: transform 0.4s ease, opacity 0.4s ease;
+        }
+        .sub-filters.show{
+            display:flex;
+            transform: translateY(0);
+            opacity: 1;
+        }
 
         .notice{
             display:none;
@@ -287,7 +325,7 @@
         .history-card p{font-size:12px;color:var(--text-muted);margin-bottom:4px}
         .history-products{margin-top:10px;padding-left:18px;font-size:12px;color:#111}
 
-        /* Sección Contacto Mejorada según Referencia */
+        /* Sección Contacto */
         .contact-wrapper{display:none;padding:100px 0;text-align:center}
         .contact-wrapper.show{display:block;animation:fadeIn .45s ease}
         .contact-title{font-size:42px;font-weight:900;margin-bottom:50px;letter-spacing:-1px}
@@ -303,21 +341,18 @@
             justify-content:center;
             background:#000;
             transition:var(--transition);
-            position:relative;
         }
         .contact-icon svg{width:40px;height:40px;fill:#fff;transition:var(--transition)}
         
         .contact-link.whatsapp:hover .contact-icon{background:var(--whatsapp)}
         .contact-link.instagram:hover .contact-icon{background:radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%)}
-        
-        .contact-link:hover span{color:#000}
 
         .footer-info{margin-top:100px;padding:60px 20px;border-top:1px solid #eee;text-align:center}
         .info-tagline{font-size:10px;letter-spacing:5px;text-transform:uppercase;font-weight:900;margin-bottom:20px}
         .footer{font-size:10px;opacity:.3;margin-top:40px;letter-spacing:2px;text-transform:uppercase}
 
         @media(max-width:900px){
-            header{align-items:flex-start;flex-wrap:wrap}
+            header{align-items:flex-start;flex-wrap:wrap;padding:20px 0}
             .nav-actions{width:100%;justify-content:space-between}
             .main-filters{gap:12px;overflow:auto;padding-bottom:6px}
         }
@@ -340,7 +375,10 @@
 <body>
     <div class="container">
         <header>
-            <h1 class="logo" onclick="showMainCategory('all')">ZYSKN ★</h1>
+            <div class="logo-container" onclick="showMainCategory('all')">
+                <h1 class="logo">ZYSKN ★</h1>
+                <span class="slogan">| Streetwear AR</span>
+            </div>
 
             <div class="nav-actions">
                 <nav class="main-filters" aria-label="Filtros principales">
@@ -354,9 +392,11 @@
                     <button class="icon-btn search-btn" onclick="toggleSearch()" aria-label="Buscar productos">
                         <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
                     </button>
-                    <button class="icon-btn user-btn" id="user-nav-btn" onclick="openUserArea()" aria-label="Usuario">
-                        <svg viewBox="0 0 24 24"><path d="M20 21a8 8 0 0 0-16 0"></path><circle cx="12" cy="7" r="4"></circle></svg>
-                    </button>
+                    
+                    <div id="user-nav-container">
+                        <span class="auth-nav-text" onclick="openAuthModal('login')">LOGIN / REGISTER</span>
+                    </div>
+
                     <button class="icon-btn cart-btn" onclick="toggleCart()" aria-label="Carrito">
                         <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
                         <span class="cart-count" id="cart-count">0</span>
@@ -573,20 +613,28 @@
             document.querySelectorAll('.filter-btn.main').forEach(button => button.classList.remove('active'));
             if(btn) btn.classList.add('active');
 
-            document.querySelectorAll('.sub-filters').forEach(group => group.classList.remove('show'));
-            document.querySelectorAll('.sub-filters .filter-btn').forEach(button => button.classList.remove('active'));
+            const subWrapper = document.getElementById('sub-wrapper');
+            const allSubFilters = document.querySelectorAll('.sub-filters');
             document.getElementById('contact-wrapper').classList.remove('show');
             document.getElementById('products-wrapper').classList.add('show');
 
             if(section === 'all'){
-                document.getElementById('sub-wrapper').classList.remove('show');
+                subWrapper.classList.remove('show');
+                allSubFilters.forEach(f => f.classList.remove('show'));
                 renderProducts(products);
                 return;
             }
 
-            document.getElementById('sub-wrapper').classList.add('show');
-            document.getElementById(`sub-${section}`).classList.add('show');
-            renderProducts(products.filter(product => product.section === section));
+            // Force close and reopen for animation effect
+            subWrapper.classList.remove('show');
+            allSubFilters.forEach(f => f.classList.remove('show'));
+
+            setTimeout(() => {
+                subWrapper.classList.add('show');
+                const targetSub = document.getElementById(`sub-${section}`);
+                targetSub.classList.add('show');
+                renderProducts(products.filter(product => product.section === section));
+            }, 100);
         }
 
         function filterProducts(category, btn){
@@ -689,7 +737,17 @@
         }
 
         function refreshUserNav(){
-            document.getElementById('user-nav-btn').classList.toggle('active', !!getCurrentUser());
+            const user = getCurrentUser();
+            const container = document.getElementById('user-nav-container');
+            if(user){
+                container.innerHTML = `
+                    <button class="icon-btn user-btn-logged" onclick="openUserArea()" aria-label="Usuario">
+                        <svg viewBox="0 0 24 24"><path d="M20 21a8 8 0 0 0-16 0"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                    </button>
+                `;
+            } else {
+                container.innerHTML = `<span class="auth-nav-text" onclick="openAuthModal('login')">LOGIN / REGISTER</span>`;
+            }
         }
 
         function openUserArea(){
