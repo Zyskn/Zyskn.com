@@ -1931,16 +1931,20 @@
       }
       
       try {
-        const users = JSON.parse(localStorage.getItem('zyskn_users_db') || '[]');
-        const user = users.find(u => u.email === email && u.password === password);
-        
-        if (!user && email === 'demo@zyskn.com' && password === 'demo123') {
+        // Validar credenciales demo
+        if (email === 'demo@zyskn.com' && password === 'demo123') {
           currentUser = { email, name: 'DEMO' };
-        } else if (user) {
-          currentUser = user;
         } else {
-          alert('Credenciales inválidas');
-          return;
+          // Buscar en usuarios registrados
+          const users = JSON.parse(localStorage.getItem('zyskn_users_db') || '[]');
+          const user = users.find(u => u.email === email && u.password === password);
+          
+          if (user) {
+            currentUser = user;
+          } else {
+            alert('Credenciales inválidas');
+            return;
+          }
         }
         
         localStorage.setItem('zyskn_user', JSON.stringify(currentUser));
