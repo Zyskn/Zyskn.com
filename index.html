@@ -155,6 +155,8 @@
       padding-bottom: 0.25rem;
       border-bottom: 2px solid transparent;
       transition: border-color 0.3s var(--transition);
+      display: inline-block;
+      line-height: 1.2; /* Better alignment */
     }
 
     .nav-main a.active {
@@ -179,6 +181,15 @@
       position: relative;
       padding: 0.5rem;
       transition: transform 0.2s var(--transition);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .icon-btn svg {
+      width: 20px;
+      height: 20px;
+      fill: currentColor;
     }
 
     .icon-btn:hover {
@@ -186,14 +197,11 @@
     }
 
     .search-icon {
-      color: var(--blue);
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      color: #000;
     }
 
     .cart-icon {
-      color: var(--red);
+      color: #000;
     }
 
     .login-text {
@@ -210,17 +218,17 @@
 
     .cart-badge {
       position: absolute;
-      top: -5px;
-      right: -5px;
+      top: -2px;
+      right: -2px;
       background: var(--red);
       color: #fff;
-      width: 20px;
-      height: 20px;
+      width: 18px;
+      height: 18px;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 0.75rem;
+      font-size: 0.7rem;
       font-weight: 700;
       animation: badgeBounce 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
@@ -423,6 +431,16 @@
       background: var(--whatsapp);
       color: #fff;
       border-color: var(--whatsapp);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      justify-content: center;
+    }
+
+    .btn-whatsapp svg {
+      width: 18px;
+      height: 18px;
+      fill: currentColor;
     }
 
     .btn-whatsapp:hover {
@@ -1238,10 +1256,19 @@
       text-decoration: none;
       font-size: 0.875rem;
       transition: color 0.3s var(--transition);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
     }
 
     .footer-links a:hover {
       color: #fff;
+    }
+
+    .footer-links svg {
+      width: 16px;
+      height: 16px;
+      fill: currentColor;
     }
 
     .footer-bottom {
@@ -1322,10 +1349,12 @@
       </nav>
 
       <div class="nav-icons">
-        <button class="icon-btn search-icon" onclick="toggleSearch()" aria-label="Buscar">🔍</button>
+        <button class="icon-btn search-icon" onclick="toggleSearch()" aria-label="Buscar">
+          <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+        </button>
         <button class="icon-btn login-text" id="loginBtn" onclick="toggleLoginModal()" aria-label="Login">LOGIN</button>
         <button class="icon-btn cart-icon" onclick="toggleCart()" aria-label="Carrito">
-          🛒
+          <svg viewBox="0 0 24 24"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49A1.003 1.003 0 0 0 20 4H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg>
           <span class="cart-badge" id="cartBadge" style="display: none;">0</span>
         </button>
         <button class="hamburger" id="hamburger" onclick="toggleMobileMenu()" aria-label="Menú">
@@ -1360,7 +1389,10 @@
       <div style="max-width: 600px; margin: 0 auto;">
         <h2 class="section-title">¿DUDAS?</h2>
         <p style="margin-bottom: 2rem; color: var(--text-muted);">Escribinos por WhatsApp para una atención personalizada o para coordinar retiros en Córdoba Capital.</p>
-        <a href="https://wa.me/XXXXXXXXXXX" target="_blank" class="btn btn-whatsapp">WHATSAPP DIRECTO</a>
+        <a href="https://wa.me/XXXXXXXXXXX" target="_blank" class="btn btn-whatsapp">
+          <svg viewBox="0 0 24 24"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2zm.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.24 8.23-1.48 0-2.93-.39-4.19-1.15l-.3-.17-3.12.82.83-3.04-.19-.3a8.132 8.132 0 0 1-1.26-4.38c.01-4.54 3.7-8.24 8.24-8.24zm-3.53 3.03c-.19 0-.32.01-.48.03-.16.02-.41.09-.62.32-.22.23-.82.81-.82 1.96 0 1.16.84 2.28.96 2.44.12.15 1.62 2.48 3.91 3.47.55.23.98.37 1.31.48.55.17 1.05.15 1.44.09.44-.07 1.35-.55 1.54-1.08.19-.53.19-.99.13-1.08-.06-.09-.21-.15-.45-.26-.23-.12-1.35-.67-1.56-.74-.21-.08-.36-.12-.51.11-.15.23-.58.74-.71.89-.13.15-.26.17-.5.05-.23-.12-.98-.36-1.87-1.15-.69-.61-1.15-1.37-1.29-1.61-.13-.23-.01-.36.11-.47.11-.1.23-.26.35-.39.11-.12.15-.21.23-.35.08-.13.04-.26-.02-.37-.06-.11-.51-1.23-.7-1.69-.18-.43-.37-.37-.51-.38l-.43-.01z"/></svg>
+          WHATSAPP DIRECTO
+        </a>
       </div>
     </section>
   </main>
@@ -1390,9 +1422,13 @@
     </div>
     <div class="footer-bottom">
       <p>&copy; 2026 ZYSKN. TODOS LOS DERECHOS RESERVADOS.</p>
-      <div style="display: flex; gap: 1rem;">
-        <a href="#" style="color: inherit;">INSTAGRAM</a>
-        <a href="#" style="color: inherit;">TIKTOK</a>
+      <div style="display: flex; gap: 1.5rem;">
+        <a href="https://instagram.com/zyskn" target="_blank" title="Instagram">
+          <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.334 3.608 1.308.975.975 1.247 2.242 1.308 3.608.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.062 1.366-.334 2.633-1.308 3.608-.975.975-2.242 1.247-3.608 1.308-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.366-.062-2.633-.334-3.608-1.308-.975-.975-1.247-2.242-1.308-3.608-.058-1.266-.07-1.646-.07-4.85s.012-3.584.07-4.85c.062-1.366.334-2.633 1.308-3.608.975-.975 2.242-1.247 3.608-1.308 1.266-.058 1.646-.07 4.85-.07zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.778 6.98 6.978 1.28.058 1.688.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4.162 4.162 0 1 1 0-8.324 4.162 4.162 0 0 1 0 8.324zM18.406 4.162a1.44 1.44 0 1 0 0 2.88 1.44 1.44 0 0 0 0-2.88z"/></svg>
+        </a>
+        <a href="https://wa.me/XXXXXXXXXXX" target="_blank" title="WhatsApp">
+          <svg viewBox="0 0 24 24"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2zm.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.24 8.23-1.48 0-2.93-.39-4.19-1.15l-.3-.17-3.12.82.83-3.04-.19-.3a8.132 8.132 0 0 1-1.26-4.38c.01-4.54 3.7-8.24 8.24-8.24zm-3.53 3.03c-.19 0-.32.01-.48.03-.16.02-.41.09-.62.32-.22.23-.82.81-.82 1.96 0 1.16.84 2.28.96 2.44.12.15 1.62 2.48 3.91 3.47.55.23.98.37 1.31.48.55.17 1.05.15 1.44.09.44-.07 1.35-.55 1.54-1.08.19-.53.19-.99.13-1.08-.06-.09-.21-.15-.45-.26-.23-.12-1.35-.67-1.56-.74-.21-.08-.36-.12-.51.11-.15.23-.58.74-.71.89-.13.15-.26.17-.5.05-.23-.12-.98-.36-1.87-1.15-.69-.61-1.15-1.37-1.29-1.61-.13-.23-.01-.36.11-.47.11-.1.23-.26.35-.39.11-.12.15-.21.23-.35.08-.13.04-.26-.02-.37-.06-.11-.51-1.23-.7-1.69-.18-.43-.37-.37-.51-.38l-.43-.01z"/></svg>
+        </a>
       </div>
     </div>
   </footer>
@@ -1558,6 +1594,13 @@
   </div>
 
   <script>
+    // CONFIGURACIÓN DEL BOT (CallMeBot)
+    // Para obtener tu API Key: Envía "allow me" por WhatsApp al +34 603 21 25 97
+    const BOT_CONFIG = {
+      phone: 'XXXXXXXXXXX', // Tu número con código de país (ej: 549351...)
+      apikey: 'XXXXXX'      // Tu API Key de CallMeBot
+    };
+
     // DATABASE
     const products = [
       {id:'t1', section:'arriba', category:'remeras', name:'VINTAGE TEE 01', price:25000, desc:'Remera 90s Cotton Blend. Oversized fit. Estado 9/10', img:'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=800&q=80', sizes:['S','M','L','XL']},
@@ -1625,16 +1668,13 @@
         subNavArriba.classList.remove('active');
         subNavAbajo.classList.remove('active');
         renderProducts(products);
-        // Scroll suavemente a la sección de productos
         setTimeout(() => {
           document.getElementById('shop').scrollIntoView({ behavior: 'smooth' });
         }, 100);
       } else if (section === 'arriba') {
-        // Solo mostrar el menú de ARRIBA
         subNavArriba.classList.add('active');
         subNavAbajo.classList.remove('active');
       } else if (section === 'abajo') {
-        // Solo mostrar el menú de ABAJO
         subNavAbajo.classList.add('active');
         subNavArriba.classList.remove('active');
       }
@@ -1650,8 +1690,6 @@
       document.getElementById('subNavWrapper-abajo').classList.remove('active');
       closeAllSubNav();
       closeMobileMenu();
-      
-      // Scroll suavemente a la sección de productos (desde cualquier lugar)
       setTimeout(() => {
         document.getElementById('shop').scrollIntoView({ behavior: 'smooth' });
       }, 50);
@@ -1806,14 +1844,13 @@
       }
     }
 
-    // CHECKOUT WHATSAPP
-    function shareOnWhatsApp() {
+    // CHECKOUT WHATSAPP & BOT
+    async function shareOnWhatsApp() {
       if (cart.length === 0) {
         alert('Tu carrito está vacío');
         return;
       }
       
-      // Obtener datos del formulario
       const nombre = document.getElementById('cart-nombre').value.trim();
       const ubicacion = document.getElementById('cart-ubicacion').value.trim();
       const email = document.getElementById('cart-email').value.trim();
@@ -1827,27 +1864,33 @@
       }
 
       const total = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
-      let message = 'ZYSKN ★ - NUEVO PEDIDO%0A%0A';
-      
-      message += '*DATOS DEL CLIENTE:*%0A';
-      message += `Nombre: ${nombre}%0A`;
-      message += `DNI: ${dni}%0A`;
-      message += `Email: ${email}%0A`;
-      message += `Tel: ${telefono}%0A`;
-      message += `Ubicación: ${ubicacion}%0A`;
-      if (sucursal) message += `Sucursal Correo: ${sucursal}%0A`;
-      message += '%0A*PRODUCTOS:*%0A';
+      let plainText = `ZYSKN ★ - NUEVO PEDIDO\n\n`;
+      plainText += `*DATOS DEL CLIENTE:*\n`;
+      plainText += `Nombre: ${nombre}\nDNI: ${dni}\nEmail: ${email}\nTel: ${telefono}\nUbicación: ${ubicacion}\n`;
+      if (sucursal) plainText += `Sucursal: ${sucursal}\n`;
+      plainText += `\n*PRODUCTOS:*\n`;
 
       cart.forEach((item, idx) => {
-        message += `${idx + 1}. ${item.name} (Talle: ${item.size}) - $${item.price.toLocaleString('es-AR')} x${item.qty}%0A`;
+        plainText += `${idx + 1}. ${item.name} (Talle: ${item.size}) - $${item.price.toLocaleString('es-AR')} x${item.qty}\n`;
       });
       
-      const fecha = new Date().toLocaleDateString('es-AR');
-      message += `%0ATOTAL: $${total.toLocaleString('es-AR')}%0A`;
-      message += `FECHA: ${fecha}%0A%0A`;
-      message += 'Aguardo confirmación para el pago. Gracias!';
+      plainText += `\nTOTAL: $${total.toLocaleString('es-AR')}\n`;
 
-      const whatsappUrl = `https://wa.me/XXXXXXXXXXX?text=${message}`;
+      // 1. Intentar enviar notificación al dueño vía Bot (CallMeBot)
+      if (BOT_CONFIG.phone !== 'XXXXXXXXXXX' && BOT_CONFIG.apikey !== 'XXXXXX') {
+        try {
+          const botMsg = encodeURIComponent(plainText);
+          const botUrl = `https://api.callmebot.com/whatsapp.php?phone=${BOT_CONFIG.phone}&text=${botMsg}&apikey=${BOT_CONFIG.apikey}`;
+          // Usamos fetch en modo no-cors para enviar el aviso sin bloquear el flujo
+          fetch(botUrl, { mode: 'no-cors' });
+          console.log('Notificación al dueño enviada vía bot');
+        } catch (e) {
+          console.error('Error enviando notificación bot:', e);
+        }
+      }
+
+      // 2. Abrir WhatsApp para el cliente
+      const whatsappUrl = `https://wa.me/XXXXXXXXXXX?text=${encodeURIComponent(plainText)}`;
       window.open(whatsappUrl, '_blank');
     }
 
@@ -1953,10 +1996,7 @@
       }
       
       try {
-        // Buscar en usuarios registrados
         const users = JSON.parse(localStorage.getItem('zyskn_users_db') || '[]');
-        
-        // Agregar usuario demo si no existe para que funcione siempre
         if (!users.find(u => u.email === 'demo@zyskn.com')) {
           users.push({ email: 'demo@zyskn.com', password: 'demo123', name: 'DEMO' });
           localStorage.setItem('zyskn_users_db', JSON.stringify(users));
@@ -2136,12 +2176,10 @@
         if (e.key === 'Escape') {
           closeModal();
           document.getElementById('searchOverlay').classList.remove('active');
-          
           const loginModal = document.getElementById('loginModal');
           const registerModal = document.getElementById('registerModal');
           if (loginModal.classList.contains('active')) toggleLoginModal();
           if (registerModal.classList.contains('active')) toggleRegisterModal();
-          
           closeMobileMenu();
         }
       });
@@ -2158,18 +2196,9 @@
       }, 2000);
     }
 
-    // ANALYTICS
-    function trackEvent(eventName, params) {
-      if (typeof gtag !== 'undefined') {
-        gtag('event', eventName, params);
-      }
-      console.log(`[Analytics] ${eventName}`, params);
-    }
-
     // START
     init();
   </script>
 
 </body>
 </html>
-
