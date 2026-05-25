@@ -34,8 +34,8 @@
       --accent: #000;
       --gray-bg: #F5F5F5;
       --text-muted: #666;
-      --blue: #3B82F6; /* Celeste solicitado */
-      --red: #EF4444;  /* Rojo solicitado */
+      --blue: #3B82F6;
+      --red: #EF4444;
       --whatsapp: #25D366;
       --instagram: #E4405F;
       --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -80,10 +80,10 @@
     .logo { font-size: 1.5rem; font-weight: 900; letter-spacing: -0.02em; text-transform: uppercase; }
     .logo-slogan { font-size: 0.65rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; }
 
-    .nav-main { display: flex; gap: 3rem; align-items: center; }
-    .nav-item { position: relative; padding: 1.2rem 0; } /* Hover bridge fix */
+    .nav-main { display: flex; gap: 2.5rem; align-items: center; }
+    .nav-item { position: relative; padding: 1.2rem 0; }
     .nav-main a {
-      font-size: 0.875rem;
+      font-size: 0.8rem;
       font-weight: 600;
       text-transform: uppercase;
       text-decoration: none;
@@ -96,14 +96,13 @@
     }
     .nav-main a:hover { border-bottom-color: #000; }
 
-    /* SUBNAV STABLE FIX */
     .sub-nav-wrapper {
       position: absolute;
       top: 100%;
       left: 0;
       background: #fff;
       border: 1px solid #000;
-      width: 220px;
+      width: 200px;
       padding: 0.5rem 0;
       display: none;
       flex-direction: column;
@@ -120,87 +119,97 @@
       pointer-events: auto;
     }
     .sub-nav-item {
-      font-size: 0.75rem;
+      font-size: 0.7rem;
       font-weight: 600;
       text-transform: uppercase;
       cursor: pointer;
-      padding: 0.75rem 1.5rem;
+      padding: 0.6rem 1.2rem;
       transition: all 0.2s var(--transition);
     }
-    .sub-nav-item:hover { background: var(--gray-bg); padding-left: 2rem; }
+    .sub-nav-item:hover { background: var(--gray-bg); padding-left: 1.5rem; }
 
-    .nav-icons { display: flex; gap: 1.5rem; align-items: center; }
+    .nav-icons { display: flex; gap: 1.2rem; align-items: center; }
     .icon-btn {
       background: none; border: none; cursor: pointer;
-      padding: 0.5rem; transition: transform 0.2s var(--transition);
+      padding: 0.4rem; transition: transform 0.2s var(--transition);
       display: flex; align-items: center; justify-content: center;
       position: relative;
     }
-    .icon-btn svg { width: 22px; height: 22px; fill: currentColor; }
+    .icon-btn svg { width: 20px; height: 20px; fill: currentColor; }
     .icon-btn:hover { transform: scale(1.1); }
     .search-icon { color: var(--blue); }
     .cart-icon { color: var(--red); }
+    
+    .auth-status { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; cursor: pointer; color: #000; }
+    .auth-status:hover { opacity: 0.7; }
 
     .cart-badge {
       position: absolute; top: -2px; right: -2px;
       background: #000; color: #fff;
-      width: 18px; height: 18px; border-radius: 50%;
+      width: 16px; height: 16px; border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
-      font-size: 0.7rem; font-weight: 700;
+      font-size: 0.65rem; font-weight: 700;
     }
 
     /* HERO */
     .hero {
-      height: 85vh; min-height: 560px;
+      height: 80vh; min-height: 500px;
       background: linear-gradient(135deg, #000 0%, #333 100%);
       display: flex; align-items: center; justify-content: center;
       color: #fff; text-align: center;
     }
-    .hero h1 { font-size: clamp(2.5rem, 8vw, 5rem); font-weight: 900; text-transform: uppercase; letter-spacing: -0.02em; }
+    .hero h1 { font-size: clamp(2rem, 7vw, 4.5rem); font-weight: 900; text-transform: uppercase; letter-spacing: -0.02em; }
 
     .btn {
-      display: inline-block; padding: 1rem 2rem;
+      display: inline-block; padding: 0.8rem 1.8rem;
       background: #fff; color: #000; border: 2px solid #fff;
-      font-size: 0.875rem; font-weight: 700; text-transform: uppercase;
+      font-size: 0.8rem; font-weight: 700; text-transform: uppercase;
       cursor: pointer; transition: var(--transition); text-decoration: none;
+      margin-top: 1.5rem;
     }
     .btn:hover { background: #000; color: #fff; transform: scale(1.05); }
 
-    /* FOOTER CIRCULAR ICONS */
-    .social-icons-footer { display: flex; gap: 1rem; }
-    .social-icon-circle {
-      width: 45px; height: 45px; border-radius: 50%;
-      background: #222; display: flex; align-items: center; justify-content: center;
-      transition: all 0.3s var(--transition); color: #fff; text-decoration: none;
+    /* FOOTER */
+    footer { background: #000; color: #fff; padding: 2rem; margin-top: 4rem; }
+    .footer-container {
+      max-width: var(--container-max);
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
     }
-    .social-icon-circle svg { width: 22px; height: 22px; fill: currentColor; }
-    .social-icon-circle.instagram:hover { 
-      background: var(--instagram); 
-      transform: translateY(-5px); 
-      box-shadow: 0 5px 15px rgba(228, 64, 95, 0.4);
-    }
-    .social-icon-circle.whatsapp:hover { 
-      background: var(--whatsapp); 
-      transform: translateY(-5px); 
-      box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4);
-    }
-
-    footer { background: #000; color: #fff; padding: 4rem 2rem; margin-top: 4rem; }
-    .footer-content { max-width: var(--container-max); margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 4rem; }
-    .footer-bottom { max-width: var(--container-max); margin: 4rem auto 0; padding-top: 2rem; border-top: 1px solid #333; display: flex; justify-content: space-between; align-items: center; color: #666; font-size: 0.75rem; }
+    .footer-brand h2 { font-size: 1.1rem; font-weight: 900; margin: 0; color: #fff; }
+    .footer-brand p { font-size: 0.7rem; color: #999; margin-top: 2px; }
+    .footer-rights p { font-size: 0.7rem; color: #666; margin: 0; text-transform: uppercase; letter-spacing: 0.05em; }
 
     /* SHOP */
     #shop { padding: 4rem 2rem; max-width: var(--container-max); margin: 0 auto; }
-    .section-title { font-size: clamp(1.5rem, 4vw, 2.5rem); font-weight: 900; text-transform: uppercase; margin-bottom: 3rem; letter-spacing: -0.02em; }
-    .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 2rem; }
+    .section-title { font-size: clamp(1.4rem, 4vw, 2.2rem); font-weight: 900; text-transform: uppercase; margin-bottom: 2.5rem; letter-spacing: -0.02em; }
+    .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.5rem; }
     .product-card { cursor: pointer; transition: transform 0.3s var(--transition); }
-    .product-image { width: 100%; aspect-ratio: 3/4; background: var(--gray-bg); overflow: hidden; margin-bottom: 1rem; }
+    .product-image { width: 100%; aspect-ratio: 3/4; background: var(--gray-bg); overflow: hidden; margin-bottom: 0.8rem; }
     .product-image img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s var(--transition); }
     .product-card:hover .product-image img { transform: scale(1.05); }
 
+    /* MODAL GENERAL */
+    .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); backdrop-filter: blur(8px); z-index: 200; align-items: center; justify-content: center; }
+    .modal.active { display: flex; }
+    .modal-content { background: #fff; width: 90%; max-width: 800px; padding: 2rem; position: relative; }
+    .modal-close { position: absolute; top: 1rem; right: 1rem; background: none; border: none; font-size: 1.5rem; cursor: pointer; }
+
+    /* AUTH MODAL */
+    .auth-modal-content { max-width: 400px; text-align: center; }
+    .auth-form { margin-top: 1.5rem; text-align: left; }
+    .form-group { margin-bottom: 1rem; }
+    .form-group label { display: block; font-size: 0.65rem; font-weight: 700; text-transform: uppercase; margin-bottom: 0.3rem; }
+    .form-group input { width: 100%; padding: 0.6rem; border: 1px solid #000; font-size: 0.8rem; outline: none; }
+    .auth-toggle { font-size: 0.7rem; color: #666; margin-top: 1rem; cursor: pointer; text-decoration: underline; }
+
     /* CART SIDEBAR */
     .cart-sidebar {
-      position: fixed; right: -100%; top: 0; width: 420px; height: 100vh;
+      position: fixed; right: -100%; top: 0; width: 400px; height: 100vh;
       background: #fff; border-left: 1px solid #000; z-index: 150;
       transition: right 0.3s var(--transition); display: flex; flex-direction: column;
     }
@@ -208,22 +217,12 @@
     .cart-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.3); z-index: 140; display: none; }
     .cart-overlay.active { display: block; }
 
-    .checkout-form { padding: 1rem; border-top: 1px solid #e0e0e0; overflow-y: auto; }
-    .form-group { margin-bottom: 0.75rem; }
-    .form-group label { display: block; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; margin-bottom: 0.25rem; }
-    .form-group input { width: 100%; padding: 0.5rem; border: 1px solid #000; font-size: 0.85rem; }
-
-    /* MODAL */
-    .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); backdrop-filter: blur(8px); z-index: 200; align-items: center; justify-content: center; }
-    .modal.active { display: flex; }
-    .modal-content { background: #fff; width: 90%; max-width: 900px; padding: 2rem; display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; position: relative; }
-    .modal-close { position: absolute; top: 1rem; right: 1rem; background: none; border: none; font-size: 1.5rem; cursor: pointer; }
-
     @media (max-width: 768px) {
       .nav-main { display: none; }
-      .footer-content { grid-template-columns: 1fr; }
-      .modal-content { grid-template-columns: 1fr; }
       .cart-sidebar { width: 100%; }
+      .footer-container { flex-direction: column; text-align: center; }
+      .footer-rights { text-align: center; }
+      .modal-content { grid-template-columns: 1fr; padding: 1.5rem; }
     }
   </style>
 </head>
@@ -262,6 +261,7 @@
         <button class="icon-btn search-icon" onclick="alert('Buscador próximamente')">
           <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
         </button>
+        <div id="userAuth" class="auth-status" onclick="openAuthModal()">LOGIN</div>
         <button class="icon-btn cart-icon" onclick="toggleCart()">
           <svg viewBox="0 0 24 24"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49A1.003 1.003 0 0 0 20 4H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg>
           <span class="cart-badge" id="cartBadge" style="display: none;">0</span>
@@ -283,69 +283,75 @@
       <div id="productsGrid" class="products-grid"></div>
     </section>
 
-    <section id="contact" style="padding: 6rem 2rem; background: var(--gray-bg); text-align: center;">
-<h2 class="section-title">¿DUDAS?</h2>
-<div class="social-icons-footer" style="display:flex; gap:40px; justify-content:center; margin-top:30px;">
-  
-  <!-- WHATSAPP -->
-  <div style="text-align:center;">
-    <a href="https://wa.me/5493544631553" target="_blank" title="WhatsApp" 
-       style="width:70px; height:70px; border-radius:50%; background:#000; display:flex; align-items:center; justify-content:center; color:#fff; transition:0.3s; margin:0 auto 10px auto;" 
-       onmouseover="this.style.background='#25D366'" 
-       onmouseout="this.style.background='#000'">
-      <svg viewBox="0 0 32 32" fill="currentColor" style="width:32px; height:32px;">
-        <path d="M19.11 17.205c-.372 0-1.088-.15-1.518-.376-.186-.1-.42-.12-.643-.026-.223.094-.58.37-.74.48-.16.11-.28.16-.42.16-.14 0-.34-.05-.52-.12-.18-.07-.37-.15-.57-.24-.2-.09-.4-.17-.6-.23-.2-.06-.4-.09-.6-.09-.2 0-.4.03-.6.09-.2.06-.4.14-.6.23-.2.09-.39.17-.57.24-.18.07-.38.12-.52.12-.14 0-.26-.05-.42-.16-.16-.11-.517-.386-.74-.48-.223-.094-.457-.074-.643.026-.43.226-1.146.376-1.518.376-.372 0-1.118-.15-1.548-.376-.19-.1-.43-.12-.653-.026-.223.094-.59.37-.75.48-.16.11-.29.16-.43.16-.14 0-.35-.05-.53-.12-.18-.07-.38-.15-.58-.24-.2-.09-.41-.17-.61-.23-.2-.06-.41-.09-.61-.09-.2 0-.41.03-.61.09-.2.06-.41.14-.61.23-.2.09-.4.17-.58.24-.18.07-.39.12-.53.12-.14 0-.27-.05-.43-.16-.16-.11-.527-.386-.75-.48-.223-.094-.463-.074-.653.026-.43.226-1.176.376-1.548.376-1.83 0-3.318-1.487-3.318-3.317 0-.61.16-1.19.45-1.69.29-.5.7-.94 1.22-1.31.52-.37 1.12-.64 1.78-.8.66-.16 1.35-.18 2.03-.05.68.13 1.32.4 1.9.8.58.4 1.08.9 1.48 1.48.4.58.67 1.22.8 1.9.13.68.11 1.37-.05 2.03-.16.66-.43 1.26-.8 1.78-.37.52-.81.93-1.31 1.22-.5.29-1.08.45-1.69.45m8.97-10.248C25.378 4.27 21.945 2.7 18.15 2.7c-6.798 0-12.33 5.532-12.33 12.33 0 2.17.57 4.29 1.65 6.16L5.05 29.3l8.26-2.4c1.8.99 3.84 1.51 5.84 1.51 6.798 0 12.33-5.532 12.33-12.33 0-3.795-1.57-7.228-4.4-9.123"/>
-      </svg>
-    </a>
-    <span style="font-size:14px; font-weight:600; color:#000;">WHATSAPP</span>
+    <section id="contact" style="padding: 5rem 2rem; background: var(--gray-bg); text-align: center;">
+      <h2 class="section-title">¿DUDAS?</h2>
+      <div class="social-icons-footer" style="display:flex; gap:30px; justify-content:center; margin-top:20px;">
+        <div style="text-align:center;">
+          <a href="https://wa.me/5493544631553" target="_blank" style="width:60px; height:60px; border-radius:50%; background:#000; display:flex; align-items:center; justify-content:center; color:#fff; transition:0.3s; margin:0 auto 8px auto;" onmouseover="this.style.background='#25D366'" onmouseout="this.style.background='#000'">
+            <svg viewBox="0 0 24 24" fill="currentColor" style="width:28px; height:28px;"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.72.94 3.659 1.437 5.634 1.437h.005c6.554 0 11.89-5.335 11.893-11.893a11.817 11.817 0 00-3.479-8.387z"/></svg>
+          </a>
+          <span style="font-size:12px; font-weight:600; color:#000;">WHATSAPP</span>
+        </div>
+        <div style="text-align:center;">
+          <a href="https://instagram.com/zyskn.vtg" target="_blank" style="width:60px; height:60px; border-radius:50%; background:#000; display:flex; align-items:center; justify-content:center; color:#fff; transition:0.3s; margin:0 auto 8px auto;" onmouseover="this.style.background='linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%)'" onmouseout="this.style.background='#000'">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:28px; height:28px;"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"></circle></svg>
+          </a>
+          <span style="font-size:12px; font-weight:600; color:#000;">INSTAGRAM</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-container">
+      <div class="footer-brand">
+        <h2>ZYSKN ★</h2>
+        <p>Curated Vintage & Streetwear. Córdoba, Argentina.</p>
+      </div>
+      <div class="footer-rights">
+        <p>&copy; 2026 ZYSKN. TODOS LOS DERECHOS RESERVADOS.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- AUTH MODAL -->
+  <div class="modal" id="authModal" onclick="closeAuthModalIfOutside(event)">
+    <div class="modal-content auth-modal-content">
+      <button class="modal-close" onclick="closeAuthModal()">✕</button>
+      <h2 id="authTitle">INICIAR SESIÓN</h2>
+      
+      <div class="auth-form" id="loginForm">
+        <div class="form-group"><label>Email</label><input type="email" id="loginEmail" placeholder="tu@email.com"></div>
+        <div class="form-group"><label>Contraseña</label><input type="password" id="loginPass" placeholder="••••••••"></div>
+        <button class="btn" onclick="handleLogin()" style="width:100%; background:#000; color:#fff; border:none">ENTRAR</button>
+        <p class="auth-toggle" onclick="toggleAuthForm('register')">¿No tienes cuenta? Regístrate aquí</p>
+      </div>
+
+      <div class="auth-form" id="registerForm" style="display:none">
+        <div class="form-group"><label>Nombre</label><input type="text" id="regName" placeholder="Tu nombre"></div>
+        <div class="form-group"><label>Email</label><input type="email" id="regEmail" placeholder="tu@email.com"></div>
+        <div class="form-group"><label>Contraseña</label><input type="password" id="regPass" placeholder="Mínimo 6 caracteres"></div>
+        <button class="btn" onclick="handleRegister()" style="width:100%; background:#000; color:#fff; border:none">CREAR CUENTA</button>
+        <p class="auth-toggle" onclick="toggleAuthForm('login')">¿Ya tienes cuenta? Inicia sesión</p>
+      </div>
+
+      <div id="profileSection" style="display:none; padding-top:1rem">
+        <p id="profileName" style="font-weight:700; margin-bottom:1rem"></p>
+        <button class="btn" onclick="handleLogout()" style="width:100%; background:var(--red); color:#fff; border:none">CERRAR SESIÓN</button>
+      </div>
+    </div>
   </div>
 
-  <!-- INSTAGRAM -->
-  <div style="text-align:center;">
-    <a href="https://instagram.com/zyskn.vtg" target="_blank" title="Instagram" 
-       style="width:70px; height:70px; border-radius:50%; background:#000; display:flex; align-items:center; justify-content:center; color:#fff; transition:0.3s; margin:0 auto 10px auto;" 
-       onmouseover="this.style.background='linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%)'" 
-       onmouseout="this.style.background='#000'">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:32px; height:32px;">
-        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-        <circle cx="12" cy="12" r="4"></circle>
-        <circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"></circle>
-      </svg>
-    </a>
-    <span style="font-size:14px; font-weight:600; color:#000;">INSTAGRAM</span>
-  </div>
-
-</div>
-</section>
-    
-<footer>
-<div class="footer-content" style="display:flex; justify-content:space-between; align-items:flex-start; padding:30px 40px;">
-  
-  <!-- COLUMNA IZQUIERDA -->
-  <div class="footer-brand">
-    <h2 style="margin:0 0 8px 0; color:#000; line-height:1;">ZYSKN ★</h2>
-    <p style="margin:0; color:#666; line-height:1;">Curated Vintage & Streetwear. Córdoba, Argentina.</p>
-  </div>
-
-  <!-- COLUMNA DERECHA -->
-  <div class="footer-bottom" style="text-align:right;">
-    <hr style="margin:0 0 8px auto; width:200px; border:0; border-top:1px solid #ccc;">
-    <p style="margin:0; font-size:12px; color:#666; line-height:1;">&copy; 2026 ZYSKN. TODOS LOS DERECHOS RESERVADOS.</p>
-  </div>
-
-</div>
-</footer>
-
-  <!-- MODAL -->
+  <!-- PRODUCT MODAL -->
   <div class="modal" id="productModal" onclick="closeModalIfOutside(event)">
-    <div class="modal-content">
+    <div class="modal-content" style="display:grid; grid-template-columns:1fr 1fr; gap:2rem">
       <button class="modal-close" onclick="closeModal()">✕</button>
       <div style="overflow:hidden"><img id="modalImage" src="" style="width:100%; height:100%; object-fit:cover"></div>
       <div>
         <h2 id="modalName"></h2><div id="modalPrice" style="font-weight:700; margin:1rem 0; font-size:1.5rem"></div>
         <p id="modalDesc" style="color:#666; margin-bottom:1.5rem"></p>
         <div id="sizeOptions" style="display:flex; gap:0.5rem; margin-bottom:1.5rem"></div>
-        <button class="btn" onclick="addToCartFromModal()" style="width:100%; background:#000; color:#fff">AGREGAR AL CARRITO</button>
+        <button class="btn" onclick="addToCartFromModal()" style="width:100%; background:#000; color:#fff; border:none">AGREGAR AL CARRITO</button>
       </div>
     </div>
   </div>
@@ -355,21 +361,13 @@
   <div class="cart-sidebar" id="cartSidebar">
     <div style="padding:1.5rem; border-bottom:1px solid #000; display:flex; justify-content:space-between"><h3>TU CARRITO</h3><button onclick="toggleCart()" style="background:none; border:none; cursor:pointer; font-size:1.5rem">✕</button></div>
     <div id="cartItems" style="flex:1; overflow-y:auto; padding:1rem"></div>
-    <div class="checkout-form" id="checkoutForm" style="display:none">
-      <h4>DATOS DE ENVÍO</h4>
-      <div class="form-group"><label>Nombre y Apellido</label><input type="text" id="cart-nombre"></div>
-      <div class="form-group"><label>Ubicación y CP</label><input type="text" id="cart-ubicacion"></div>
-      <div class="form-group"><label>DNI</label><input type="text" id="cart-dni"></div>
-      <div class="form-group"><label>Teléfono</label><input type="tel" id="cart-telefono"></div>
-    </div>
     <div style="padding:1.5rem; border-top:1px solid #000">
       <div style="display:flex; justify-content:space-between; margin-bottom:1rem; font-weight:700"><span>TOTAL:</span><span id="cartTotal">$0</span></div>
-      <button class="btn" onclick="shareOnWhatsApp()" style="width:100%; background:#25D366; color:#fff; border:none">COMPLETAR PEDIDO</button>
+      <button class="btn" onclick="shareOnWhatsApp()" style="width:100%; background:#25D366; color:#fff; border:none">COMPLETAR PEDIDO POR WHATSAPP</button>
     </div>
   </div>
 
   <script>
-    const BOT_CONFIG = { phone: '5493544631553', apikey: 'XXXXXX' }; // PEGA TU APIKEY AQUÍ
     const products = [
       {id:'t1', section:'arriba', category:'remeras', name:'VINTAGE TEE 01', price:25000, desc:'Remera 90s Cotton Blend. Estado 9/10.', img:'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=800&q=80', sizes:['S','M','L']},
       {id:'t2', section:'arriba', category:'chombas', name:'RETRO POLO NAVY', price:32000, desc:'Polo Lacoste vintage original.', img:'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=800&q=80', sizes:['M','L']},
@@ -380,8 +378,96 @@
     let cart = [];
     let currentProduct = null;
     let selectedSize = null;
+    let currentUser = null;
 
-    function init() { renderProducts(products); setupScrollListener(); }
+    // BASE DE DATOS LOCAL
+    function getUsersDB() { return JSON.parse(localStorage.getItem('zyskn_users')) || []; }
+    function saveUserDB(users) { localStorage.setItem('zyskn_users', JSON.stringify(users)); }
+
+    function init() { 
+      renderProducts(products); 
+      setupScrollListener(); 
+      checkAuthStatus();
+    }
+
+    // AUTH LOGIC
+    function checkAuthStatus() {
+      const savedUser = JSON.parse(localStorage.getItem('zyskn_current_user'));
+      if(savedUser) {
+        currentUser = savedUser;
+        document.getElementById('userAuth').textContent = `HOLA, ${currentUser.name.split(' ')[0].toUpperCase()}`;
+      } else {
+        document.getElementById('userAuth').textContent = 'LOGIN';
+      }
+    }
+
+    function openAuthModal() {
+      const modal = document.getElementById('authModal');
+      modal.classList.add('active');
+      if(currentUser) {
+        document.getElementById('authTitle').textContent = 'MI PERFIL';
+        document.getElementById('loginForm').style.display = 'none';
+        document.getElementById('registerForm').style.display = 'none';
+        document.getElementById('profileSection').style.display = 'block';
+        document.getElementById('profileName').textContent = `Logueado como: ${currentUser.email}`;
+      } else {
+        toggleAuthForm('login');
+      }
+    }
+
+    function closeAuthModal() { document.getElementById('authModal').classList.remove('active'); }
+    function closeAuthModalIfOutside(e) { if(e.target.id==='authModal') closeAuthModal(); }
+
+    function toggleAuthForm(type) {
+      const login = document.getElementById('loginForm');
+      const register = document.getElementById('registerForm');
+      const title = document.getElementById('authTitle');
+      if(type === 'login') {
+        login.style.display = 'block'; register.style.display = 'none'; title.textContent = 'INICIAR SESIÓN';
+      } else {
+        login.style.display = 'none'; register.style.display = 'block'; title.textContent = 'CREAR CUENTA';
+      }
+    }
+
+    function handleRegister() {
+      const name = document.getElementById('regName').value;
+      const email = document.getElementById('regEmail').value;
+      const pass = document.getElementById('regPass').value;
+      if(!name || !email || pass.length < 6) { alert('Completa todos los datos (contraseña min 6 caracteres)'); return; }
+      
+      let users = getUsersDB();
+      if(users.find(u => u.email === email)) { alert('Este email ya está registrado'); return; }
+      
+      users.push({name, email, pass});
+      saveUserDB(users);
+      alert('Registro exitoso. Ya puedes iniciar sesión.');
+      toggleAuthForm('login');
+    }
+
+    function handleLogin() {
+      const email = document.getElementById('loginEmail').value;
+      const pass = document.getElementById('loginPass').value;
+      let users = getUsersDB();
+      const user = users.find(u => u.email === email && u.pass === pass);
+      
+      if(user) {
+        currentUser = user;
+        localStorage.setItem('zyskn_current_user', JSON.stringify(user));
+        checkAuthStatus();
+        closeAuthModal();
+      } else {
+        alert('Email o contraseña incorrectos');
+      }
+    }
+
+    function handleLogout() {
+      localStorage.removeItem('zyskn_current_user');
+      currentUser = null;
+      checkAuthStatus();
+      closeAuthModal();
+    }
+
+    // PRODUCT RENDER
     function renderProducts(items) {
       document.getElementById('productsGrid').innerHTML = items.map(p => `
         <div class="product-card" onclick="openModal('${p.id}')">
@@ -393,46 +479,53 @@
 
     function showMainCategory(s, e) { if(e) e.preventDefault(); renderProducts(s==='todo'?products:products.filter(p=>p.section===s)); scrollToSection('shop'); }
     function filterProducts(c) { renderProducts(products.filter(p=>p.category===c)); scrollToSection('shop'); }
+    
     function openModal(id) {
       currentProduct = products.find(p=>p.id===id); selectedSize = null;
       document.getElementById('modalName').textContent = currentProduct.name;
       document.getElementById('modalPrice').textContent = `$${currentProduct.price.toLocaleString('es-AR')}`;
       document.getElementById('modalDesc').textContent = currentProduct.desc;
       document.getElementById('modalImage').src = currentProduct.img;
-      document.getElementById('sizeOptions').innerHTML = currentProduct.sizes.map(s=>`<button onclick="setS('${s}', this)" style="padding:0.5rem 1rem; border:1px solid #000; background:#fff; cursor:pointer">${s}</button>`).join('');
+      document.getElementById('sizeOptions').innerHTML = currentProduct.sizes.map(s=>`<button onclick="setS('${s}', this)" style="padding:0.5rem 1rem; border:1px solid #000; background:#fff; cursor:pointer; font-size:0.75rem">${s}</button>`).join('');
       document.getElementById('productModal').classList.add('active');
     }
+    
     function setS(s, btn) {
       selectedSize = s;
       document.querySelectorAll('#sizeOptions button').forEach(b=>b.style.background='#fff');
       btn.style.background = '#eee';
     }
+    
     function closeModal() { document.getElementById('productModal').classList.remove('active'); }
     function closeModalIfOutside(e) { if(e.target.id==='productModal') closeModal(); }
     function toggleCart() { document.getElementById('cartSidebar').classList.toggle('active'); document.getElementById('cartOverlay').classList.toggle('active'); }
+    
     function addToCartFromModal() {
       if(!selectedSize){alert('Selecciona talle'); return;}
       cart.push({...currentProduct, size:selectedSize}); updateCartUI(); closeModal();
     }
+    
     function updateCartUI() {
       const badge = document.getElementById('cartBadge');
       badge.textContent = cart.length; badge.style.display = cart.length?'flex':'none';
-      document.getElementById('checkoutForm').style.display = cart.length?'block':'none';
-      document.getElementById('cartItems').innerHTML = cart.map(i=>`<div style="margin-bottom:0.5rem; font-size:0.8rem">${i.name} (${i.size}) - $${i.price.toLocaleString('es-AR')}</div>`).join('');
+      document.getElementById('cartItems').innerHTML = cart.map(i=>`<div style="margin-bottom:0.5rem; font-size:0.8rem; border-bottom:1px solid #eee; padding-bottom:0.5rem">${i.name} (${i.size}) - $${i.price.toLocaleString('es-AR')}</div>`).join('');
       document.getElementById('cartTotal').textContent = `$${cart.reduce((s,i)=>s+i.price,0).toLocaleString('es-AR')}`;
     }
-    async function shareOnWhatsApp() {
-      const n = document.getElementById('cart-nombre').value;
-      if(!n){alert('Completa los datos de envío'); return;}
-      let t = `ZYSKN ★ - NUEVO PEDIDO\nNombre: ${n}\n\nPRODUCTOS:\n`;
+    
+    function shareOnWhatsApp() {
+      if(cart.length === 0) { alert('El carrito está vacío'); return; }
+      let t = `ZYSKN ★ - NUEVO PEDIDO\n`;
+      if(currentUser) t += `Cliente: ${currentUser.name} (${currentUser.email})\n`;
+      t += `\nPRODUCTOS:\n`;
       cart.forEach(i=>t+=`- ${i.name} (${i.size})\n`);
       t += `\nTOTAL: $${cart.reduce((s,i)=>s+i.price,0).toLocaleString('es-AR')}`;
-      if(BOT_CONFIG.apikey!=='XXXXXX') fetch(`https://api.callmebot.com/whatsapp.php?phone=${BOT_CONFIG.phone}&text=${encodeURIComponent(t)}&apikey=${BOT_CONFIG.apikey}`, {mode:'no-cors'});
       window.open(`https://wa.me/5493544631553?text=${encodeURIComponent(t)}`, '_blank');
     }
+    
     function setupScrollListener() { window.addEventListener('scroll', () => { const h=document.getElementById('header'); if(window.scrollY>50) h.classList.add('scrolled'); else h.classList.remove('scrolled'); }); }
     function scrollToSection(id) { document.getElementById(id).scrollIntoView({behavior:'smooth'}); }
     function scrollToTop() { window.scrollTo({top:0, behavior:'smooth'}); }
+    
     init();
   </script>
 </body>
