@@ -53,6 +53,37 @@
       background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="3" result="noise" seed="2"/><feColorMatrix in="noise" type="saturate" values="0"/><feBlend in="SourceGraphic" in2="noise" mode="overlay"/></filter><rect width="200" height="200" fill="rgba(0,0,0,0.008)" filter="url(%23noise)"/></svg>');
       background-size: 200px 200px;
       background-attachment: fixed;
+     }
+
+    /* BARRA SUPERIOR ROJA */
+    .top-bar {
+      background: var(--red);
+      color: #fff;
+      padding: 10px 0;
+      font-size: 0.85rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      overflow: hidden;
+      white-space: nowrap;
+      position: relative;
+      z-index: 1000;
+    }
+    .marquee-content {
+      display: inline-block;
+      animation: marquee-infinite 25s linear infinite;
+      padding-left: 100%;
+    }
+    .marquee-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin-right: 60px;
+    }
+    .marquee-item svg { width: 16px; height: 16px; fill: currentColor; }
+    @keyframes marquee-infinite {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-100%); }
     }
 
     /* HEADER */
