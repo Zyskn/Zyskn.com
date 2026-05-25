@@ -75,11 +75,11 @@
       overflow: hidden;
     }
 
-    /* Grain overlay - Professional delicate grain ONLY on body background */
+    /* Grain overlay - Finer and more delicate grain */
     body {
       background-image: 
-        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="4" result="noise" seed="2"/><feColorMatrix in="noise" type="saturate" values="0"/><feBlend in="SourceGraphic" in2="noise" mode="overlay"/></filter><rect width="400" height="400" fill="rgba(0,0,0,0.015)" filter="url(%23noise)"/></svg>');
-      background-size: 400px 400px;
+        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="3" result="noise" seed="2"/><feColorMatrix in="noise" type="saturate" values="0"/><feBlend in="SourceGraphic" in2="noise" mode="overlay"/></filter><rect width="200" height="200" fill="rgba(0,0,0,0.008)" filter="url(%23noise)"/></svg>');
+      background-size: 200px 200px;
       background-attachment: fixed;
     }
 
@@ -498,7 +498,6 @@
 
     .product-overlay {
       position: absolute;
-      top: 0;
       left: 0;
       width: 100%;
       height: 100%;
@@ -864,6 +863,35 @@
       font-size: 0.875rem;
     }
 
+    /* CHECKOUT FORM IN CART */
+    .checkout-form {
+      padding: 1rem;
+      border-top: 1px solid #e0e0e0;
+      margin-top: 1rem;
+    }
+
+    .checkout-form h4 {
+      font-size: 0.875rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+      letter-spacing: 0.05em;
+    }
+
+    .checkout-form .form-group {
+      margin-bottom: 0.75rem;
+    }
+
+    .checkout-form .form-group label {
+      font-size: 0.7rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .checkout-form .form-group input {
+      padding: 0.5rem;
+      font-size: 0.85rem;
+    }
+
     .cart-footer {
       padding: 1.5rem;
       border-top: 1px solid #000;
@@ -1154,105 +1182,78 @@
     }
 
     .mobile-submenu-item {
-      padding: 0.75rem 1.5rem 0.75rem 2.5rem;
+      padding: 0.75rem 2.5rem;
+      border-bottom: 1px solid #ddd;
       font-size: 0.8rem;
+      text-transform: uppercase;
       cursor: pointer;
-      transition: background 0.2s var(--transition);
-    }
-
-    .mobile-submenu-item:hover {
-      background: #e0e0e0;
     }
 
     /* FOOTER */
-    .footer {
+    footer {
       background: #000;
       color: #fff;
       padding: 4rem 2rem;
-      text-align: center;
+      margin-top: 4rem;
     }
 
-    .footer-title {
+    .footer-content {
+      max-width: var(--container-max);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 4rem;
+    }
+
+    .footer-brand h2 {
       font-size: 1.5rem;
       font-weight: 900;
-      text-transform: uppercase;
-      margin-bottom: 0.5rem;
-      letter-spacing: -0.02em;
-    }
-
-    .footer-subtitle {
-      font-size: 0.85rem;
-      color: #ccc;
-      margin-bottom: 2rem;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-
-    .social-circles {
-      display: flex;
-      justify-content: center;
-      gap: 2rem;
-      margin-bottom: 3rem;
-    }
-
-    .social-circle {
-      width: 64px;
-      height: 64px;
-      border: 2px solid #fff;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      transition: var(--transition);
-      text-decoration: none;
-      color: #fff;
-    }
-
-    .social-circle svg {
-      width: 28px;
-      height: 28px;
-      fill: #fff;
-      stroke: #fff;
-      stroke-width: 1.5;
-      transition: all 0.3s ease;
-    }
-
-    .social-circle:hover {
-      transform: translateY(-4px);
-    }
-
-    .social-circle:hover svg {
-      fill: #fff;
-      stroke: #fff;
-    }
-
-    .social-circle:not(.instagram):hover {
-      background: #25D366;
-      border-color: #25D366;
-    }
-
-    .social-circle.instagram:hover {
-      background: linear-gradient(135deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
-      border-color: #E4405F;
-    }
-
-    .social-circle.instagram:hover svg {
-      fill: #fff;
-      stroke: #fff;
-    }
-
-    .footer-bottom {
-      font-size: 0.875rem;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
       margin-bottom: 1rem;
     }
 
-    .footer-legal {
-      font-size: 0.75rem;
+    .footer-brand p {
       color: #999;
-      margin-top: 1rem;
+      font-size: 0.875rem;
+      max-width: 300px;
+    }
+
+    .footer-links h3 {
+      font-size: 0.875rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+      letter-spacing: 0.05em;
+    }
+
+    .footer-links ul {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin-bottom: 0.75rem;
+    }
+
+    .footer-links a {
+      color: #999;
+      text-decoration: none;
+      font-size: 0.875rem;
+      transition: color 0.3s var(--transition);
+    }
+
+    .footer-links a:hover {
+      color: #fff;
+    }
+
+    .footer-bottom {
+      max-width: var(--container-max);
+      margin: 4rem auto 0;
+      padding-top: 2rem;
+      border-top: 1px solid #333;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: #666;
+      font-size: 0.75rem;
     }
 
     /* RESPONSIVE */
@@ -1260,229 +1261,177 @@
       .products-grid {
         grid-template-columns: repeat(2, 1fr);
       }
-
-      .modal-content {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-      }
     }
 
     @media (max-width: 768px) {
       header {
-        padding: 1rem 1.5rem;
+        padding: 1rem;
       }
-
       .nav-main {
         display: none;
       }
-
       .hamburger {
         display: flex;
       }
-
-      .logo-slogan {
-        display: none;
+      .footer-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
       }
-
-      .sub-nav-wrapper {
-        display: none !important;
-      }
-
-      .mobile-menu {
-        display: block;
-      }
-
-      .products-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1.4rem;
-      }
-
       .modal-content {
-        width: 95%;
+        grid-template-columns: 1fr;
         padding: 1.5rem;
       }
-
       .cart-sidebar {
-        max-width: 100%;
-        width: 100vw;
+        width: 100%;
       }
-
-      .search-box {
-        width: 95%;
-      }
-
-      .login-content, .register-content {
-        width: 95%;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .hero h1 {
-        font-size: 1.75rem;
-      }
-
-      .hero p {
-        font-size: 0.9rem;
-      }
-
-      .section-title {
-        font-size: 1.25rem;
-      }
-
-      .products-grid {
-        grid-template-columns: 1fr;
-        gap: 1rem;
-      }
-
-      .modal-content {
-        padding: 1rem;
-      }
-
-      .cart-sidebar {
-        max-width: 100%;
-      }
-
-      .size-options {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      * {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-      }
-    }
-
-    noscript {
-      display: block;
-      padding: 2rem;
-      background: var(--red);
-      color: #fff;
-      text-align: center;
-      font-weight: 600;
     }
   </style>
 </head>
 <body>
 
-  <noscript>
-    <strong>JavaScript está deshabilitado. Por favor, habilítalo para usar ZYSKN.</strong>
-  </noscript>
-
-  <!-- HEADER -->
   <header id="header">
     <div class="header-content">
-      <div class="logo-section" onclick="scrollToTop()" role="button" tabindex="0">
-        <div class="logo">ZYSKN ★</div>
-        <div class="logo-slogan">STREETWEAR AR</div>
+      <div class="logo-section" onclick="scrollToTop()">
+        <span class="logo">ZYSKN ★</span>
+        <span class="logo-slogan">Curated Vintage</span>
       </div>
-      
+
       <nav class="nav-main">
-        <a href="#" onclick="showMainCategory('todo', event)">TODO</a>
-        <a href="#" onclick="showMainCategory('arriba', event)">ARRIBA</a>
-        <a href="#" onclick="showMainCategory('abajo', event)">ABAJO</a>
-        <a href="#" onclick="scrollToSection('contact')">CONTACTO</a>
+        <a onclick="showMainCategory('todo', event)">TODO</a>
+        <div class="nav-item">
+          <a onclick="showMainCategory('arriba', event)">ARRIBA</a>
+          <div class="sub-nav-wrapper" id="subNavWrapper-arriba">
+            <div class="sub-nav-item" onclick="filterProducts('remeras')">Remeras</div>
+            <div class="sub-nav-item" onclick="filterProducts('chombas')">Chombas</div>
+            <div class="sub-nav-item" onclick="filterProducts('casacas')">Casacas</div>
+            <div class="sub-nav-item" onclick="filterProducts('camisas')">Camisas</div>
+            <div class="sub-nav-item" onclick="filterProducts('hoodies')">Hoodies</div>
+            <div class="sub-nav-item" onclick="filterProducts('camperas')">Camperas</div>
+          </div>
+        </div>
+        <div class="nav-item">
+          <a onclick="showMainCategory('abajo', event)">ABAJO</a>
+          <div class="sub-nav-wrapper" id="subNavWrapper-abajo">
+            <div class="sub-nav-item" onclick="filterProducts('pantalones')">Pantalones</div>
+            <div class="sub-nav-item" onclick="filterProducts('jeans')">Jeans</div>
+            <div class="sub-nav-item" onclick="filterProducts('bermudas')">Bermudas</div>
+            <div class="sub-nav-item" onclick="filterProducts('shorts')">Shorts</div>
+          </div>
+        </div>
+        <a onclick="scrollToSection('contact')">CONTACTO</a>
       </nav>
 
       <div class="nav-icons">
-        <button class="icon-btn search-icon" onclick="toggleSearch()" aria-label="Buscar">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.35-4.35"></path></svg>
-        </button>
+        <button class="icon-btn search-icon" onclick="toggleSearch()" aria-label="Buscar">🔍</button>
         <button class="icon-btn login-text" id="loginBtn" onclick="toggleLoginModal()" aria-label="Login">LOGIN</button>
         <button class="icon-btn cart-icon" onclick="toggleCart()" aria-label="Carrito">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+          🛒
           <span class="cart-badge" id="cartBadge" style="display: none;">0</span>
         </button>
+        <button class="hamburger" id="hamburger" onclick="toggleMobileMenu()" aria-label="Menú">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
       </div>
-
-      <button class="hamburger" onclick="toggleMobileMenu()" aria-label="Menú" aria-expanded="false">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-    </div>
-
-    <!-- SUBNAV DESKTOP -->
-    <div class="sub-nav-wrapper" id="subNavWrapper-arriba">
-      <div class="sub-nav-item" onclick="filterProducts('remeras')">Remeras</div>
-      <div class="sub-nav-item" onclick="filterProducts('chombas')">Chombas</div>
-      <div class="sub-nav-item" onclick="filterProducts('casacas')">Casacas</div>
-      <div class="sub-nav-item" onclick="filterProducts('camisas')">Camisas</div>
-      <div class="sub-nav-item" onclick="filterProducts('hoodies')">Hoodies</div>
-      <div class="sub-nav-item" onclick="filterProducts('camperas')">Camperas</div>
-    </div>
-    
-    <div class="sub-nav-wrapper" id="subNavWrapper-abajo">
-      <div class="sub-nav-item" onclick="filterProducts('pantalones')">Pantalones</div>
-      <div class="sub-nav-item" onclick="filterProducts('jeans')">Jeans</div>
-      <div class="sub-nav-item" onclick="filterProducts('bermudas')">Bermudas</div>
-      <div class="sub-nav-item" onclick="filterProducts('shorts')">Shorts</div>
     </div>
   </header>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-content">
-      <h1>CURATED VINTAGE<br>NO RESTOCKS</h1>
-      <p>DROP 01 — LIVE</p>
-      <button class="btn" onclick="scrollToSection('shop')">SHOP AHORA</button>
-    </div>
-  </section>
+  <main>
+    <section class="hero">
+      <div class="hero-content">
+        <h1>DROP 01 DISPONIBLE</h1>
+        <p>PIEZAS ÚNICAS SELECCIONADAS A MANO</p>
+        <div style="display: flex; gap: 1rem; justify-content: center;">
+          <a href="#shop" class="btn">COMPRAR AHORA</a>
+          <a onclick="scrollToSection('contact')" class="btn btn-secondary">CONTACTO</a>
+        </div>
+      </div>
+    </section>
 
-  <!-- SHOP -->
-  <section id="shop" style="padding-top: 4rem;">
-    <div style="max-width: var(--container-max); margin: 0 auto; padding: 0 2rem;">
-      <h2 class="section-title">COLECCIÓN</h2>
-      <div class="products-grid" id="productsGrid"></div>
-    </div>
-  </section>
+    <section id="shop">
+      <h2 class="section-title">CURATED PIECES</h2>
+      <div class="products-grid" id="productsGrid">
+        <!-- Products will be injected here -->
+      </div>
+    </section>
 
-  <!-- FOOTER -->
-  <footer class="footer" id="contact">
-    <div class="footer-title">CONTACTO DIRECTO</div>
-    <div class="footer-subtitle">Drops exclusivos • 1 of 1 • Envíos a todo AR</div>
-    <div class="social-circles">
-      <a href="https://wa.me/5493544631553" target="_blank" class="social-circle" aria-label="WhatsApp">
-        <svg viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.67-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.076 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421-7.403h-.004a9.87 9.87 0 00-5.031 1.378c-3.055 2.2-5.02 5.97-5.02 9.981 0 1.396.264 2.823.77 4.176L2.05 22.62l4.555-1.339c1.224.679 2.605 1.038 4.02 1.038h.004c5.305 0 9.62-4.278 9.62-9.514 0-2.551-.987-4.944-2.779-6.726-1.794-1.782-4.176-2.76-6.7-2.76"/></svg>
-      </a>
-      <a href="https://instagram.com/zyskn.vtg" target="_blank" class="social-circle instagram" aria-label="Instagram">
-        <svg viewBox="0 0 24 24" fill="#E4405F"><rect x="2" y="2" width="20" height="20" rx="5" ry="5" fill="none" stroke="#E4405F" stroke-width="2"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37Z" fill="none" stroke="#E4405F" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.5" fill="#E4405F"/></svg>
-      </a>
+    <section id="contact" style="padding: 6rem 2rem; background: var(--gray-bg); text-align: center;">
+      <div style="max-width: 600px; margin: 0 auto;">
+        <h2 class="section-title">¿DUDAS?</h2>
+        <p style="margin-bottom: 2rem; color: var(--text-muted);">Escribinos por WhatsApp para una atención personalizada o para coordinar retiros en Córdoba Capital.</p>
+        <a href="https://wa.me/XXXXXXXXXXX" target="_blank" class="btn btn-whatsapp">WHATSAPP DIRECTO</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-brand">
+        <h2>ZYSKN ★</h2>
+        <p>Curated Vintage & Streetwear. Basados en Córdoba, Argentina. Envíos a todo el país.</p>
+      </div>
+      <div class="footer-links">
+        <h3>SHOP</h3>
+        <ul>
+          <li><a onclick="showMainCategory('todo')">Todo</a></li>
+          <li><a onclick="showMainCategory('arriba')">Arriba</a></li>
+          <li><a onclick="showMainCategory('abajo')">Abajo</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h3>INFO</h3>
+        <ul>
+          <li><a onclick="scrollToSection('contact')">Contacto</a></li>
+          <li><a href="#">Términos y Condiciones</a></li>
+          <li><a href="#">Guía de talles</a></li>
+        </ul>
+      </div>
     </div>
-    <div class="footer-bottom">CÓRDOBA ★ | EST. 2026</div>
-    <div class="footer-legal">© 2026 ZYSKN. Todos los derechos reservados.</div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 ZYSKN. TODOS LOS DERECHOS RESERVADOS.</p>
+      <div style="display: flex; gap: 1rem;">
+        <a href="#" style="color: inherit;">INSTAGRAM</a>
+        <a href="#" style="color: inherit;">TIKTOK</a>
+      </div>
+    </div>
   </footer>
+
+  <!-- PRODUCT MODAL -->
+  <div class="modal" id="productModal" onclick="closeModalIfOutside(event)">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeModal()">✕</button>
+      <div class="modal-image">
+        <img id="modalImage" src="" alt="">
+      </div>
+      <div class="modal-info">
+        <h2 id="modalName"></h2>
+        <div class="modal-price" id="modalPrice"></div>
+        <p id="modalDesc"></p>
+        
+        <div class="size-selector">
+          <label>SELECCIONAR TALLE</label>
+          <div class="size-options" id="sizeOptions">
+            <!-- Sizes will be injected here -->
+          </div>
+        </div>
+
+        <div class="modal-legal">
+          * Todas las prendas son vintage/second hand. Pueden presentar detalles mínimos de uso que las hacen únicas.
+        </div>
+
+        <div class="modal-actions">
+          <button class="btn" onclick="addToCartFromModal()">AGREGAR AL CARRITO</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- SEARCH OVERLAY -->
   <div class="search-overlay" id="searchOverlay" onclick="closeSearchIfOutside(event)">
     <div class="search-box" onclick="event.stopPropagation()">
-      <input type="text" class="search-input" id="searchInput" placeholder="Buscar productos..." onkeyup="debounceSearch()">
+      <input type="text" class="search-input" id="searchInput" placeholder="BUSCAR PIEZAS..." oninput="handleSearch(event)">
       <div class="search-results" id="searchResults"></div>
-    </div>
-  </div>
-
-  <!-- MODAL PRODUCTO -->
-  <div class="modal" id="productModal" onclick="closeModalIfOutside(event)">
-    <div class="modal-content" onclick="event.stopPropagation()">
-      <button class="modal-close" onclick="closeModal()" aria-label="Cerrar">✕</button>
-      <div class="modal-image">
-        <img id="modalImage" src="" alt="" loading="lazy" onerror="this.src='https://via.placeholder.com/800x1067'">
-      </div>
-      <div class="modal-info">
-        <h2 id="modalName"></h2>
-        <p id="modalDesc"></p>
-        <div class="size-selector">
-          <label>SELECCIONAR TALLE</label>
-          <div class="size-options" id="sizeOptions"></div>
-        </div>
-        <div class="modal-price" id="modalPrice"></div>
-        <div class="modal-legal">Productos 1 of 1. Sin cambios ni devoluciones.</div>
-        <div class="modal-actions">
-          <button class="btn" onclick="addToCartFromModal()">ADD TO CART</button>
-        </div>
-      </div>
     </div>
   </div>
 
@@ -1490,21 +1439,48 @@
   <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
   <div class="cart-sidebar" id="cartSidebar">
     <div class="cart-header">
-      <h3>CARRITO</h3>
-      <button class="cart-close" onclick="toggleCart()" aria-label="Cerrar carrito">✕</button>
+      <h3>TU CARRITO</h3>
+      <button class="cart-close" onclick="toggleCart()">✕</button>
     </div>
     <div class="cart-items" id="cartItems">
-      <div class="cart-empty">
-        <p>🛒</p>
-        <p>Tu carrito está vacío</p>
+      <!-- Cart items will be injected here -->
+    </div>
+    
+    <!-- NUEVA SECCIÓN DE DATOS DEL CLIENTE -->
+    <div class="checkout-form" id="checkoutForm" style="display: none;">
+      <h4>DATOS DE ENVÍO</h4>
+      <div class="form-group">
+        <label>NOMBRE Y APELLIDO</label>
+        <input type="text" id="cart-nombre" placeholder="Ej: Juan Pérez">
+      </div>
+      <div class="form-group">
+        <label>UBICACIÓN Y CÓDIGO POSTAL</label>
+        <input type="text" id="cart-ubicacion" placeholder="Ej: Córdoba, 5000">
+      </div>
+      <div class="form-group">
+        <label>CORREO ELECTRÓNICO</label>
+        <input type="email" id="cart-email" placeholder="Ej: juan@mail.com">
+      </div>
+      <div class="form-group">
+        <label>UBICACIÓN DEL CORREO (SUCURSAL)</label>
+        <input type="text" id="cart-sucursal" placeholder="Ej: Sucursal Centro">
+      </div>
+      <div class="form-group">
+        <label>DNI</label>
+        <input type="text" id="cart-dni" placeholder="Ej: 12.345.678">
+      </div>
+      <div class="form-group">
+        <label>TELÉFONO</label>
+        <input type="tel" id="cart-telefono" placeholder="Ej: 3511234567">
       </div>
     </div>
+
     <div class="cart-footer">
       <div class="cart-total">
         <span>TOTAL:</span>
         <span class="cart-total-value" id="cartTotal">$0</span>
       </div>
-      <button class="btn btn-whatsapp" onclick="shareOnWhatsApp()" style="width: 100%;">CONSULTAR POR WHATSAPP</button>
+      <button class="btn btn-whatsapp" onclick="shareOnWhatsApp()" style="width: 100%;">PEDIR POR WHATSAPP</button>
     </div>
   </div>
 
@@ -1758,13 +1734,16 @@
     function updateCartUI() {
       const cartItemsDiv = document.getElementById('cartItems');
       const badge = document.getElementById('cartBadge');
+      const checkoutForm = document.getElementById('checkoutForm');
       
       if (cart.length === 0) {
         cartItemsDiv.innerHTML = '<div class="cart-empty"><p>🛒</p><p>Tu carrito está vacío</p></div>';
         badge.style.display = 'none';
+        checkoutForm.style.display = 'none';
       } else {
         badge.textContent = cart.length;
         badge.style.display = 'flex';
+        checkoutForm.style.display = 'block';
         
         cartItemsDiv.innerHTML = cart.map((item, idx) => `
           <div class="cart-item">
@@ -1834,73 +1813,116 @@
         return;
       }
       
+      // Obtener datos del formulario
+      const nombre = document.getElementById('cart-nombre').value.trim();
+      const ubicacion = document.getElementById('cart-ubicacion').value.trim();
+      const email = document.getElementById('cart-email').value.trim();
+      const sucursal = document.getElementById('cart-sucursal').value.trim();
+      const dni = document.getElementById('cart-dni').value.trim();
+      const telefono = document.getElementById('cart-telefono').value.trim();
+
+      if (!nombre || !ubicacion || !email || !dni || !telefono) {
+        alert('Por favor completa todos los datos de envío');
+        return;
+      }
+
       const total = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
       let message = 'ZYSKN ★ - NUEVO PEDIDO%0A%0A';
       
+      message += '*DATOS DEL CLIENTE:*%0A';
+      message += `Nombre: ${nombre}%0A`;
+      message += `DNI: ${dni}%0A`;
+      message += `Email: ${email}%0A`;
+      message += `Tel: ${telefono}%0A`;
+      message += `Ubicación: ${ubicacion}%0A`;
+      if (sucursal) message += `Sucursal Correo: ${sucursal}%0A`;
+      message += '%0A*PRODUCTOS:*%0A';
+
       cart.forEach((item, idx) => {
         message += `${idx + 1}. ${item.name} (Talle: ${item.size}) - $${item.price.toLocaleString('es-AR')} x${item.qty}%0A`;
       });
       
       const fecha = new Date().toLocaleDateString('es-AR');
       message += `%0ATOTAL: $${total.toLocaleString('es-AR')}%0A`;
-      message += `Cliente: ${currentUser ? currentUser.name : 'Cliente'}%0A`;
-      message += `Fecha: ${fecha}`;
-      
-      try {
-        window.open(`https://wa.me/5493544631553?text=${message}`, '_blank');
-        cart = [];
-        saveCart();
-        updateCartUI();
-        toggleCart();
-      } catch (e) {
-        alert('WhatsApp: +54 9 3544 631553');
-      }
+      message += `FECHA: ${fecha}%0A%0A`;
+      message += 'Aguardo confirmación para el pago. Gracias!';
+
+      const whatsappUrl = `https://wa.me/XXXXXXXXXXX?text=${message}`;
+      window.open(whatsappUrl, '_blank');
     }
 
     // SEARCH
     function toggleSearch() {
-      document.getElementById('searchOverlay').classList.toggle('active');
-      if (document.getElementById('searchOverlay').classList.contains('active')) {
+      const overlay = document.getElementById('searchOverlay');
+      overlay.classList.toggle('active');
+      if (overlay.classList.contains('active')) {
         document.getElementById('searchInput').focus();
       }
     }
 
-    function debounceSearch() {
+    function handleSearch(e) {
+      const term = e.target.value.toLowerCase();
       clearTimeout(searchTimeout);
-      searchTimeout = setTimeout(searchProducts, 300);
+      
+      searchTimeout = setTimeout(() => {
+        const results = products.filter(p => 
+          p.name.toLowerCase().includes(term) || 
+          p.category.toLowerCase().includes(term)
+        );
+        renderSearchResults(results);
+      }, 300);
     }
 
-    function searchProducts() {
-      const query = document.getElementById('searchInput').value.toLowerCase();
-      const results = query ? products.filter(p => 
-        p.name.toLowerCase().includes(query) || 
-        p.desc.toLowerCase().includes(query) ||
-        p.category.toLowerCase().includes(query)
-      ) : [];
+    function renderSearchResults(items) {
+      const container = document.getElementById('searchResults');
+      if (items.length === 0) {
+        container.innerHTML = '<div style="padding: 1rem; color: #666;">No se encontraron piezas</div>';
+        return;
+      }
       
-      const resultsDiv = document.getElementById('searchResults');
-      resultsDiv.innerHTML = results.map(p => `
-        <div class="search-result-item" onclick="openModal('${p.id}'); toggleSearch();">
+      container.innerHTML = items.map(p => `
+        <div class="search-result-item" onclick="selectSearchResult('${p.id}')">
           <div class="search-result-name">${p.name}</div>
           <div class="search-result-price">$${p.price.toLocaleString('es-AR')}</div>
         </div>
       `).join('');
     }
 
+    function selectSearchResult(id) {
+      document.getElementById('searchOverlay').classList.remove('active');
+      document.getElementById('searchInput').value = '';
+      openModal(id);
+    }
+
     function closeSearchIfOutside(e) {
-      if (e.target.id === 'searchOverlay') {
-        document.getElementById('searchOverlay').classList.remove('active');
+      if (e.target.id === 'searchOverlay') toggleSearch();
+    }
+
+    // LOGIN & REGISTER
+    function toggleLoginModal() {
+      const modal = document.getElementById('loginModal');
+      modal.classList.toggle('active');
+      if (modal.classList.contains('active')) {
+        document.body.classList.add('no-scroll');
+      } else {
+        document.body.classList.remove('no-scroll');
       }
     }
 
-    // LOGIN
-    function toggleLoginModal() {
-      document.getElementById('loginModal').classList.toggle('active');
-    }
-
     function toggleRegisterModal() {
-      document.getElementById('registerModal').classList.toggle('active');
-      document.getElementById('loginModal').classList.toggle('active');
+      const login = document.getElementById('loginModal');
+      const register = document.getElementById('registerModal');
+      
+      if (login.classList.contains('active')) {
+        login.classList.remove('active');
+        register.classList.add('active');
+      } else if (register.classList.contains('active')) {
+        register.classList.remove('active');
+        login.classList.add('active');
+      } else {
+        register.classList.add('active');
+        document.body.classList.add('no-scroll');
+      }
     }
 
     function closeLoginIfOutside(e) {
@@ -1922,42 +1944,44 @@
 
     function handleLogin(e) {
       e.preventDefault();
-      const email = document.getElementById('loginEmail').value;
+      const email = document.getElementById('loginEmail').value.trim();
       const password = document.getElementById('loginPassword').value;
       
-      if (!validateEmail(email)) {
-        alert('Email inválido');
+      if (!email || !password) {
+        alert('Por favor completa todos los campos');
         return;
       }
       
       try {
-        // Validar credenciales demo
-        if (email === 'demo@zyskn.com' && password === 'demo123') {
-          currentUser = { email, name: 'DEMO' };
-        } else {
-          // Buscar en usuarios registrados
-          const users = JSON.parse(localStorage.getItem('zyskn_users_db') || '[]');
-          const user = users.find(u => u.email === email && u.password === password);
-          
-          if (user) {
-            currentUser = user;
-          } else {
-            alert('Credenciales inválidas');
-            return;
-          }
-        }
+        // Buscar en usuarios registrados
+        const users = JSON.parse(localStorage.getItem('zyskn_users_db') || '[]');
         
-        localStorage.setItem('zyskn_user', JSON.stringify(currentUser));
-        updateLoginUI();
-        toggleLoginModal();
+        // Agregar usuario demo si no existe para que funcione siempre
+        if (!users.find(u => u.email === 'demo@zyskn.com')) {
+          users.push({ email: 'demo@zyskn.com', password: 'demo123', name: 'DEMO' });
+          localStorage.setItem('zyskn_users_db', JSON.stringify(users));
+        }
+
+        const user = users.find(u => u.email === email && u.password === password);
+        
+        if (user) {
+          currentUser = user;
+          localStorage.setItem('zyskn_user', JSON.stringify(currentUser));
+          updateLoginUI();
+          toggleLoginModal();
+          showToast(`Bienvenido, ${user.name}`);
+        } else {
+          alert('Credenciales inválidas');
+        }
       } catch (e) {
         console.error('Error en login:', e);
+        alert('Error al iniciar sesión');
       }
     }
 
     function handleRegister(e) {
       e.preventDefault();
-      const email = document.getElementById('registerEmail').value;
+      const email = document.getElementById('registerEmail').value.trim();
       const password = document.getElementById('registerPassword').value;
       
       if (!validateEmail(email)) {
@@ -1985,6 +2009,7 @@
         localStorage.setItem('zyskn_user', JSON.stringify(currentUser));
         updateLoginUI();
         toggleRegisterModal();
+        showToast('Cuenta creada con éxito');
       } catch (e) {
         console.error('Error en register:', e);
       }
@@ -1998,6 +2023,7 @@
         console.error('Error en logout:', e);
       }
       updateLoginUI();
+      showToast('Sesión cerrada');
     }
 
     function updateLoginUI() {
@@ -2110,8 +2136,12 @@
         if (e.key === 'Escape') {
           closeModal();
           document.getElementById('searchOverlay').classList.remove('active');
-          toggleLoginModal();
-          toggleRegisterModal();
+          
+          const loginModal = document.getElementById('loginModal');
+          const registerModal = document.getElementById('registerModal');
+          if (loginModal.classList.contains('active')) toggleLoginModal();
+          if (registerModal.classList.contains('active')) toggleRegisterModal();
+          
           closeMobileMenu();
         }
       });
@@ -2142,3 +2172,4 @@
 
 </body>
 </html>
+
