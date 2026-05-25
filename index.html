@@ -69,16 +69,17 @@
     header.scrolled { padding: 1.2rem 3rem; }
 
     .header-content {
-      max-width: var(--container-max);
-      margin: 0 auto;
+      max-width: 100%; /* Ocupar todo el ancho */
+      padding: 0 1rem; /* Pequeño margen de seguridad */
+      margin: 0;
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
 
     .logo-section { display: flex; flex-direction: column; cursor: pointer; }
-    .logo { font-size: 2rem; font-weight: 900; letter-spacing: -0.02em; text-transform: uppercase; }
-    .logo-slogan { font-size: 0.75rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; }
+    .logo { font-size: 2.4rem; font-weight: 900; letter-spacing: -0.02em; text-transform: uppercase; } /* Logo más grande */
+    .logo-slogan { font-size: 0.85rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; }
 
     .nav-main { display: flex; gap: 3rem; align-items: center; }
     .nav-item { position: relative; padding: 1.5rem 0; }
@@ -178,10 +179,18 @@
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
-      gap: 1rem;
+      gap: 2rem;
     }
     .footer-brand h2 { font-size: 1.1rem; font-weight: 900; margin: 0; color: #fff; }
     .footer-brand p { font-size: 0.7rem; color: #999; margin-top: 2px; }
+    
+    .footer-divider {
+      flex: 1;
+      height: 1px;
+      background: rgba(255,255,255,0.1);
+      margin: 0 2rem;
+    }
+
     .footer-rights p { font-size: 0.7rem; color: #666; margin: 0; text-transform: uppercase; letter-spacing: 0.05em; }
 
     /* SHOP */
@@ -235,37 +244,39 @@
         <span class="logo-slogan">Curated Vintage</span>
       </div>
 
-      <nav class="nav-main">
-        <div class="nav-item"><a onclick="showMainCategory('todo', event)">TODO</a></div>
-        <div class="nav-item">
-          <a onclick="showMainCategory('arriba', event)">ARRIBA</a>
-          <div class="sub-nav-wrapper">
-            <div class="sub-nav-item" onclick="filterProducts('remeras')">Remeras</div>
-            <div class="sub-nav-item" onclick="filterProducts('chombas')">Chombas</div>
-            <div class="sub-nav-item" onclick="filterProducts('hoodies')">Hoodies</div>
-            <div class="sub-nav-item" onclick="filterProducts('camisas')">Camisas</div>
+      <div style="display: flex; align-items: center; gap: 3rem;">
+        <nav class="nav-main">
+          <div class="nav-item"><a onclick="showMainCategory('todo', event)">TODO</a></div>
+          <div class="nav-item">
+            <a onclick="showMainCategory('arriba', event)">ARRIBA</a>
+            <div class="sub-nav-wrapper">
+              <div class="sub-nav-item" onclick="filterProducts('remeras')">Remeras</div>
+              <div class="sub-nav-item" onclick="filterProducts('chombas')">Chombas</div>
+              <div class="sub-nav-item" onclick="filterProducts('hoodies')">Hoodies</div>
+              <div class="sub-nav-item" onclick="filterProducts('camisas')">Camisas</div>
+            </div>
           </div>
-        </div>
-        <div class="nav-item">
-          <a onclick="showMainCategory('abajo', event)">ABAJO</a>
-          <div class="sub-nav-wrapper">
-            <div class="sub-nav-item" onclick="filterProducts('pantalones')">Pantalones</div>
-            <div class="sub-nav-item" onclick="filterProducts('jeans')">Jeans</div>
-            <div class="sub-nav-item" onclick="filterProducts('bermudas')">Bermudas</div>
+          <div class="nav-item">
+            <a onclick="showMainCategory('abajo', event)">ABAJO</a>
+            <div class="sub-nav-wrapper">
+              <div class="sub-nav-item" onclick="filterProducts('pantalones')">Pantalones</div>
+              <div class="sub-nav-item" onclick="filterProducts('jeans')">Jeans</div>
+              <div class="sub-nav-item" onclick="filterProducts('bermudas')">Bermudas</div>
+            </div>
           </div>
-        </div>
-        <div class="nav-item"><a onclick="scrollToSection('contact')">CONTACTO</a></div>
-      </nav>
+          <div class="nav-item"><a onclick="scrollToSection('contact')">CONTACTO</a></div>
+        </nav>
 
-      <div class="nav-icons">
-        <button class="icon-btn search-icon" onclick="alert('Buscador próximamente')">
-          <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
-        </button>
-        <div id="userAuth" class="auth-status" onclick="openAuthModal()">LOGIN</div>
-        <button class="icon-btn cart-icon" onclick="toggleCart()">
-          <svg viewBox="0 0 24 24"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49A1.003 1.003 0 0 0 20 4H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg>
-          <span class="cart-badge" id="cartBadge" style="display: none;">0</span>
-        </button>
+        <div class="nav-icons">
+          <button class="icon-btn search-icon" onclick="alert('Buscador próximamente')">
+            <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+          </button>
+          <div id="userAuth" class="auth-status" onclick="openAuthModal()">LOGIN</div>
+          <button class="icon-btn cart-icon" onclick="toggleCart()">
+            <svg viewBox="0 0 24 24"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49A1.003 1.003 0 0 0 20 4H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg>
+            <span class="cart-badge" id="cartBadge" style="display: none;">0</span>
+          </button>
+        </div>
       </div>
     </div>
   </header>
@@ -308,6 +319,7 @@
         <h2>ZYSKN ★</h2>
         <p>Curated Vintage & Streetwear. Córdoba, Argentina.</p>
       </div>
+      <div class="footer-divider"></div>
       <div class="footer-rights">
         <p>&copy; 2026 ZYSKN. TODOS LOS DERECHOS RESERVADOS.</p>
       </div>
@@ -360,8 +372,24 @@
   <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
   <div class="cart-sidebar" id="cartSidebar">
     <div style="padding:1.5rem; border-bottom:1px solid #000; display:flex; justify-content:space-between"><h3>TU CARRITO</h3><button onclick="toggleCart()" style="background:none; border:none; cursor:pointer; font-size:1.5rem">✕</button></div>
-    <div id="cartItems" style="flex:1; overflow-y:auto; padding:1rem"></div>
-    <div style="padding:1.5rem; border-top:1px solid #000">
+    
+    <!-- CONTENEDOR CON SCROLL -->
+    <div style="flex:1; overflow-y:auto; display:flex; flex-direction:column">
+      <div id="cartItems" style="padding:1rem"></div>
+
+      <!-- FORMULARIO DE DATOS -->
+      <div id="cartDataForm" style="padding:1.5rem; border-top:1px solid #eee; background:#fcfcfc; display:none">
+        <h4 style="font-size:0.8rem; margin-bottom:1rem; text-transform:uppercase">Datos para el Envío</h4>
+        <div class="form-group"><label>Nombre y Apellido</label><input type="text" id="orderName"></div>
+        <div class="form-group"><label>Ubicación</label><input type="text" id="orderLocation"></div>
+        <div class="form-group"><label>Correo</label><input type="email" id="orderEmail"></div>
+        <div class="form-group"><label>Dirección de Correo Argentino</label><input type="text" id="orderShippingAddr"></div>
+        <div class="form-group"><label>DNI</label><input type="text" id="orderDni"></div>
+        <div class="form-group"><label>Celular</label><input type="tel" id="orderPhone"></div>
+      </div>
+    </div>
+
+    <div style="padding:1.5rem; border-top:1px solid #000; background:#fff">
       <div style="display:flex; justify-content:space-between; margin-bottom:1rem; font-weight:700"><span>TOTAL:</span><span id="cartTotal">$0</span></div>
       <button class="btn" onclick="shareOnWhatsApp()" style="width:100%; background:#25D366; color:#fff; border:none">COMPLETAR PEDIDO POR WHATSAPP</button>
     </div>
@@ -508,17 +536,57 @@
     function updateCartUI() {
       const badge = document.getElementById('cartBadge');
       badge.textContent = cart.length; badge.style.display = cart.length?'flex':'none';
-      document.getElementById('cartItems').innerHTML = cart.map(i=>`<div style="margin-bottom:0.5rem; font-size:0.8rem; border-bottom:1px solid #eee; padding-bottom:0.5rem">${i.name} (${i.size}) - $${i.price.toLocaleString('es-AR')}</div>`).join('');
+      
+      const form = document.getElementById('cartDataForm');
+      form.style.display = cart.length > 0 ? 'block' : 'none';
+
+      document.getElementById('cartItems').innerHTML = cart.map((i, index)=>`
+        <div style="margin-bottom:0.5rem; font-size:0.8rem; border-bottom:1px solid #eee; padding-bottom:0.5rem; display:flex; justify-content:space-between; align-items:center">
+          <span>${i.name} (${i.size}) - $${i.price.toLocaleString('es-AR')}</span>
+          <button onclick="removeFromCart(${index})" style="background:none; border:none; color:var(--red); cursor:pointer; font-weight:700; font-size:1rem; padding:0 5px">✕</button>
+        </div>
+      `).join('');
       document.getElementById('cartTotal').textContent = `$${cart.reduce((s,i)=>s+i.price,0).toLocaleString('es-AR')}`;
+    }
+
+    function removeFromCart(index) {
+      cart.splice(index, 1);
+      updateCartUI();
     }
     
     function shareOnWhatsApp() {
       if(cart.length === 0) { alert('El carrito está vacío'); return; }
+      
+      const name = document.getElementById('orderName').value;
+      const location = document.getElementById('orderLocation').value;
+      const email = document.getElementById('orderEmail').value;
+      const shipping = document.getElementById('orderShippingAddr').value;
+      const dni = document.getElementById('orderDni').value;
+      const phone = document.getElementById('orderPhone').value;
+
+      if(!name || !location || !email || !shipping || !dni || !phone) {
+        alert('Por favor, completa todos los datos de envío.');
+        return;
+      }
+
+      const now = new Date();
+      const fecha = now.toLocaleDateString('es-AR');
+      const hora = now.toLocaleTimeString('es-AR', { hour: '2-digit', minute: '2-digit' });
+
       let t = `ZYSKN ★ - NUEVO PEDIDO\n`;
-      if(currentUser) t += `Cliente: ${currentUser.name} (${currentUser.email})\n`;
-      t += `\nPRODUCTOS:\n`;
+      t += `Fecha: ${fecha} | Hora: ${hora}\n\n`;
+      t += `DATOS DEL CLIENTE:\n`;
+      t += `- Nombre: ${name}\n`;
+      t += `- Ubicación: ${location}\n`;
+      t += `- Correo: ${email}\n`;
+      t += `- Sucursal Correo Argentino: ${shipping}\n`;
+      t += `- DNI: ${dni}\n`;
+      t += `- Celular: ${phone}\n\n`;
+      
+      t += `PRODUCTOS:\n`;
       cart.forEach(i=>t+=`- ${i.name} (${i.size})\n`);
       t += `\nTOTAL: $${cart.reduce((s,i)=>s+i.price,0).toLocaleString('es-AR')}`;
+      
       window.open(`https://wa.me/5493544631553?text=${encodeURIComponent(t)}`, '_blank');
     }
     
