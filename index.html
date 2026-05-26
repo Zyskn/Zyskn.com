@@ -38,7 +38,8 @@
       --red: #D00000;
       --whatsapp: #25D366;
       --instagram: #E4405F;
-      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      --celeste: #87CEEB;
+      --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
       --container-max: 1200px;
     }
 
@@ -123,13 +124,37 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      position: relative;
     }
 
-    .logo-section { display: flex; flex-direction: column; cursor: pointer; }
+    .logo-section { display: flex; flex-direction: column; cursor: pointer; flex-shrink: 0; }
     .logo { font-size: 2.4rem; font-weight: 900; letter-spacing: -0.02em; text-transform: uppercase; }
     .logo-slogan { font-size: 0.85rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; }
 
-    .nav-main { display: flex; gap: 3rem; align-items: center; }
+    /* CONTENEDOR NAVEGACIÓN Y BUSCADOR */
+    .nav-container {
+      display: flex;
+      align-items: center;
+      gap: 3rem;
+      flex-grow: 1;
+      justify-content: flex-end;
+      overflow: hidden;
+    }
+
+    .nav-main { 
+      display: flex; 
+      gap: 3rem; 
+      align-items: center; 
+      transition: transform 0.4s var(--transition), opacity 0.3s ease;
+      flex-shrink: 0;
+    }
+
+    .nav-container.searching .nav-main {
+      transform: translateX(-80px);
+      opacity: 0.2;
+      pointer-events: none;
+    }
+
     .nav-item { position: relative; padding: 1.5rem 0; }
     .nav-main a {
       font-size: 0.95rem;
@@ -142,8 +167,11 @@
       padding-bottom: 0.25rem;
       border-bottom: 2px solid transparent;
       transition: border-color 0.3s var(--transition);
+      white-space: nowrap;
     }
     .nav-main a:hover { border-bottom-color: #000; }
+
+    .nav-item-new a { color: var(--red) !important; font-weight: 900 !important; }
 
     .sub-nav-wrapper {
       position: absolute;
@@ -177,7 +205,41 @@
     }
     .sub-nav-item:hover { background: var(--gray-bg); padding-left: 2rem; }
 
-    .nav-icons { display: flex; gap: 1.5rem; align-items: center; }
+    /* BUSCADOR BURBUJA CON MARGEN CELESTE */
+    .search-wrapper {
+      display: flex;
+      align-items: center;
+      position: relative;
+    }
+
+    .search-input-container {
+      width: 0;
+      overflow: hidden;
+      transition: width 0.4s var(--transition);
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-container.searching .search-input-container {
+      width: 350px;
+      margin-right: 1.5rem;
+    }
+
+    .search-input-container input {
+      width: 100%;
+      padding: 0.8rem 1.5rem;
+      border: 2px solid var(--celeste); /* Borde celeste */
+      border-radius: 50px; /* Forma de burbuja */
+      outline: none;
+      font-family: inherit;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      font-weight: 700;
+      background: #fff;
+      box-shadow: 0 4px 15px rgba(135, 206, 235, 0.2); /* Sombra suave celeste */
+    }
+
+    .nav-icons { display: flex; gap: 1.5rem; align-items: center; flex-shrink: 0; }
     .icon-btn {
       background: none; border: none; cursor: pointer;
       padding: 0.5rem; transition: transform 0.2s var(--transition);
@@ -200,14 +262,12 @@
       font-size: 0.65rem; font-weight: 700;
     }
 
-    /* SECCIONES */
     section {
       padding: 6rem 2rem;
       max-width: var(--container-max);
       margin: 0 auto;
     }
 
-    /* HERO */
     .hero {
       height: 80vh; min-height: 500px;
       background: linear-gradient(135deg, #000 0%, #333 100%);
@@ -226,40 +286,63 @@
     }
     .btn:hover { background: #000; color: #fff; transform: scale(1.05); }
 
-    /* SHOP */
     .section-title { font-size: clamp(1.4rem, 4vw, 2.2rem); font-weight: 900; text-transform: uppercase; margin-bottom: 2.5rem; letter-spacing: -0.02em; }
     .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.5rem; }
     .product-card { cursor: pointer; transition: transform 0.3s var(--transition); }
     .product-image { width: 100%; aspect-ratio: 3/4; background: var(--gray-bg); overflow: hidden; margin-bottom: 0.8rem; }
     .product-image img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s var(--transition); }
-    .product-card:hover .product-image img { transform: scale(1.05); }
 
-    /* PRODUCT DETAIL SECTION */
     #product-detail { display: none; border-top: 1px solid #000; border-bottom: 1px solid #000; }
     #product-detail.active { display: block; }
 
-    /* CARRITO SECTION */
     #cart-section { background: #fff; border-top: 1px solid #000; }
     .cart-container { max-width: 800px; margin: 0 auto; }
     .form-group { margin-bottom: 1rem; text-align: left; }
     .form-group label { display: block; font-size: 0.65rem; font-weight: 700; text-transform: uppercase; margin-bottom: 0.3rem; }
     .form-group input { width: 100%; padding: 0.6rem; border: 1px solid #000; font-size: 0.8rem; outline: none; }
 
-    @media (max-width: 768px) {
+    /* CONTACT ICONS NEGROS CON HOVER A COLOR */
+    .contact-icon-btn {
+      width: 70px; height: 70px; border-radius: 50%; 
+      background: #000; /* Fondo negro por defecto */
+      display: flex; align-items: center; justify-content: center; 
+      color: #fff; 
+      margin: 0 auto 0.8rem auto; 
+      transition: all 0.3s ease;
+    }
+    .contact-icon-btn svg { width: 32px; height: 32px; transition: all 0.3s ease; }
+    
+    /* Hover WhatsApp */
+    .contact-item:hover .icon-wa-btn { background: var(--whatsapp); transform: scale(1.1); }
+    /* Hover Instagram */
+    .contact-item:hover .icon-ig-btn { background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); transform: scale(1.1); }
+
+    .notification {
+      position: fixed; bottom: 2rem; right: 2rem;
+      background: #000; color: #fff; padding: 1rem 2rem;
+      font-size: 0.8rem; font-weight: 700; text-transform: uppercase;
+      z-index: 3000; display: none;
+      animation: slideIn 0.3s ease-out;
+    }
+    @keyframes slideIn { from { transform: translateY(100%); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+
+    @media (max-width: 1024px) {
       .nav-main { display: none; }
       section { padding: 4rem 1.5rem; }
       .product-detail-grid { grid-template-columns: 1fr !important; }
+      .nav-container.searching .search-input-container { width: 200px; }
     }
   </style>
 </head>
 <body>
 
   <div id="supreme-overlay"></div>
+  <div id="notification" class="notification"></div>
 
   <div class="top-bar">
     <div class="marquee-content">
       <div class="marquee-item">
-        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.17.054 1.805.249 2.227.412.56.216.96.474 1.38.894.42.42.678.82.894 1.38.163.422.358 1.057.412 2.227.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.054 1.17-.249 1.805-.412 2.227-.216.56-.474.96-.894 1.38-.42.42-.82.678-1.38.894-.422.163-1.057.358-2.227.412-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.17-.054-1.805-.249-2.227-.412-.56-.216-.96-.474-1.38-.894-.42-.42-.678-.82-.894-1.38-.163-.422-.358-1.057-.412-2.227-.058-1.266-.07-1.646-.07-4.85s.012-3.584.07-4.85c.054-1.17.249-1.805.412-2.227.216-.56.474-.96.894-1.38.42-.42.82-.678 1.38-.894.422-.163 1.057-.358 2.227-.412 1.266-.058 1.646-.07 4.85-.07ZM12 0C8.741 0 8.333.014 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.741 0 12s.014 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126s1.337 1.078 2.126 1.384c.766.296 1.636.499 2.913.558C8.333 23.986 8.741 24 12 24s3.667-.014 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384s1.078-1.337 1.384-2.126c.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.014-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126s-1.337-1.078-2.126-1.384c-.765-.296-1.636-.499-2.913-.558C15.667.012 15.259 0 12 0Zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324ZM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8Zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881Z"/></svg>
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.17.054 1.805.249 2.227.412.56.216.96.474 1.38.894.42.42.678.82.894 1.38.163.422.358 1.057.412 2.227.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.054 1.17-.249 1.805-.412 2.227-.216.56-.474.96-.894 1.38-.42.42-.82.678-1.38.894-.422.163-1.057.358-2.227.412-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.17-.054-1.805-.249-2.227-.412-.56-.216-.96-.474-1.38-.894-.42-.42-.678-.82-.894-1.38-.163-.422-.358-1.057-.412-2.227-.058-1.266-.07-1.646-.07-4.85s.012-3.584.07-4.85c.054-1.17.249-1.805.412-2.227.216-.56.474-.96.894-1.38.42-.42.82-.678 1.38-.894.422-.163 1.057-.358 2.227-.412 1.266-.058 1.646-.07 4.85-.07ZM12 0C8.741 0 8.333.014 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.741 0 12s.014 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126s1.337 1.078 2.126 1.384c.766.296 1.636.499 2.913.558C8.333 23.986 8.741 24 12 24s3.667-.014 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384s1.078-1.337 1.384-2.126c.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.014-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126s-1.337-1.078-2.126-1.384c-.765-.296-1.636-.499-2.913-.558C15.667.012 15.259 0 12 0Zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324ZM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8Zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881Z"/></svg>
         <span>@zyskn.vintage</span>
       </div>
       <div class="marquee-item">
@@ -276,9 +359,10 @@
         <span class="logo-slogan">Curated Vintage</span>
       </div>
 
-      <div style="display: flex; align-items: center; gap: 3rem;">
+      <div id="navContainer" class="nav-container">
         <nav class="nav-main">
           <div class="nav-item"><a onclick="showMainCategory('todo', event)">TODO</a></div>
+          <div class="nav-item nav-item-new"><a onclick="scrollToSection('new-section')">NEW</a></div>
           <div class="nav-item">
             <a onclick="showMainCategory('arriba', event)">ARRIBA</a>
             <div class="sub-nav-wrapper">
@@ -300,9 +384,14 @@
         </nav>
 
         <div class="nav-icons">
-          <button class="icon-btn search-icon" onclick="alert('Buscador próximamente')">
-            <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
-          </button>
+          <div class="search-wrapper">
+            <div class="search-input-container">
+              <input type="text" id="searchInput" placeholder="BUSCAR PRENDA..." onkeyup="handleSearch(event)">
+            </div>
+            <button class="icon-btn search-icon" onclick="toggleSearch()">
+              <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+            </button>
+          </div>
           <div id="userAuth" class="auth-status" onclick="scrollToSection('account-section')">LOGIN</div>
           <button class="icon-btn cart-icon" onclick="scrollToSection('cart-section')">
             <svg viewBox="0 0 24 24"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49A1.003 1.003 0 0 0 20 4H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg>
@@ -321,7 +410,12 @@
       </div>
     </section>
 
-    <!-- DETALLE DE PRODUCTO (SECCIÓN DINÁMICA) -->
+    <!-- SECCIÓN NUEVO -->
+    <section id="nuevo-section" style="background: #fff; border-bottom: 1px solid #000;">
+      <h2 class="section-title" style="color: var(--red);">NUEVO</h2>
+      <div id="nuevoProductsGrid" class="products-grid"></div>
+    </section>
+
     <section id="product-detail">
       <div class="product-detail-grid" style="display:grid; grid-template-columns:1fr 1fr; gap:3rem; align-items:start;">
         <div class="product-image" style="background:#f5f5f5; aspect-ratio:3/4;"><img id="detailImage" src="" alt="" style="width:100%; height:100%; object-fit:cover;"></div>
@@ -344,22 +438,18 @@
       <div id="productsGrid" class="products-grid"></div>
     </section>
 
-    <!-- SECCIÓN CARRITO -->
     <section id="cart-section">
       <div class="cart-container">
         <h2 class="section-title" style="text-align:center;">TU CARRITO</h2>
         <div id="cartItems" style="margin-bottom:3rem;"></div>
-        
         <div id="cartEmptyMsg" style="text-align:center; padding:3rem 0; display:none;">
           <p style="font-size:0.9rem; color:var(--text-muted); text-transform:uppercase; font-weight:600;">El carrito está vacío</p>
           <button class="btn" onclick="scrollToSection('shop')" style="background:#000; color:#fff;">VER PRODUCTOS</button>
         </div>
-
         <div id="cartCheckoutArea">
           <div style="display:flex; justify-content:space-between; margin-bottom:2rem; font-weight:900; font-size:1.5rem; border-top:2px solid #000; padding-top:1.5rem;">
             <span>TOTAL:</span><span id="cartTotal">$0</span>
           </div>
-
           <div style="margin-bottom:3rem;">
             <p style="font-size:0.8rem; font-weight:900; text-transform:uppercase; margin-bottom:1.5rem; border-bottom:1px solid #000; display:inline-block;">Datos de Envío</p>
             <div class="form-group"><label>Nombre Completo</label><input type="text" id="orderName"></div>
@@ -369,34 +459,35 @@
             <div class="form-group"><label>DNI</label><input type="text" id="orderDni"></div>
             <div class="form-group"><label>Celular</label><input type="text" id="orderPhone"></div>
           </div>
-
-          <!-- BLOQUE AMARILLO REDUCIDO -->
           <div style="background:#FFD700; color:#000; padding:0.6rem 1rem; margin-bottom:1rem; font-size:0.8rem; font-weight:900; text-transform:uppercase; display:flex; align-items:center; gap:0.8rem; border:2px solid #000;">
             <span style="font-size:1.2rem;">&#9888;</span>
             <span>No borrar texto generado</span>
           </div>
-          
           <button class="btn" onclick="shareOnWhatsApp()" style="width:100%; background:#25D366; color:#fff; border:none; padding:1rem; font-size:1rem; font-weight:900; margin-top:0;">COMPLETAR PEDIDO POR WHATSAPP</button>
         </div>
       </div>
     </section>
 
-    <!-- SECCIÓN MI CUENTA -->
     <section id="account-section" style="background:#f9f9f9; border-top:1px solid #000;">
       <div style="max-width: 400px; margin: 0 auto; text-align:center;">
         <h2 class="section-title">MI CUENTA</h2>
         <div id="loginForm">
-          <div class="form-group"><label>Email</label><input type="email" placeholder="tu@email.com"></div>
-          <div class="form-group"><label>Contraseña</label><input type="password" placeholder="********"></div>
-          <button class="btn" style="width:100%; background:#000; color:#fff;">ENTRAR</button>
+          <div class="form-group"><label>Email</label><input type="email" id="loginEmail" placeholder="tu@email.com"></div>
+          <div class="form-group"><label>Contraseña</label><input type="password" id="loginPass" placeholder="********"></div>
+          <button class="btn" onclick="handleAuth('login')" style="width:100%; background:#000; color:#fff;">ENTRAR</button>
           <p style="font-size: 0.7rem; color: #666; margin-top: 1.5rem; cursor: pointer; text-decoration: underline;" onclick="toggleAuthView('register')">¿No tienes cuenta? Regístrate</p>
         </div>
         <div id="registerForm" style="display:none;">
-          <div class="form-group"><label>Nombre Completo</label><input type="text" placeholder="Juan Pérez"></div>
-          <div class="form-group"><label>Email</label><input type="email" placeholder="tu@email.com"></div>
-          <div class="form-group"><label>Contraseña</label><input type="password" placeholder="********"></div>
-          <button class="btn" style="width:100%; background:#000; color:#fff;">REGISTRARME</button>
+          <div class="form-group"><label>Nombre Completo</label><input type="text" id="regName" placeholder="Juan Pérez"></div>
+          <div class="form-group"><label>Email</label><input type="email" id="regEmail" placeholder="tu@email.com"></div>
+          <div class="form-group"><label>Contraseña</label><input type="password" id="regPass" placeholder="********"></div>
+          <button class="btn" onclick="handleAuth('register')" style="width:100%; background:#000; color:#fff;">REGISTRARME</button>
           <p style="font-size: 0.7rem; color: #666; margin-top: 1.5rem; cursor: pointer; text-decoration: underline;" onclick="toggleAuthView('login')">¿Ya tienes cuenta? Inicia sesión</p>
+        </div>
+        <div id="profileView" style="display:none;">
+          <p style="font-weight:700; text-transform:uppercase; margin-bottom:1rem;">¡Bienvenido de nuevo!</p>
+          <p id="userDisplay" style="font-size:0.9rem; margin-bottom:2rem;"></p>
+          <button class="btn" onclick="handleAuth('logout')" style="width:100%; background:#000; color:#fff;">CERRAR SESIÓN</button>
         </div>
       </div>
     </section>
@@ -404,16 +495,6 @@
     <section id="contact" style="background: #fff; text-align: center; border-top: 1px solid #000;">
       <h2 class="section-title">¿DUDAS?</h2>
       <div style="display: flex; gap: 2.5rem; justify-content: center; align-items: center;">
-        <style>
-          .contact-icon-btn {
-            width: 70px; height: 70px; border-radius: 50%; background: #000; 
-            display: flex; align-items: center; justify-content: center; color: #fff; 
-            margin: 0 auto 0.8rem auto; transition: all 0.3s ease;
-          }
-          .contact-icon-btn svg { width: 32px; height: 32px; transition: all 0.3s ease; }
-          .contact-item:hover .icon-wa-btn { background: #25D366; transform: scale(1.1); }
-          .contact-item:hover .icon-ig-btn { background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); transform: scale(1.1); }
-        </style>
         <div class="contact-item">
           <a href="https://wa.me/5493544631553" target="_blank" class="contact-icon-btn icon-wa-btn">
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.01 2.01c-5.52 0-10 4.48-10 10 0 1.75.46 3.4 1.26 4.83L2 22l5.3-1.39c1.4.77 3 1.21 4.71 1.21 5.52 0 10-4.48 10-10s-4.48-10-10-10zm0 18.33c-1.57 0-3.1-.42-4.43-1.21l-.32-.19-3.29.86.88-3.21-.21-.33c-.87-1.39-1.33-3.01-1.33-4.68 0-4.6 3.74-8.33 8.33-8.33s8.33 3.74 8.33 8.33-3.74 8.33-8.33 8.33zm4.56-6.2c-.25-.13-1.47-.72-1.7-.8-.23-.08-.39-.13-.56.13-.17.25-.64.8-.78.96-.14.17-.29.19-.54.06-.25-.13-1.05-.39-1.99-1.28-.74-.66-1.23-1.47-1.38-1.72-.15-.25-.02-.39.11-.51.11-.11.25-.29.37-.43.13-.14.17-.25.25-.41.08-.17.04-.31-.02-.44-.06-.13-.56-1.35-.77-1.82-.2-.48-.4-.41-.56-.42-.14 0-.31-.01-.47-.01-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1s.9 2.43 1.03 2.6c.13.17 1.77 2.7 4.29 3.79.6.26 1.07.41 1.43.53.6.19 1.15.16 1.58.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.11-.23-.17-.48-.3z"/></svg>
@@ -444,11 +525,11 @@
 
   <script>
     const products = [
-      {id:'t1', section:'arriba', category:'remeras', name:'VINTAGE TEE 01', price:25000, desc:'Remera 90s Cotton Blend. Estado 9/10.', img:'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=800&q=80', sizes:['S','M','L']},
-      {id:'t2', section:'arriba', category:'chombas', name:'RETRO POLO NAVY', price:32000, desc:'Polo Lacoste vintage original.', img:'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=800&q=80', sizes:['M','L']},
+      {id:'t1', section:'arriba', category:'remeras', name:'VINTAGE TEE 01', price:25000, desc:'Remera 90s Cotton Blend. Estado 9/10.', img:'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=800&q=80', sizes:['S','M','L'], isNew: true},
+      {id:'t2', section:'arriba', category:'chombas', name:'RETRO POLO NAVY', price:32000, desc:'Polo Lacoste vintage original.', img:'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=800&q=80', sizes:['M','L'], isNew: true},
       {id:'t3', section:'arriba', category:'hoodies', name:'CHAMPION HOODIE', price:45000, desc:'Hoodie heavyweight Champion.', img:'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=800&q=80', sizes:['L','XL']},
       {id:'t4', section:'arriba', category:'camisas', name:'FLANNEL SHIRT', price:28000, desc:'Camisa de franela a cuadros.', img:'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=800&q=80', sizes:['M','L','XL']},
-      {id:'b1', section:'abajo', category:'pantalones', name:'CARGO PANTS KHAKI', price:38000, desc:'Pantalón cargo vintage.', img:'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=800&q=80', sizes:['30','32','34']},
+      {id:'b1', section:'abajo', category:'pantalones', name:'CARGO PANTS KHAKI', price:38000, desc:'Pantalón cargo vintage.', img:'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=800&q=80', sizes:['30','32','34'], isNew: true},
       {id:'b2', section:'abajo', category:'jeans', name:'LEVIS 501 DENIM', price:42000, desc:'Levis 501 clásicos.', img:'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=800&q=80', sizes:['32','34','36']},
       {id:'b3', section:'abajo', category:'bermudas', name:'CHINO SHORTS', price:22000, desc:'Bermudas tipo chino.', img:'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=800&q=80', sizes:['30','32']}
     ];
@@ -458,13 +539,66 @@
     let selectedSize = null;
 
     function init() {
-      renderProducts(products);
+      renderProducts(products, 'productsGrid');
+      renderProducts(products.filter(p=>p.isNew), 'newProductsGrid');
       setupScrollListener();
       updateCartUI();
     }
 
-    function renderProducts(list) {
-      const grid = document.getElementById('productsGrid');
+    function toggleSearch() {
+      const container = document.getElementById('navContainer');
+      const input = document.getElementById('searchInput');
+      container.classList.toggle('searching');
+      if(container.classList.contains('searching')) {
+        setTimeout(() => input.focus(), 100);
+      }
+    }
+
+    function handleSearch(e) {
+      if(e.key === 'Enter') {
+        const query = e.target.value.toLowerCase();
+        const filtered = products.filter(p => p.name.toLowerCase().includes(query) || p.category.toLowerCase().includes(query));
+        renderProducts(filtered, 'productsGrid');
+        scrollToSection('shop');
+        toggleSearch();
+        e.target.value = '';
+      }
+    }
+
+    function showNotification(msg) {
+      const n = document.getElementById('notification');
+      n.textContent = msg; n.style.display = 'block';
+      setTimeout(() => { n.style.display = 'none'; }, 3000);
+    }
+
+    function handleAuth(type) {
+      if(type === 'login') {
+        const email = document.getElementById('loginEmail').value;
+        if(!email) { alert('Ingresa tu email'); return; }
+        document.getElementById('userAuth').textContent = 'MI PERFIL';
+        document.getElementById('loginForm').style.display = 'none';
+        document.getElementById('profileView').style.display = 'block';
+        document.getElementById('userDisplay').textContent = `SESIÓN INICIADA COMO: ${email.toUpperCase()}`;
+        showNotification('Sesión iniciada correctamente');
+      } else if(type === 'register') {
+        const name = document.getElementById('regName').value;
+        if(!name) { alert('Ingresa tu nombre'); return; }
+        document.getElementById('userAuth').textContent = 'MI PERFIL';
+        document.getElementById('registerForm').style.display = 'none';
+        document.getElementById('profileView').style.display = 'block';
+        document.getElementById('userDisplay').textContent = `CUENTA CREADA: ${name.toUpperCase()}`;
+        showNotification('Cuenta creada con éxito');
+      } else if(type === 'logout') {
+        document.getElementById('userAuth').textContent = 'LOGIN';
+        document.getElementById('profileView').style.display = 'none';
+        document.getElementById('loginForm').style.display = 'block';
+        showNotification('Sesión cerrada');
+      }
+    }
+
+    function renderProducts(list, gridId) {
+      const grid = document.getElementById(gridId);
+      if(!grid) return;
       grid.innerHTML = list.map(p => `
         <div class="product-card" onclick="showProductDetail('${p.id}')">
           <div class="product-image"><img src="${p.img}" alt="${p.name}"></div>
@@ -481,12 +615,12 @@
 
     function showMainCategory(s, e) { 
       if(e) e.preventDefault(); 
-      renderProducts(s==='todo'?products:products.filter(p=>p.section===s)); 
+      renderProducts(s==='todo'?products:products.filter(p=>p.section===s), 'productsGrid'); 
       scrollToSection('shop'); 
     }
 
     function filterProducts(c) { 
-      renderProducts(products.filter(p=>p.category===c)); 
+      renderProducts(products.filter(p=>p.category===c), 'productsGrid'); 
       scrollToSection('shop'); 
     }
 
@@ -500,7 +634,6 @@
       document.getElementById('detailSizes').innerHTML = currentProduct.sizes.map(s=>`
         <button onclick="setS('${s}', this)" style="padding:0.8rem 1.5rem; border:1px solid #000; background:#fff; cursor:pointer; font-size:0.8rem; font-weight:700;">${s}</button>
       `).join('');
-      
       document.getElementById('product-detail').classList.add('active');
       scrollToSection('product-detail');
     }
@@ -515,6 +648,7 @@
       if(!selectedSize){alert('Selecciona talle'); return;}
       cart.push({...currentProduct, size:selectedSize}); 
       updateCartUI(); 
+      showNotification('Producto añadido al carrito');
       scrollToSection('cart-section');
     }
 
@@ -522,10 +656,8 @@
       const badge = document.getElementById('cartBadge');
       badge.textContent = cart.length; 
       badge.style.display = cart.length ? 'flex' : 'none';
-      
       const checkoutArea = document.getElementById('cartCheckoutArea');
       const emptyMsg = document.getElementById('cartEmptyMsg');
-      
       if(cart.length === 0) {
         checkoutArea.style.display = 'none';
         emptyMsg.style.display = 'block';
@@ -540,13 +672,13 @@
           </div>
         `).join('');
       }
-      
       document.getElementById('cartTotal').textContent = `$${cart.reduce((s,i)=>s+i.price,0).toLocaleString('es-AR')}`;
     }
 
     function removeFromCart(index) {
       cart.splice(index, 1);
       updateCartUI();
+      showNotification('Producto eliminado');
     }
 
     function toggleAuthView(type) {
@@ -559,7 +691,6 @@
       const fields = ['orderName', 'orderLocation', 'orderEmail', 'orderShippingAddr', 'orderDni', 'orderPhone'];
       const values = fields.map(f => document.getElementById(f).value);
       if(values.some(v => !v)) { alert('Por favor, completa todos los datos de envío.'); return; }
-      
       const now = new Date();
       let t = `ZYSKN ★ - NUEVO PEDIDO\nFecha: ${now.toLocaleDateString()} | Hora: ${now.toLocaleTimeString()}\n\n`;
       t += `CLIENTE: ${values[0]}\nUbicación: ${values[1]}\nCorreo: ${values[2]}\nSucursal: ${values[3]}\nDNI: ${values[4]}\nCelular: ${values[5]}\n\n`;
@@ -581,15 +712,10 @@
       const headerOffset = document.getElementById('header').offsetHeight;
       const elementPosition = el.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth"
-      });
+      window.scrollTo({ top: offsetPosition, behavior: "smooth" });
     }
     
     function scrollToTop() { window.scrollTo({top:0, behavior:'smooth'}); }
-    
     init();
   </script>
 </body>
