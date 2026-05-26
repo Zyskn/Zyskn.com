@@ -1,0 +1,29 @@
+backend:
+  name: github
+  repo: Zyskn/zyskn.github.io
+  branch: main
+
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+    - name: "productos"
+    label: "DROP 01"
+    folder: "_productos"
+    create: true
+    slug: "{{title}}"
+    fields:
+            - {label: "Nombre", name: "title", widget: "string"}
+            - label: "Galería de fotos"
+        name: "images"
+        widget: "list"
+        field: {label: Foto, name: image, widget: image}
+        allow_add_remove: true
+        max: 9
+        required: false
+        hint: "Subí entre 1 y 9 fotos. La primera será la portada"
+            - {label: "Precio", name: "price", widget: "number"}
+            - {label: "Talle", name: "size", widget: "string"}
+            - {label: "Estado", name: "status", widget: "select", options: ["Disponible", "Reservado", "Vendido"], default: "Disponible"}
+            - {label: "Descripción", name: "body", widget: "markdown", required: false}
+            - {label: "Link WhatsApp", name: "link", widget: "string", default: "https://wa.me/54"}
