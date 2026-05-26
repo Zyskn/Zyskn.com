@@ -172,28 +172,74 @@
 
     .nav-item-new a { color: var(--red) !important; font-weight: 900 !important; }
 
-    .sub-nav-wrapper {
-      position: absolute;
-      top: 100%;
-      left: 0;
-      background: #fff;
-      border: 1px solid #000;
-      width: 240px;
-      padding: 0.75rem 0;
-      display: none;
-      flex-direction: column;
-      opacity: 0;
-      transform: translateY(10px);
-      transition: all 0.3s var(--transition);
-      pointer-events: none;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-    }
-    .nav-item:hover .sub-nav-wrapper {
-      display: flex;
-      opacity: 1;
-      transform: translateY(0);
-      pointer-events: auto;
-    }
+.sub-nav-wrapper {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #fff;
+  border: 1px solid var(--border-light);
+  width: 240px;
+  padding: 0.5rem 0;
+  display: flex;
+  flex-direction: column;
+  
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(8px) scale(0.98);
+  
+  transition: 
+    opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), 
+    transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), 
+    visibility 0.6s;
+    
+  box-shadow: var(--shadow-lg);
+  margin-top: 0.5rem;
+  pointer-events: none;
+  transform-origin: top center;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.nav-item:hover .sub-nav-wrapper {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+  transition-delay: 0.05s;
+}
+
+.sub-nav-item {
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  cursor: pointer;
+  padding: 1rem 1.8rem;
+  color: var(--text-muted);
+  background: #fff;
+  transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+  opacity: 0;
+  transform: translateY(-4px);
+}
+
+.nav-item:hover .sub-nav-item {
+  opacity: 1;
+  transform: translateY(0);
+}
+.nav-item:hover .sub-nav-item:nth-child(1) { transition-delay: 0.15s; }
+.nav-item:hover .sub-nav-item:nth-child(2) { transition-delay: 0.2s; }
+.nav-item:hover .sub-nav-item:nth-child(3) { transition-delay: 0.25s; }
+
+.sub-nav-item:hover {
+  background: var(--gray-light);
+  color: #000;
+  transform: translateX(4px) scale(1.02);
+  font-weight: 700;
+}
+
+.sub-nav-wrapper:hover .sub-nav-item:not(:hover) {
+  opacity: 0.5;
+  transform: scale(0.98);
+}
     .sub-nav-item {
       font-size: 0.85rem;
       font-weight: 600;
