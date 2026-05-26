@@ -332,6 +332,24 @@
       .product-detail-grid { grid-template-columns: 1fr !important; }
       .nav-container.searching .search-input-container { width: 200px; }
     }
+    /* MOBILE: Ajustes para teléfonos */
+  @media (max-width: 768px) {
+    .top-bar {
+      padding: 8px 0;
+      font-size: 0.75rem;
+    }
+    .marquee-item {
+      margin-right: 30px;
+      gap: 8px;
+    }
+    .marquee-content {
+      animation: marquee-infinite 18s linear infinite;
+    }
+    .marquee-item svg { 
+      width: 16px; 
+      height: 16px; 
+    }
+    
   </style>
 </head>
 <body>
