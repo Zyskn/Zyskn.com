@@ -809,8 +809,13 @@ function shareOnWhatsApp() {
   
   let total = 0;
   cart.forEach(i => {
-    const subtotal = i.price * i.qty;
-    t += `• ${i.title} ${i.size ? `(Talle ${i.size})` : ''} x${i.qty} - $${subtotal.toLocaleString('es-AR')}%0A`;
+    const qty = i.qty || 1; 
+    const price = Number(i.price) || 0;
+    const subtotal = price * qty;
+    const nombreProd = i.name || i.title || 'Producto';
+    const talle = i.size || i.talle || '';
+    
+    t += `• ${nombreProd} ${talle ? `(Talle ${talle})` : ''} x${qty} - $${subtotal.toLocaleString('es-AR')}%0A`;
     total += subtotal;
   });
   
