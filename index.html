@@ -327,7 +327,98 @@
     @keyframes slideIn { from { transform: translateY(100%); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
 
     @media (max-width: 1024px) {
-      .nav-main { display: none; }
+      .hamburger {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 28px;
+  height: 22px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 2001;
+}
+
+.hamburger span {
+  display: block;
+  height: 3px;
+  width: 100%;
+  background: #000;
+  transition: all 0.3s ease;
+}
+
+.hamburger.active span:nth-child(1) {
+  transform: rotate(45deg) translate(7px, 7px);
+}
+
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(7px, -7px);
+}
+
+.nav-container {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 80%;
+  max-width: 320px;
+  height: 100vh;
+  background: #fff;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 6rem 2rem;
+  box-shadow: -5px 0 20px rgba(0,0,0,0.1);
+  transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow-y: auto;
+  gap: 0;
+}
+
+.nav-container.active {
+  right: 0;
+}
+
+.nav-main {
+  display: flex !important;
+  flex-direction: column;
+  gap: 0;
+  width: 100%;
+  transform: none !important;
+  opacity: 1 !important;
+}
+
+.nav-item {
+  padding: 1rem 0;
+  border-bottom: 1px solid #eee;
+  width: 100%;
+}
+
+.nav-main a {
+  font-size: 1.1rem;
+}
+
+.sub-nav-wrapper {
+  position: static;
+  display: flex;
+  opacity: 1;
+  transform: none;
+  box-shadow: none;
+  border: none;
+  padding: 0.5rem 0 0 1rem;
+  pointer-events: auto;
+}
+
+.nav-icons {
+  width: 100%;
+  justify-content: flex-start;
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid #000;
+}
       section { padding: 4rem 1.5rem; }
       .product-detail-grid { grid-template-columns: 1fr !important; }
       .nav-container.searching .search-input-container { width: 200px; }
@@ -358,7 +449,11 @@
         <span class="logo">ZYSKN ★</span>
         <span class="logo-slogan">Curated Vintage</span>
       </div>
-
+<button class="hamburger" id="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
       <div id="navContainer" class="nav-container">
         <nav class="nav-main">
           <div class="nav-item"><a onclick="showMainCategory('todo', event)">TODO</a></div>
@@ -716,6 +811,25 @@
     }
     
     function scrollToTop() { window.scrollTo({top:0, behavior:'smooth'}); }
+    // MENÚ HAMBURGER
+const hamburger = document.getElementById('hamburger');
+const navContainer = document.getElementById('navContainer');
+const navLinks = document.querySelectorAll('.nav-item a');
+
+if(hamburger && navContainer) {
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
+    navContainer.classList.toggle('active');
+    document.body.style.overflow = navContainer.classList.contains('active') ? 'hidden' : '';
+  });
+}
+
+navLinks.forEach(link => {
+  link.addEventListener('click', () => {
+    hamburger.classList.remove('active');
+    navContainer.classList.remove('active');
+    document.body.style.overflow = '';
+  });
     init();
   </script>
 </body>
