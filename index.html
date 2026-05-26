@@ -326,207 +326,12 @@
     }
     @keyframes slideIn { from { transform: translateY(100%); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
 
-@media (max-width: 1024px) {
-  header { 
-    padding: 1.2rem 1.5rem; 
-  }
-  header.scrolled { 
-    padding: 0.8rem 1.5rem; 
-  }
-  .header-content {
-    padding: 0;
-  }
-  .logo { 
-    font-size: 1.8rem; 
-  }
-  .logo-slogan { 
-    display: none; 
-  }
-.hamburger {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 5px;
-    width: 30px;
-    height: 30px;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    z-index: 1100;
-  }
-  
-  .hamburger span {
-    display: block;
-    width: 25px;
-    height: 3px;
-    background: #000;
-    transition: all 0.3s ease;
-  }
-  
-  .hamburger.active span:nth-child(1) {
-    transform: rotate(45deg) translate(6px, 6px);
-  }
-  
-  .hamburger.active span:nth-child(2) {
-    opacity: 0;
-  }
-  
-  .hamburger.active span:nth-child(3) {
-    transform: rotate(-45deg) translate(6px, -6px);
-  }
-
-  .nav-container {
-    position: fixed;
-    top: 0;
-    right: -100%;
-    width: 280px;
-    height: 100vh;
-    background: #fff;
-    box-shadow: -2px 0 10px rgba(0,0,0,0.1);
-    transition: right 0.3s ease;
-    z-index: 1000;
-    padding-top: 80px;
-  }
-  
-  .nav-container.active {
-    right: 0;
-  }
-  
-  .nav-main {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 20px;
-    gap: 25px;
-  }
-  
-  .nav-item a {
-    font-size: 18px;
-    color: #000;
-  }
-  .nav-main a {
-    font-size: 0.8rem;
-    padding-bottom: 0.1rem;
-  }
-  .nav-item { 
-    padding: 0.5rem 0; 
-    flex-shrink: 0;
-  }
-  .nav-item-new a {
-    color: var(--red) !important;
-  }
-  .nav-icons {
-    gap: 0.8rem;
-  }
-  .icon-btn svg { 
-    width: 20px; 
-    height: 20px; 
-  }
-  .auth-status {
-    font-size: 0.75rem;
-    display: none; /* Ocultamos LOGIN en celu para que entre todo */
-  }
-  section { 
-    padding: 4rem 1.5rem; 
-  }
-  .product-detail-grid { 
-    grid-template-columns: 1fr !important;
-    gap: 2rem;
-  }
-  .hero h1 {
-    font-size: 2.5rem;
-  }
-  .nav-container.searching .nav-main {
-    transform: translateX(0); /* En celu no lo movemos */
-    opacity: 0;
-    pointer-events: none;
-  }
-  .nav-container.searching .search-input-container { 
-    width: calc(100vw - 180px); /* Buscador toma todo el ancho */
-    max-width: 200px;
-  }
-  .sub-nav-wrapper {
-    display: none !important; /* Sin dropdowns en celu */
-  }
-/* HAMBURGER MENU MOBILE */
-.hamburger {
-  display: none;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  width: 28px;
-  height: 20px;
-  position: relative;
-  z-index: 1001;
-}
-
-.hamburger span {
-  display: block;
-  width: 100%;
-  height: 2px;
-  background: var(--black);
-  position: absolute;
-  left: 0;
-  transition: all 0.3s ease;
-}
-
-.hamburger span:nth-child(1) { top: 0; }
-.hamburger span:nth-child(2) { top: 9px; }
-.hamburger span:nth-child(3) { bottom: 0; }
-
-.hamburger.active span:nth-child(1) {
-  transform: rotate(45deg);
-  top: 9px;
-}
-.hamburger.active span:nth-child(2) {
-  opacity: 0;
-}
-.hamburger.active span:nth-child(3) {
-  transform: rotate(-45deg);
-  bottom: 9px;
-}
-
-@media (max-width: 1024px) {
-  header { padding: 1rem 1.5rem; }
-  header.scrolled { padding: 0.8rem 1.5rem; }
-  .logo { font-size: 1.8rem; }
-  .logo-slogan { display: none; }
-  .hamburger { display: block; }
-  .nav-container {
-    position: fixed;
-    top: 0;
-    right: -100%;
-    width: 70%;
-    max-width: 300px;
-    height: 100vh;
-    background: var(--white);
-    box-shadow: -5px 0 15px rgba(0,0,0,0.1);
-    transition: right 0.3s ease;
-    z-index: 1000;
-    padding-top: 80px;
-  }
-  .nav-container.active { right: 0; }
-  .nav-main { 
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0;
-    padding: 1rem 2rem;
-  }
-  .nav-item { 
-    width: 100%;
-    padding: 1rem 0;
-    border-bottom: 1px solid var(--gray);
-  }
-  .nav-item a { font-size: 1rem; font-weight: 700; }
-  .nav-icons { gap: 1rem; }
-  .auth-status { display: none; }
-  .sub-nav-wrapper { display: none !important; }
-  section { padding: 4rem 1.5rem; }
-  .product-detail-grid { grid-template-columns: 1fr !important; }
-  .hero h1 { font-size: 2.5rem; }
-}
-
+    @media (max-width: 1024px) {
+      .nav-main { display: none; }
+      section { padding: 4rem 1.5rem; }
+      .product-detail-grid { grid-template-columns: 1fr !important; }
+      .nav-container.searching .search-input-container { width: 200px; }
+    }
   </style>
 </head>
 <body>
@@ -555,19 +360,29 @@
       </div>
 
       <div id="navContainer" class="nav-container">
-      <nav class="nav-main">
-        <div class="nav-item"><a onclick="showMainCategory('all')">TODO</a></div>
-        <div class="nav-item nav-item-new"><a onclick="scrollToSection('new')">NEW</a></div>
-        <div class="nav-item"><a onclick="scrollToSection('arriba')">ARRIBA</a></div>
-        <div class="nav-item"><a onclick="scrollToSection('abajo')">ABAJO</a></div>
-        <div class="nav-item"><a onclick="scrollToSection('contacto')">CONTACTO</a></div>
-      </nav>
-    </div>
-    <button class="hamburger" id="hamburger">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
+        <nav class="nav-main">
+          <div class="nav-item"><a onclick="showMainCategory('todo', event)">TODO</a></div>
+          <div class="nav-item nav-item-new"><a onclick="scrollToSection('new-section')">NEW</a></div>
+          <div class="nav-item">
+            <a onclick="showMainCategory('arriba', event)">ARRIBA</a>
+            <div class="sub-nav-wrapper">
+              <div class="sub-nav-item" onclick="filterProducts('remeras')">Remeras</div>
+              <div class="sub-nav-item" onclick="filterProducts('chombas')">Chombas</div>
+              <div class="sub-nav-item" onclick="filterProducts('hoodies')">Hoodies</div>
+              <div class="sub-nav-item" onclick="filterProducts('camisas')">Camisas</div>
+            </div>
+          </div>
+          <div class="nav-item">
+            <a onclick="showMainCategory('abajo', event)">ABAJO</a>
+            <div class="sub-nav-wrapper">
+              <div class="sub-nav-item" onclick="filterProducts('pantalones')">Pantalones</div>
+              <div class="sub-nav-item" onclick="filterProducts('jeans')">Jeans</div>
+              <div class="sub-nav-item" onclick="filterProducts('bermudas')">Bermudas</div>
+            </div>
+          </div>
+          <div class="nav-item"><a onclick="scrollToSection('contact')">CONTACTO</a></div>
+        </nav>
+
         <div class="nav-icons">
           <div class="search-wrapper">
             <div class="search-input-container">
@@ -901,25 +716,6 @@
     }
     
     function scrollToTop() { window.scrollTo({top:0, behavior:'smooth'}); }
-    // MENÚ HAMBURGER
-const hamburger = document.getElementById('hamburger');
-const navContainer = document.getElementById('navContainer');
-const navLinks = document.querySelectorAll('.nav-item a');
-
-if(hamburger && navContainer) {
-  hamburger.addEventListener('click', () => {
-    hamburger.classList.toggle('active');
-    navContainer.classList.toggle('active');
-    document.body.style.overflow = navContainer.classList.contains('active') ? 'hidden' : '';
-  });
-}
-
-navLinks.forEach(link => {
-  link.addEventListener('click', () => {
-    hamburger.classList.remove('active');
-    navContainer.classList.remove('active');
-    document.body.style.overflow = '';
-  });
     init();
   </script>
 </body>
