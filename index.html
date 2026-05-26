@@ -326,12 +326,80 @@
     }
     @keyframes slideIn { from { transform: translateY(100%); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
 
-    @media (max-width: 1024px) {
-      .nav-main { display: none; }
-      section { padding: 4rem 1.5rem; }
-      .product-detail-grid { grid-template-columns: 1fr !important; }
-      .nav-container.searching .search-input-container { width: 200px; }
-    }
+@media (max-width: 1024px) {
+  header { 
+    padding: 1.2rem 1.5rem; 
+  }
+  header.scrolled { 
+    padding: 0.8rem 1.5rem; 
+  }
+  .header-content {
+    padding: 0;
+  }
+  .logo { 
+    font-size: 1.8rem; 
+  }
+  .logo-slogan { 
+    display: none; 
+  }
+  .nav-container {
+    gap: 1rem;
+  }
+  .nav-main { 
+    display: flex;
+    gap: 1.2rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none; /* Firefox */
+    flex-shrink: 1;
+  }
+  .nav-main::-webkit-scrollbar { 
+    display: none; /* Chrome/Safari */
+  }
+  .nav-main a {
+    font-size: 0.8rem;
+    padding-bottom: 0.1rem;
+  }
+  .nav-item { 
+    padding: 0.5rem 0; 
+    flex-shrink: 0;
+  }
+  .nav-item-new a {
+    color: var(--red) !important;
+  }
+  .nav-icons {
+    gap: 0.8rem;
+  }
+  .icon-btn svg { 
+    width: 20px; 
+    height: 20px; 
+  }
+  .auth-status {
+    font-size: 0.75rem;
+    display: none; /* Ocultamos LOGIN en celu para que entre todo */
+  }
+  section { 
+    padding: 4rem 1.5rem; 
+  }
+  .product-detail-grid { 
+    grid-template-columns: 1fr !important;
+    gap: 2rem;
+  }
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+  .nav-container.searching .nav-main {
+    transform: translateX(0); /* En celu no lo movemos */
+    opacity: 0;
+    pointer-events: none;
+  }
+  .nav-container.searching .search-input-container { 
+    width: calc(100vw - 180px); /* Buscador toma todo el ancho */
+    max-width: 200px;
+  }
+  .sub-nav-wrapper {
+    display: none !important; /* Sin dropdowns en celu */
+  }
     /* MOBILE: Ajustes para teléfonos */
   @media (max-width: 768px) {
     .top-bar {
