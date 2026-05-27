@@ -3,11 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>ZYSKN ★ | EST. 2024 - Ropa Streetwear Córdoba</title>
   <meta name="description" content="ZYSKN ★ | EST. 2024. Tienda online de ropa streetwear y vintage en Córdoba, Argentina. Envíos a todo el país. Próximamente.">
   <meta name="keywords" content="ZYSKN, ropa streetwear, vintage, Córdoba, Argentina, tienda online, remeras overzise, chombas, camisas, buzos canguros, hoodies canguros, camperas, pantalones cargos, jeans, bermudas cargo, todo de marca, 2026">
   <link rel="icon" type="image/png" href="/favicon.png">
-  <link rel="apple-touch-icon" href="/favicon.png">
+<link rel="apple-touch-icon" href="/favicon.png">
   <meta name="author" content="ZYSKN">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://zyskn.github.io/">
@@ -20,7 +21,7 @@
   <meta property="og:image:height" content="630">
   <meta property="og:site_name" content="ZYSKN">
   <meta property="og:url" content="https://zyskn.github.io/">
-  <meta property="og:type" content="website">
+<meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="ZYSKN ★ | EST. 2024">
   <meta name="twitter:description" content="ZYSKN: Ropa vintage curada y streetwear en Córdoba Argentina.">
@@ -170,104 +171,115 @@
     .nav-main a:hover { border-bottom-color: #000; }
 
     .nav-item-new a { color: var(--red) !important; font-weight: 900 !important; }
-    .nav-item::after {
-      content: '';
-      position: absolute;
-      top: 100%;
-      left: 0;
-      width: 100%;
-      height: 0.5rem;
-      background: transparent;
-    }
+.nav-item {
+  position: relative;
+}
 
-    .sub-nav-wrapper {
-      position: absolute;
-      top: 100%;
-      left: 0;
-      background: rgba(255, 255, 255, 0.75);
-      backdrop-filter: blur(12px) saturate(180%);
-      -webkit-backdrop-filter: blur(12px) saturate(180%);
-      border: 1px solid rgba(255, 255, 255, 0.3);
-      width: 240px;
-      padding: 0.8rem 0;
-      display: flex;
-      flex-direction: column;
-      opacity: 0;
-      visibility: hidden;
-      transform: translateY(12px) scale(0.96);
-      transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.5s;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-      margin-top: 0.5rem;
-      pointer-events: none;
-      border-radius: 8px;
-      overflow: hidden;
-      z-index: 999;
-    }
+/* PUENTE INVISIBLE: evita que se cierre al bajar el cursor */
+.nav-item::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  height: 0.5rem;
+  background: transparent;
+}
 
-    .nav-item:hover .sub-nav-wrapper {
-      opacity: 1;
-      visibility: visible;
-      transform: translateY(0) scale(1);
-      pointer-events: auto;
-      transition-delay: 0.08s;
-    }
+.sub-nav-wrapper {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  /* EFECTO CRISTAL GLASSMORPHISM */
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(12px) saturate(180%);
+  -webkit-backdrop-filter: blur(12px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  width: 240px;
+  padding: 0.8rem 0;
+  display: flex;
+  flex-direction: column; /* ESTO HACE QUE VAYAN UNO ABAJO DEL OTRO */
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(12px) scale(0.96);
+  transition: 
+    opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), 
+    transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), 
+    visibility 0.5s;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  margin-top: 0.5rem;
+  pointer-events: none;
+  border-radius: 8px;
+  overflow: hidden;
+  z-index: 999;
+}
 
-    .sub-nav-item {
-      font-size: 0.85rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      cursor: pointer;
-      padding: 0.8rem 1.5rem;
-      color: #000;
-      background: transparent;
-      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-      position: relative;
-      opacity: 0;
-      transform: translateY(-4px);
-      display: block;
-      width: 100%;
-      text-align: left;
-    }
+.nav-item:hover .sub-nav-wrapper {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+  transition-delay: 0.08s;
+}
 
-    .sub-nav-item::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: 0;
-      height: 100%;
-      background: #000;
-      transition: width 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-    }
+.sub-nav-item {
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  cursor: pointer;
+  padding: 0.8rem 1.5rem;
+  color: #000;
+  background: transparent;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  opacity: 0;
+  transform: translateY(-4px);
+  display: block; /* FUERZA QUE OCUPE TODA LA LÍNEA */
+  width: 100%;
+  text-align: left;
+}
 
-    .sub-nav-item:hover {
-      background: rgba(0, 0, 0, 0.04);
-      padding-left: 2rem;
-      color: #000;
-      font-weight: 700;
-    }
+/* BLOQUE NEGRO A LA IZQUIERDA EN HOVER */
+.sub-nav-item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 0;
+  height: 100%;
+  background: #000;
+  transition: width 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
 
-    .sub-nav-item:hover::before {
-      width: 4px;
-    }
+.sub-nav-item:hover {
+  background: rgba(0, 0, 0, 0.04);
+  padding-left: 2rem;
+  color: #000;
+  font-weight: 700;
+}
 
-    .nav-item:hover .sub-nav-item {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .nav-item:hover .sub-nav-item:nth-child(1) { transition-delay: 0.08s; }
-    .nav-item:hover .sub-nav-item:nth-child(2) { transition-delay: 0.1s; }
-    .nav-item:hover .sub-nav-item:nth-child(3) { transition-delay: 0.12s; }
-    .nav-item:hover .sub-nav-item:nth-child(4) { transition-delay: 0.14s; }
-    .nav-item:hover .sub-nav-item:nth-child(5) { transition-delay: 0.16s; }
-    .nav-item:hover .sub-nav-item:nth-child(6) { transition-delay: 0.18s; }
-    .nav-item:hover .sub-nav-item:nth-child(7) { transition-delay: 0.2s; }
-    .nav-item:hover .sub-nav-item:nth-child(8) { transition-delay: 0.22s; }
+.sub-nav-item:hover::before {
+  width: 4px;
+}
 
-    .sub-nav-wrapper:hover .sub-nav-item:not(:hover) {
-      opacity: 0.7;
-    }
-    
+/* EFECTO CASCADA: entran uno por uno */
+.nav-item:hover .sub-nav-item {
+  opacity: 1;
+  transform: translateY(0);
+}
+.nav-item:hover .sub-nav-item:nth-child(1) { transition-delay: 0.08s; }
+.nav-item:hover .sub-nav-item:nth-child(2) { transition-delay: 0.1s; }
+.nav-item:hover .sub-nav-item:nth-child(3) { transition-delay: 0.12s; }
+.nav-item:hover .sub-nav-item:nth-child(4) { transition-delay: 0.14s; }
+.nav-item:hover .sub-nav-item:nth-child(5) { transition-delay: 0.16s; }
+.nav-item:hover .sub-nav-item:nth-child(6) { transition-delay: 0.18s; }
+.nav-item:hover .sub-nav-item:nth-child(7) { transition-delay: 0.2s; }
+.nav-item:hover .sub-nav-item:nth-child(8) { transition-delay: 0.22s; }
+
+/* ATENUAR LOS OTROS ITEMS AL HACER HOVER */
+.sub-nav-wrapper:hover .sub-nav-item:not(:hover) {
+  opacity: 0.7;
+}
     .search-wrapper {
       display: flex;
       align-items: center;
@@ -312,30 +324,184 @@
     .icon-btn:hover { transform: scale(1.1); }
     .search-icon { color: var(--blue); }
     .cart-icon { color: var(--red); }
-    .wishlist-icon { color: var(--red); }
 
     .auth-status { font-size: 0.85rem; font-weight: 700; text-transform: uppercase; cursor: pointer; color: #000; }
     .auth-status:hover { opacity: 0.7; }
 
-    .cart-badge, .wishlist-badge {
-      position: absolute; 
-      top: -6px; 
-      right: -6px;
-      background: #FF3B30;
-      color: #fff;
-      width: 16px; 
-      height: 16px; 
-      border-radius: 50%;
-      display: none;
-      align-items: center; 
-      justify-content: center;
-      font-size: 0.65rem; 
-      font-weight: 700;
+    .cart-badge {
+      position: absolute; top: -2px; right: -2px;
+      background: #000; color: #fff;
+      width: 16px; height: 16px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.65rem; font-weight: 700;
+    }
+  position: absolute; 
+  top: -6px; 
+  right: -6px;
+  background: #FF3B30;
+  color: #fff;
+  width: 16px; 
+  height: 16px; 
+  border-radius: 50%;
+  display: none;
+  align-items: center; 
+  justify-content: center;
+  font-size: 0.65rem; 
+  font-weight: 700;
+}
+
+.cart-badge.show {
+  display: flex;
+}
+
+    .hamburger { display: none; }
+
+    /* =====================================================
+       ESTILOS RESPONSIVOS PARA MÓVIL
+       ===================================================== */
+    #nav-overlay {
+      display: none; position: fixed; inset: 0;
+      background: rgba(0, 0, 0, 0.5); z-index: 998;
+    }
+    #nav-overlay.active { display: block; }
+
+    @media (max-width: 1024px) {
+      header { padding: 1rem 1rem; }
+      header.scrolled { padding: 0.8rem 1rem; }
+      .logo { font-size: 1.8rem; }
+      .logo-slogan { font-size: 0.75rem; }
+
+      .hamburger {
+        display: flex; flex-direction: column; justify-content: space-between;
+        width: 24px; height: 18px; background: none; border: none;
+        cursor: pointer; padding: 0; z-index: 2001; order: 4;
+      }
+      .hamburger span { display: block; height: 3px; width: 100%; background: #000; transition: all 0.3s ease; }
+      .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+      .hamburger.active span:nth-child(2) { opacity: 0; }
+      .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+      .nav-main {
+        position: fixed; top: 0; right: -100%; width: 80%; max-width: 320px; height: 100vh;
+        background: #fff; flex-direction: column; justify-content: flex-start; align-items: flex-start;
+        padding: 6rem 2rem; box-shadow: -5px 0 20px rgba(0,0,0,0.1);
+        transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1); overflow-y: auto; gap: 0; z-index: 999;
+        opacity: 1 !important; transform: none !important; pointer-events: auto !important;
+      }
+      .nav-main.active { right: 0; }
+      .nav-item { padding: 1rem 0; border-bottom: 1px solid #eee; width: 100%; }
+      .nav-main a { font-size: 1.1rem; }
+      .sub-nav-wrapper { position: static; display: flex; opacity: 1; transform: none; box-shadow: none; border: none; padding: 0.5rem 0 0 1rem; pointer-events: auto; }
+
+      .nav-container { gap: 0.5rem; flex-grow: 0; position: static; }
+      .nav-icons { order: 2; gap: 0.5rem; margin-left: auto; }
+      .icon-btn svg { width: 20px; height: 20px; }
+      .auth-status { font-size: 0.75rem; order: 1; margin-right: 0.5rem; }
+      .search-wrapper { order: 0; position: static; }
+      .cart-icon { order: 2; }
+
+      .search-input-container {
+        position: absolute; top: 0; right: 0; width: 0; height: 100%;
+        background: #fff; padding: 0; margin: 0; z-index: 2002;
+        display: flex; align-items: center; justify-content: flex-start;
+        transition: width 0.4s var(--transition);
+      }
+      header.searching .search-input-container { width: 100%; padding: 0 1rem; }
+      header.searching .search-input-container input { 
+        width: calc(100% - 40px); 
+        border-radius: 0; border: none; 
+        border-bottom: 2px solid var(--celeste); 
+        padding: 0.5rem 0;
+        font-size: 1rem;
+      }
+
+      .search-close-btn {
+        display: none;
+        width: 40px; height: 40px;
+        align-items: center; justify-content: center;
+        font-size: 1.5rem; font-weight: 300;
+        cursor: pointer;
+      }
+      header.searching .search-close-btn { display: flex; }
     }
 
-    .cart-badge.show, .wishlist-badge.show {
-      display: flex;
+    @media (max-width: 600px) {
+      .logo { font-size: 1.5rem; }
+      .logo-slogan { font-size: 0.7rem; }
     }
+
+    section { padding: 6rem 2rem; max-width: var(--container-max); margin: 0 auto; }
+    .hero { height: 80vh; min-height: 500px; background: linear-gradient(135deg, #000 0%, #333 100%); display: flex; align-items: center; justify-content: center; color: #fff; text-align: center; max-width: 100%; }
+    .hero h1 { font-size: clamp(2rem, 7vw, 4.5rem); font-weight: 900; text-transform: uppercase; letter-spacing: -0.02em; }
+    .btn { display: inline-block; padding: 0.8rem 1.8rem; background: #fff; color: #000; border: 2px solid #fff; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; cursor: pointer; transition: var(--transition); text-decoration: none; margin-top: 1.5rem; }
+    .btn:hover { background: #000; color: #fff; transform: scale(1.05); }
+    .section-title { font-size: clamp(1.4rem, 4vw, 2.2rem); font-weight: 900; text-transform: uppercase; margin-bottom: 2.5rem; letter-spacing: -0.02em; }
+    .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.5rem; }
+    .product-card { cursor: pointer; transition: transform 0.3s var(--transition); }
+    .product-image { width: 100%; aspect-ratio: 3/4; background: var(--gray-bg); overflow: hidden; margin-bottom: 0.8rem; }
+    .product-image img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s var(--transition); }
+    #product-detail { display: none; border-top: 1px solid #000; border-bottom: 1px solid #000; }
+    #product-detail.active { display: block; }
+    #cart-section { background: #fff; border-top: 1px solid #000; }
+    .cart-container { max-width: 800px; margin: 0 auto; }
+    .form-group { margin-bottom: 1rem; text-align: left; }
+    .form-group label { display: block; font-size: 0.65rem; font-weight: 700; text-transform: uppercase; margin-bottom: 0.3rem; }
+    .form-group input { width: 100%; padding: 0.6rem; border: 1px solid #000; font-size: 0.8rem; outline: none; }
+    .contact-icon-btn { width: 70px; height: 70px; border-radius: 50%; background: #000; display: flex; align-items: center; justify-content: center; color: #fff; margin: 0 auto 0.8rem auto; transition: all 0.3s ease; }
+    .contact-icon-btn svg { width: 32px; height: 32px; transition: all 0.3s ease; }
+    .contact-item:hover .icon-wa-btn { background: var(--whatsapp); transform: scale(1.1); }
+    .contact-item:hover .icon-ig-btn { background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); transform: scale(1.1); }
+    .notification { position: fixed; bottom: 2rem; right: 2rem; background: #000; color: #fff; padding: 1rem 2rem; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; z-index: 3000; display: none; animation: slideIn 0.3s ease-out; }
+    @keyframes slideIn { from { transform: translateY(100%); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+    @media (max-width: 600px) { .products-grid { grid-template-columns: 1fr; } footer > div { flex-direction: column !important; align-items: flex-start !important; gap: 1rem; } }
+    .yellow-warning { background: var(--yellow); padding: 1rem; border-radius: 4px; border: 1px solid #ffeeba; color: #856404; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; text-align: center; margin-bottom: 1rem; }
+
+    /* Ocultar cruz en PC */
+    @media (min-width: 1025px) {
+      .search-close-btn { display: none !important; }
+    }
+  </style>
+</head>
+<body>
+    <header style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;">
+        <h1>ZYSKN - Ropa Vintage Curada y Streetwear en Córdoba, Argentina</h1>
+        <p>ZYSKN es una tienda online de ropa vintage seleccionada y estilo urbano en Córdoba. Vendemos buzos canguros oversize, remeras overzise, camperas, hoodies, pantalones cargos y prendas únicas en el streetwear.</p>
+        <p>Hacemos envíos a todo el país desde Córdoba. Contacto: WhatsApp +54 9 3544 631553 | Instagram @zyskn.vtg</p>
+    </header>
+  <div id="supreme-overlay"></div>
+  <div id="notification" class="notification"></div>
+  <div id="nav-overlay"></div>
+
+  <div class="top-bar">
+    <div class="marquee-content">
+      <div class="marquee-item">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.17.054 1.805.249 2.227.412.56.216.96.474 1.38.894.42.42.678.82.894 1.38.163.422.358 1.057.412 2.227.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.054 1.17-.249 1.805-.412 2.227-.216.56-.474.96-.894 1.38-.42.42-.82.678-1.38.894-.422.163-1.057.358-2.227.412-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.17-.054-1.805-.249-2.227-.412-.56-.216-.96-.474-1.38-.894-.42-.42-.678-.82-.894-1.38-.163-.422-.358-1.057-.412-2.227-.058-1.266-.07-1.646-.07-4.85s.012-3.584.07-4.85c.054-1.17.249-1.805.412-2.227.216-.56.474-.96.894-1.38.42-.42.82-.678 1.38-.894.422-.163 1.057-.358 2.227-.412 1.266-.058 1.646-.07 4.85-.07ZM12 0C8.741 0 8.333.014 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.741 0 12s.014 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126s1.337 1.078 2.126 1.384c.766.296 1.636.499 2.913.558C8.333 23.986 8.741 24 12 24s3.667-.014 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384s1.078-1.337 1.384-2.126c.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.014-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126s-1.337-1.078-2.126-1.384c-.765-.296-1.636-.499-2.913-.558C15.667.012 15.259 0 12 0Zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324ZM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8Zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881Z"/></svg>
+        <span>@zyskn.vtg</span>
+      </div>
+      <div class="marquee-item">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.01 2.01c-5.52 0-10 4.48-10 10 0 1.75.46 3.4 1.26 4.83L2 22l5.3-1.39c1.4.77 3 1.21 4.71 1.21 5.52 0 10-4.48 10-10s-4.48-10-10-10zm0 18.33c-1.57 0-3.1-.42-4.43-1.21l-.32-.19-3.29.86.88-3.21-.21-.33c-.87-1.39-1.33-3.01-1.33-4.68 0-4.6 3.74-8.33 8.33-8.33s8.33 3.74 8.33 8.33-3.74 8.33-8.33 8.33zm4.56-6.2c-.25-.13-1.47-.72-1.7-.8-.23-.08-.39-.13-.56.13-.17.25-.64.8-.78.96-.14.17-.29.19-.54.06-.25-.13-1.05-.39-1.99-1.28-.74-.66-1.23-1.47-1.38-1.72-.15-.25-.02-.39.11-.51.11-.11.25-.29.37-.43.13-.14.17-.25.25-.41.08-.17.04-.31-.02-.44-.06-.13-.56-1.35-.77-1.82-.2-.48-.4-.41-.56-.42-.14 0-.31-.01-.47-.01-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1s.9 2.43 1.03 2.6c.13.17 1.77 2.7 4.29 3.79.6.26 1.07.41 1.43.53.6.19 1.15.16 1.58.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.11-.23-.17-.48-.3z"/></svg>
+        <span>+54 9 3544 631553</span>
+      </div>
+    </div>
+  </div>
+
+  <header id="header">
+    <div class="header-content">
+      <div class="logo-section" onclick="scrollToTop()">
+        <span class="logo">ZYSKN ★</span>
+        <span class="logo-slogan">Curated Vintage</span>
+      </div>
+
+      <div id="navContainer" class="nav-container">
+        <nav class="nav-main" id="navMain">
+          <div class="nav-item"><a onclick="showMainCategory('todo', event)">TODO</a></div>
+          <div class="nav-item nav-item-new"><a onclick="scrollToSection('nuevo-section')">NEW</a></div>
+          <div class="nav-item">
+            <a onclick="showMainCategory('arriba', event)">ARRIBA</a>
+            <div class="sub-nav-wrapper">
+              <div class="sub-nav-item" onclick="filterProducts('remeras')">Remeras</div>
+              <div class="sub-nav-item" onclick="filterProducts('Casacas deportivas')">Casacas deportivas</div>
+              <div class="sub-nav-item" onclick="filterProducts('chombas')">Chombas</div>
               <div class="sub-nav-item" onclick="filterProducts('camisas')">Camisas</div>
               <div class="sub-nav-item" onclick="filterProducts('hoodies')">Hoodies</div>
               <div class="sub-nav-item" onclick="filterProducts('sweaters')">Sweaters</div>
@@ -363,23 +529,19 @@
               <div class="search-close-btn" onclick="toggleSearch()">✕</div>
             </div>
             <button class="icon-btn search-icon" onclick="toggleSearch()">
-              <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
             </button>
           </div>
-          <button class="icon-btn wishlist-icon" onclick="openWishlist()">
-            <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
-            <span class="wishlist-badge" id="wishlistBadge">0</span>
-          </button>
           <button id="userAuth" class="icon-btn auth-status" onclick="scrollToSection('account-section')">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-              <circle cx="12" cy="7" r="4"></circle>
-            </svg>
-            LOGIN
-          </button>
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+    <circle cx="12" cy="7" r="4"></circle>
+  </svg>
+  LOGIN
+</button>
           <button class="icon-btn cart-icon" onclick="scrollToSection('cart-section')">
             <svg viewBox="0 0 24 24"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49A1.003 1.003 0 0 0 20 4H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg>
-            <span class="cart-badge" id="cartBadge">0</span>
+            <span class="cart-badge" id="cartBadge" style="display: none;">0</span>
           </button>
           <button class="hamburger" id="hamburger">
             <span></span><span></span><span></span>
@@ -434,10 +596,6 @@
       <div id="productsGrid" class="products-grid"></div>
     </section>
 
-    <section id="recently-viewed" style="background: #f9f9f9; border-top: 1px solid #eee; display: none;">
-      <h2 class="section-title">VISTOS RECIENTEMENTE</h2>
-      <div id="recentlyViewedGrid" class="products-grid"></div>
-    </section>
     <section id="cart-section">
       <div class="cart-container">
         <h2 class="section-title" style="text-align:center;">TU CARRITO</h2>
@@ -447,25 +605,17 @@
           <button class="btn" onclick="scrollToSection('shop')" style="background:#000; color:#fff;">VER PRODUCTOS</button>
         </div>
         <div id="cartCheckoutArea">
-          <div class="coupon-box">
-            <input type="text" id="couponInput" placeholder="CÓDIGO DE DESCUENTO">
-            <button onclick="applyCoupon()">APLICAR</button>
-          </div>
-          <div class="coupon-applied" id="couponApplied"></div>
-          <div style="display:flex; justify-content:space-between; margin-bottom:0.5rem; font-size:0.9rem;">
-            <span>Subtotal:</span><span id="cartSubtotal">$0</span>
-          </div>
           <div style="display:flex; justify-content:space-between; margin-bottom:2rem; font-weight:900; font-size:1.5rem; border-top:2px solid #000; padding-top:1.5rem;">
             <span>TOTAL:</span><span id="cartTotal">$0</span>
           </div>
           <div style="margin-bottom:3rem;">
             <p style="font-size:0.8rem; font-weight:900; text-transform:uppercase; margin-bottom:1.5rem; border-bottom:1px solid #000; display:inline-block;">Datos de Envío</p>
-            <div class="form-group"><label>Nombre y Apellido</label><input type="text" id="orderName" required></div>
-            <div class="form-group"><label>DNI</label><input type="text" id="orderDni" required></div>
-            <div class="form-group"><label>Celular</label><input type="tel" id="orderPhone" placeholder="Ej: 3544631553" required></div>
-            <div class="form-group"><label>Email</label><input type="email" id="orderEmail" placeholder="Para enviarte el seguimiento"></div>
-            <div class="form-group"><label>Ciudad y Provincia</label><input type="text" id="orderLocation" placeholder="Ej: La Paz, Córdoba" required></div>
-            <div class="form-group"><label>Sucursal para retirar o Dirección de envío</label><input type="text" id="orderShippingAddr" placeholder="Ej: Sucursal Centro o Calle Falsa 123"></div>
+<div class="form-group"><label>Nombre y Apellido</label><input type="text" id="orderName" required></div>
+<div class="form-group"><label>DNI</label><input type="text" id="orderDni" required></div>
+<div class="form-group"><label>Celular</label><input type="tel" id="orderPhone" placeholder="Ej: 3544631553" required></div>
+<div class="form-group"><label>Email</label><input type="email" id="orderEmail" placeholder="Para enviarte el seguimiento"></div>
+<div class="form-group"><label>Ciudad y Provincia</label><input type="text" id="orderLocation" placeholder="Ej: La Paz, Córdoba" required></div>
+<div class="form-group"><label>Sucursal para retirar o Dirección de envío</label><input type="text" id="orderShippingAddr" placeholder="Ej: Sucursal Centro o Calle Falsa 123"></div>
           </div>
           <div class="yellow-warning">RECUERDA COMPLETAR TODOS LOS DATOS PARA AGILIZAR TU PEDIDO</div>
           <button class="btn" onclick="shareOnWhatsApp()" style="width:100%; background:#25D366; color:#fff; border:none; padding:1rem; font-size:1rem; font-weight:900; margin-top:0;">COMPLETAR PEDIDO POR WHATSAPP</button>
@@ -518,6 +668,7 @@
         </div>
       </div>
     </section>
+
     <section id="account-section" style="background:#f9f9f9; border-top:1px solid #000;">
       <div style="max-width: 400px; margin: 0 auto; text-align:center;">
         <h2 class="section-title">MI CUENTA</h2>
@@ -553,7 +704,7 @@
         </div>
         <div class="contact-item">
           <a href="https://instagram.com/zyskn.vtg" target="_blank" class="contact-icon-btn icon-ig-btn">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.17.054 1.805.249 2.227.412.56.216.96.474 1.38.894.42.42.678.82.894 1.38.163.422.358 1.057.412 2.227.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.054 1.17-.249 1.805-.412 2.227-.216.56-.474.96-.894 1.38-.42.42-.82.678-1.38.894-.422.163-1.057.358-2.227.412-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.17-.054-1.805-.249-2.227-.412-.56-.216-.96-.474-1.38-.894-.42-.42-.678-.82-.894-1.38-.163-.422-.358-1.057-.412-2.227-.058-1.266-.07-1.646-.07-4.85s.012-3.584.07-4.85c.054-1.17.249-1.805.412-2.227.216-.56.474-.96.894-1.38.42-.42.82-.678 1.38-.894.422-.163 1.057-.358 2.227-.412 1.266-.058 1.646-.07 4.85-.07ZM12 0C8.741 0 8.333.014 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.741 0 12s.014 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126s1.337 1.078 2.126 1.384c.766.296 1.636.499 2.913.558C8.333 23.986 8.741 24 12 24s3.667-.014 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384s1.078-1.337 1.384-2.126c.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.014-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126s-1.337-1.078-2.126-1.384c-.765-.296-1.636-.499-2.913-.558C15.667.012 15.259 0 12 0Zm0 5.838a6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324ZM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8Zm6.406-11.845a1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881Z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.17.054 1.805.249 2.227.412.56.216.96.474 1.38.894.42.42.678.82.894 1.38.163.422.358 1.057.412 2.227.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.054 1.17-.249 1.805-.412 2.227-.216.56-.474.96-.894 1.38-.42.42-.82.678-1.38.894-.422.163-1.057.358-2.227.412-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.17-.054-1.805-.249-2.227-.412-.56-.216-.96-.474-1.38-.894-.42-.42-.678-.82-.894-1.38-.163-.422-.358-1.057-.412-2.227-.058-1.266-.07-1.646-.07-4.85s.012-3.584.07-4.85c.054-1.17.249-1.805.412-2.227.216-.56.474-.96.894-1.38.42-.42.82-.678 1.38-.894.422-.163 1.057-.358 2.227-.412 1.266-.058 1.646-.07 4.85-.07ZM12 0C8.741 0 8.333.014 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.741 0 12s.014 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126s1.337 1.078 2.126 1.384c.766.296 1.636.499 2.913.558C8.333 23.986 8.741 24 12 24s3.667-.014 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384s1.078-1.337 1.384-2.126c.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.014-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126s-1.337-1.078-2.126-1.384c-.765-.296-1.636-.499-2.913-.558C15.667.012 15.259 0 12 0Zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324ZM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8Zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881Z"/></svg>
           </a>
           <p style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase;">INSTAGRAM</p>
         </div>
@@ -573,18 +724,6 @@
     </footer>
   </main>
 
-  <div id="wishlistModal" class="modal">
-    <div class="modal-content">
-      <button class="modal-close" onclick="closeWishlist()">×</button>
-      <h2 class="section-title" style="margin-bottom: 1.5rem;">FAVORITOS</h2>
-      <div id="wishlistItems"></div>
-      <div id="wishlistEmpty" style="text-align:center; padding:2rem 0; display:none;">
-        <p style="font-size:0.9rem; color:var(--text-muted); text-transform:uppercase; font-weight:600;">No tenés favoritos todavía</p>
-        <button class="btn" onclick="closeWishlist(); scrollToSection('shop')" style="background:#000; color:#fff;">VER PRODUCTOS</button>
-      </div>
-    </div>
-  </div>
-
   <script>
     const products = [
       {id:'t1', section:'arriba', category:'remeras', name:'VINTAGE TEE 01', price:25000, desc:'Remera 90s Cotton Blend. Estado 9/10.', img:'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=800&q=80', sizes:['S','M','L'], isNew: true},
@@ -596,38 +735,15 @@
       {id:'b3', section:'abajo', category:'bermudas', name:'CHINO SHORTS', price:22000, desc:'Bermudas tipo chino.', img:'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=800&q=80', sizes:['30','32']}
     ];
 
-    let cart = JSON.parse(localStorage.getItem('zyskn_cart')) || [];
-    let wishlist = JSON.parse(localStorage.getItem('zyskn_wishlist')) || [];
-    let viewedProducts = JSON.parse(localStorage.getItem('zyskn_viewed')) || [];
-    let appliedCoupon = JSON.parse(localStorage.getItem('zyskn_coupon')) || null;
+    let cart = [];
     let currentProduct = null;
     let selectedSize = null;
 
-    const coupons = {
-      'ZYSKN10': { type: 'percent', value: 10, name: 'ZYSKN10 - 10% OFF' },
-      'ENVIOGRATIS': { type: 'shipping', value: 3000, min: 50000, name: 'ENVÍO GRATIS' }
-    };
-
     function init() {
       renderProducts(products, 'productsGrid');
-      renderProducts(products.filter(p=>p.isNew), 'nuevoProductsGrid');
-      renderRecentlyViewed();
+      renderProducts(products.filter(p=>p.isNew), 'newProductsGrid');
       setupScrollListener();
       updateCartUI();
-      updateWishlistUI();
-      if(appliedCoupon) showCouponApplied();
-    }
-
-    function saveCart() {
-      localStorage.setItem('zyskn_cart', JSON.stringify(cart));
-    }
-
-    function saveWishlist() {
-      localStorage.setItem('zyskn_wishlist', JSON.stringify(wishlist));
-    }
-
-    function saveViewed() {
-      localStorage.setItem('zyskn_viewed', JSON.stringify(viewedProducts));
     }
 
     function toggleSearch() {
@@ -649,6 +765,8 @@
         e.target.value = '';
       }
     }
+
+    function showNotification(msg) {
       const n = document.getElementById('notification');
       n.textContent = msg; n.style.display = 'block';
       setTimeout(() => { n.style.display = 'none'; }, 3000);
@@ -658,7 +776,7 @@
       if(type === 'login') {
         const email = document.getElementById('loginEmail').value;
         if(!email) { alert('Ingresa tu email'); return; }
-        document.getElementById('userAuth').innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg> MI PERFIL';
+        document.getElementById('userAuth').textContent = 'MI PERFIL';
         document.getElementById('loginForm').style.display = 'none';
         document.getElementById('profileView').style.display = 'block';
         document.getElementById('userDisplay').textContent = `SESIÓN INICIADA COMO: ${email.toUpperCase()}`;
@@ -666,13 +784,13 @@
       } else if(type === 'register') {
         const name = document.getElementById('regName').value;
         if(!name) { alert('Ingresa tu nombre'); return; }
-        document.getElementById('userAuth').innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg> MI PERFIL';
+        document.getElementById('userAuth').textContent = 'MI PERFIL';
         document.getElementById('registerForm').style.display = 'none';
         document.getElementById('profileView').style.display = 'block';
         document.getElementById('userDisplay').textContent = `CUENTA CREADA: ${name.toUpperCase()}`;
         showNotification('Cuenta creada con éxito');
       } else if(type === 'logout') {
-        document.getElementById('userAuth').innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg> LOGIN';
+        document.getElementById('userAuth').textContent = 'LOGIN';
         document.getElementById('profileView').style.display = 'none';
         document.getElementById('loginForm').style.display = 'block';
         showNotification('Sesión cerrada');
@@ -683,14 +801,9 @@
       const grid = document.getElementById(gridId);
       if(!grid) return;
       grid.innerHTML = list.map(p => `
-        <div class="product-card">
-          <div class="product-image" onclick="showProductDetail('${p.id}')">
-            <img src="${p.img}" alt="${p.name}">
-            <button class="wishlist-btn ${wishlist.includes(p.id)? 'active' : ''}" onclick="event.stopPropagation(); toggleWishlist('${p.id}')">
-              <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
-            </button>
-          </div>
-          <div style="display:flex; justify-content:space-between; align-items:flex-start;" onclick="showProductDetail('${p.id}')">
+        <div class="product-card" onclick="showProductDetail('${p.id}')">
+          <div class="product-image"><img src="${p.img}" alt="${p.name}"></div>
+          <div style="display:flex; justify-content:space-between; align-items:flex-start;">
             <div>
               <h3 style="font-size:0.85rem; font-weight:900; text-transform:uppercase;">${p.name}</h3>
               <p style="font-size:0.75rem; color:var(--text-muted); text-transform:uppercase;">${p.category}</p>
@@ -701,29 +814,20 @@
       `).join('');
     }
 
-    function showMainCategory(s, e) {
-      if(e) e.preventDefault();
-      renderProducts(s==='todo'?products:products.filter(p=>p.section===s), 'productsGrid');
-      scrollToSection('shop');
+    function showMainCategory(s, e) { 
+      if(e) e.preventDefault(); 
+      renderProducts(s==='todo'?products:products.filter(p=>p.section===s), 'productsGrid'); 
+      scrollToSection('shop'); 
     }
 
-    function filterProducts(c) {
-      renderProducts(products.filter(p=>p.category===c), 'productsGrid');
-      scrollToSection('shop');
+    function filterProducts(c) { 
+      renderProducts(products.filter(p=>p.category===c), 'productsGrid'); 
+      scrollToSection('shop'); 
     }
 
     function showProductDetail(id) {
       currentProduct = products.find(p=>p.id===id);
       selectedSize = null;
-
-      // Guardar en vistos recientes
-      if(!viewedProducts.includes(id)) {
-        viewedProducts.unshift(id);
-        if(viewedProducts.length > 4) viewedProducts.pop();
-        saveViewed();
-        renderRecentlyViewed();
-      }
-
       document.getElementById('detailName').textContent = currentProduct.name;
       document.getElementById('detailPrice').textContent = `$${currentProduct.price.toLocaleString('es-AR')}`;
       document.getElementById('detailDesc').textContent = currentProduct.desc;
@@ -735,18 +839,6 @@
       scrollToSection('product-detail');
     }
 
-    function renderRecentlyViewed() {
-      const section = document.getElementById('recently-viewed');
-      const grid = document.getElementById('recentlyViewedGrid');
-      if(viewedProducts.length === 0) {
-        section.style.display = 'none';
-        return;
-      }
-      section.style.display = 'block';
-      const viewedItems = viewedProducts.map(id => products.find(p => p.id === id)).filter(Boolean);
-      renderProducts(viewedItems, 'recentlyViewedGrid');
-    }
-
     function setS(s, btn) {
       selectedSize = s;
       document.querySelectorAll('#detailSizes button').forEach(b=>b.style.background='#fff');
@@ -755,153 +847,18 @@
 
     function addToCartFromDetail() {
       if(!selectedSize){alert('Selecciona talle'); return;}
-      const existingItem = cart.find(i => i.id === currentProduct.id && i.size === selectedSize);
-      if(existingItem) {
-        existingItem.qty = (existingItem.qty || 1) + 1;
-      } else {
-        cart.push({...currentProduct, size:selectedSize, qty: 1});
-      }
-      saveCart();
-      updateCartUI();
+      cart.push({...currentProduct, size:selectedSize}); 
+      updateCartUI(); 
       showNotification('Producto añadido al carrito');
       scrollToSection('cart-section');
     }
 
-    function toggleWishlist(productId) {
-      const index = wishlist.indexOf(productId);
-      if(index > -1) {
-        wishlist.splice(index, 1);
-        showNotification('Eliminado de favoritos');
-      } else {
-        wishlist.push(productId);
-        showNotification('Agregado a favoritos');
-      }
-      saveWishlist();
-      updateWishlistUI();
-      renderProducts(products, 'productsGrid');
-      renderProducts(products.filter(p=>p.isNew), 'nuevoProductsGrid');
-      renderRecentlyViewed();
-    }
-
-    function updateWishlistUI() {
-      const badge = document.getElementById('wishlistBadge');
-      badge.textContent = wishlist.length;
-      if(wishlist.length > 0) {
-        badge.classList.add('show');
-      } else {
-        badge.classList.remove('show');
-      }
-    }
-
-    function openWishlist() {
-      const modal = document.getElementById('wishlistModal');
-      const itemsContainer = document.getElementById('wishlistItems');
-      const emptyMsg = document.getElementById('wishlistEmpty');
-
-      if(wishlist.length === 0) {
-        itemsContainer.innerHTML = '';
-        emptyMsg.style.display = 'block';
-      } else {
-        emptyMsg.style.display = 'none';
-        const wishlistProducts = wishlist.map(id => products.find(p => p.id === id)).filter(Boolean);
-        itemsContainer.innerHTML = wishlistProducts.map(p => `
-          <div style="display:flex; gap:1rem; margin-bottom:1.5rem; padding-bottom:1.5rem; border-bottom:1px solid #eee;">
-            <img src="${p.img}" alt="${p.name}" style="width:80px; height:100px; object-fit:cover;">
-            <div style="flex:1; text-align:left;">
-              <h3 style="font-size:0.9rem; font-weight:900; text-transform:uppercase; margin-bottom:0.3rem;">${p.name}</h3>
-              <p style="font-size:0.85rem; font-weight:700; margin-bottom:0.8rem;">$${p.price.toLocaleString('es-AR')}</p>
-              <button class="btn" onclick="addWishlistToCart('${p.id}')" style="background:#000; color:#fff; padding:0.5rem 1rem; font-size:0.75rem; margin-top:0;">AGREGAR AL CARRITO</button>
-            </div>
-            <button onclick="toggleWishlist('${p.id}')" style="background:none; border:none; font-size:1.5rem; cursor:pointer; align-self:flex-start;">×</button>
-          </div>
-        `).join('');
-      }
-      modal.classList.add('show');
-    }
-
-    function closeWishlist() {
-      document.getElementById('wishlistModal').classList.remove('show');
-    }
-
-    function addWishlistToCart(productId) {
-      const product = products.find(p => p.id === productId);
-      if(product) {
-        currentProduct = product;
-        selectedSize = product.sizes[0];
-        addToCartFromDetail();
-        closeWishlist();
-      }
-    }
-
-    function applyCoupon() {
-      const code = document.getElementById('couponInput').value.trim().toUpperCase();
-      if(!code) {
-        alert('Ingresá un código');
-        return;
-      }
-
-      const coupon = coupons[code];
-      if(!coupon) {
-        alert('Código inválido');
-        return;
-      }
-
-      const subtotal = cart.reduce((s,i)=>s+(i.price * (i.qty || 1)),0);
-
-      if(coupon.min && subtotal < coupon.min) {
-        alert(`Este cupón requiere compra mínima de $${coupon.min.toLocaleString('es-AR')}`);
-        return;
-      }
-
-      appliedCoupon = {code,...coupon};
-      localStorage.setItem('zyskn_coupon', JSON.stringify(appliedCoupon));
-      showCouponApplied();
-      updateCartUI();
-      showNotification('Cupón aplicado');
-    }
-
-    function showCouponApplied() {
-      const div = document.getElementById('couponApplied');
-      div.textContent = `✓ ${appliedCoupon.name} APLICADO`;
-      div.classList.add('show');
-      document.getElementById('couponInput').value = '';
-    }
-
-    function removeCoupon() {
-      appliedCoupon = null;
-      localStorage.removeItem('zyskn_coupon');
-      document.getElementById('couponApplied').classList.remove('show');
-      updateCartUI();
-    }
-
-    function calculateTotal() {
-      const subtotal = cart.reduce((s,i)=>s+(i.price * (i.qty || 1)),0);
-      let discount = 0;
-
-      if(appliedCoupon) {
-        if(appliedCoupon.type === 'percent') {
-          discount = subtotal * (appliedCoupon.value / 100);
-        } else if(appliedCoupon.type === 'shipping') {
-          discount = appliedCoupon.value;
-        }
-      }
-
-      return { subtotal, discount, total: subtotal - discount };
-    }
-
     function updateCartUI() {
       const badge = document.getElementById('cartBadge');
-      const totalItems = cart.reduce((sum, i) => sum + (i.qty || 1), 0);
-      badge.textContent = totalItems;
-      if(totalItems > 0) {
-        badge.classList.add('show');
-      } else {
-        badge.classList.remove('show');
-      }
-
+      badge.textContent = cart.length; 
+      badge.style.display = cart.length ? 'flex' : 'none';
       const checkoutArea = document.getElementById('cartCheckoutArea');
       const emptyMsg = document.getElementById('cartEmptyMsg');
-
       if(cart.length === 0) {
         checkoutArea.style.display = 'none';
         emptyMsg.style.display = 'block';
@@ -911,108 +868,84 @@
         emptyMsg.style.display = 'none';
         document.getElementById('cartItems').innerHTML = cart.map((i, index)=>`
           <div style="margin-bottom:1rem; font-size:0.9rem; border-bottom:1px solid #eee; padding-bottom:1rem; display:flex; justify-content:space-between; align-items:center">
-            <div style="flex:1;">
-              <span style="font-weight:600;">${i.name} (${i.size})</span>
-              <div style="display:flex; align-items:center; gap:0.5rem; margin-top:0.5rem;">
-                <button onclick="updateCartQty(${index}, -1)" style="background:#000; color:#fff; border:none; width:24px; height:24px; cursor:pointer; font-weight:700;">-</button>
-                <span style="min-width:30px; text-align:center;">${i.qty || 1}</span>
-                <button onclick="updateCartQty(${index}, 1)" style="background:#000; color:#fff; border:none; width:24px; height:24px; cursor:pointer; font-weight:700;">+</button>
-                <span style="margin-left:auto; font-weight:700;">$${(i.price * (i.qty || 1)).toLocaleString('es-AR')}</span>
-              </div>
-            </div>
-            <button onclick="removeFromCart(${index})" style="background:none; border:none; color:var(--red); cursor:pointer; font-weight:900; font-size:1.2rem; padding:0 10px; margin-left:1rem;">✕</button>
+            <span style="font-weight:600;">${i.name} (${i.size}) - $${i.price.toLocaleString('es-AR')}</span>
+            <button onclick="removeFromCart(${index})" style="background:none; border:none; color:var(--red); cursor:pointer; font-weight:900; font-size:1.2rem; padding:0 10px">✕</button>
           </div>
         `).join('');
       }
-
-      const { subtotal, discount, total } = calculateTotal();
-      document.getElementById('cartSubtotal').textContent = `$${subtotal.toLocaleString('es-AR')}`;
-      document.getElementById('cartTotal').textContent = `$${total.toLocaleString('es-AR')}`;
-    }
-
-    function updateCartQty(index, change) {
-      cart[index].qty = (cart[index].qty || 1) + change;
-      if(cart[index].qty <= 0) {
-        cart.splice(index, 1);
-      }
-      saveCart();
-      updateCartUI();
+      document.getElementById('cartTotal').textContent = `$${cart.reduce((s,i)=>s+i.price,0).toLocaleString('es-AR')}`;
     }
 
     function removeFromCart(index) {
       cart.splice(index, 1);
-      saveCart();
       updateCartUI();
       showNotification('Producto eliminado');
     }
+
     function toggleAuthView(type) {
-      document.getElementById('loginForm').style.display = type === 'login'? 'block' : 'none';
-      document.getElementById('registerForm').style.display = type === 'register'? 'block' : 'none';
+      document.getElementById('loginForm').style.display = type === 'login' ? 'block' : 'none';
+      document.getElementById('registerForm').style.display = type === 'register' ? 'block' : 'none';
     }
 
-    function shareOnWhatsApp() {
-      if (cart.length === 0) {
-        alert('El carrito está vacío');
-        return;
-      }
+function shareOnWhatsApp() {
+  if (cart.length === 0) { 
+    alert('El carrito está vacío'); 
+    return; 
+  }
 
-      const nombre = document.getElementById('orderName').value.trim();
-      const localidad = document.getElementById('orderLocation').value.trim();
-      const email = document.getElementById('orderEmail').value.trim();
-      const sucursal = document.getElementById('orderShippingAddr').value.trim();
-      const dni = document.getElementById('orderDni').value.trim();
-      const celular = document.getElementById('orderPhone').value.trim();
+  const nombre = document.getElementById('orderName').value.trim();
+  const localidad = document.getElementById('orderLocation').value.trim();
+  const email = document.getElementById('orderEmail').value.trim();
+  const sucursal = document.getElementById('orderShippingAddr').value.trim();
+  const dni = document.getElementById('orderDni').value.trim();
+  const celular = document.getElementById('orderPhone').value.trim();
 
-      if (!nombre ||!localidad ||!dni ||!celular) {
-        alert('Completá Nombre, Ciudad, DNI y Celular');
-        return;
-      }
+  if (!nombre || !localidad || !dni || !celular) { 
+    alert('Completá Nombre, Ciudad, DNI y Celular'); 
+    return; 
+  }
 
-      const now = new Date();
-      const fecha = now.toLocaleDateString('es-AR');
-      const hora = now.toLocaleTimeString('es-AR', { hour: '2-digit', minute: '2-digit' });
+  const now = new Date();
+  const fecha = now.toLocaleDateString('es-AR');
+  const hora = now.toLocaleTimeString('es-AR', { hour: '2-digit', minute: '2-digit' });
 
-      let t = `Holaa! ZYSKN ★, Te envío mi nuevo pedido!.%0A`;
-      t += `Fecha: ${fecha} | Hora: ${hora}%0A%0A`;
-      t += `*DATOS DEL CLIENTE:*%0A`;
-      t += `- Nombre: ${nombre}%0A`;
-      t += `- DNI: ${dni}%0A`;
-      t += `- Celular: ${celular}%0A`;
-      t += `- Correo: ${email || 'No informado'}%0A`;
-      t += `- Ubicación: ${localidad}%0A`;
-      t += `- Sucursal Correo: ${sucursal || 'Coordinar'}%0A%0A`;
-      t += `*PRODUCTOS:*%0A`;
+  let t = `Holaa! ZYSKN ★, Te envío mi nuevo pedido!.%0A`;
+  t += `Fecha: ${fecha} | Hora: ${hora}%0A%0A`;
+  t += `*DATOS DEL CLIENTE:*%0A`;
+  t += `- Nombre: ${nombre}%0A`;
+  t += `- DNI: ${dni}%0A`;
+  t += `- Celular: ${celular}%0A`;
+  t += `- Correo: ${email || 'No informado'}%0A`;
+  t += `- Ubicación: ${localidad}%0A`;
+  t += `- Sucursal Correo: ${sucursal || 'Coordinar'}%0A%0A`;
+  t += `*PRODUCTOS:*%0A`;
 
-      const { subtotal, discount, total } = calculateTotal();
-      cart.forEach(i => {
-        const qty = i.qty || 1;
-        const price = Number(i.price) || 0;
-        const subtotalProd = price * qty;
-        const nombreProd = i.name || i.title || 'Producto';
-        const talle = i.size || i.talle || '';
+  let total = 0;
+  cart.forEach(i => {
+    const qty = i.qty || 1; 
+    const price = Number(i.price) || 0;
+    const subtotal = price * qty;
+    const nombreProd = i.name || i.title || 'Producto';
+    const talle = i.size || i.talle || '';
 
-        t += `• ${nombreProd} ${talle? `(Talle ${talle})` : ''} x${qty} - $${subtotalProd.toLocaleString('es-AR')}%0A`;
-      });
+    t += `• ${nombreProd} ${talle ? `(Talle ${talle})` : ''} x${qty} - $${subtotal.toLocaleString('es-AR')}%0A`;
+    total += subtotal;
+  });
 
-      if(appliedCoupon) {
-        t += `%0A*Cupón aplicado:* ${appliedCoupon.name}%0A`;
-        t += `*Descuento:* -$${discount.toLocaleString('es-AR')}%0A`;
-      }
+  t += `%0A*TOTAL: $${total.toLocaleString('es-AR')}*%0A`;
 
-      t += `%0A*TOTAL: $${total.toLocaleString('es-AR')}*%0A`;
+  window.open(`https://wa.me/5493544631553?text=${t}`, '_blank');
+}
 
-      window.open(`https://wa.me/5493544631553?text=${t}`, '_blank');
+    function setupScrollListener() { 
+      window.addEventListener('scroll', () => { 
+        const h=document.getElementById('header'); 
+        if(window.scrollY>50) h.classList.add('scrolled'); 
+        else h.classList.remove('scrolled'); 
+      }); 
     }
 
-    function setupScrollListener() {
-      window.addEventListener('scroll', () => {
-        const h=document.getElementById('header');
-        if(window.scrollY>50) h.classList.add('scrolled');
-        else h.classList.remove('scrolled');
-      });
-    }
-
-    function scrollToSection(id) {
+    function scrollToSection(id) { 
       const el = document.getElementById(id);
       const headerOffset = document.getElementById('header').offsetHeight;
       const elementPosition = el.getBoundingClientRect().top;
@@ -1025,14 +958,14 @@
     const hamburger = document.getElementById('hamburger');
     const navMain = document.getElementById('navMain');
     const navOverlay = document.getElementById('nav-overlay');
-    const navLinks = document.querySelectorAll('.nav-item a,.sub-nav-item');
+    const navLinks = document.querySelectorAll('.nav-item a, .sub-nav-item');
 
     if(hamburger && navMain) {
       hamburger.addEventListener('click', () => {
         hamburger.classList.toggle('active');
         navMain.classList.toggle('active');
         if(navOverlay) navOverlay.classList.toggle('active');
-        document.body.style.overflow = navMain.classList.contains('active')? 'hidden' : '';
+        document.body.style.overflow = navMain.classList.contains('active') ? 'hidden' : '';
       });
     }
 
@@ -1052,11 +985,6 @@
         if(navOverlay) navOverlay.classList.remove('active');
         document.body.style.overflow = '';
       });
-    });
-
-    // Cerrar modal al hacer click afuera
-    document.getElementById('wishlistModal').addEventListener('click', (e) => {
-      if(e.target.id === 'wishlistModal') closeWishlist();
     });
 
     init();
