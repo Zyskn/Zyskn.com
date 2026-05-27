@@ -1028,7 +1028,8 @@ function shareOnWhatsApp() {
         document.body.style.overflow = '';
       });
     });
-// Dropdown de usuario
+<!-- Dropdown de usuario -->
+<script>
 const authBtn = document.getElementById('userAuth');
 const dropdown = document.getElementById('userDropdown');
 
@@ -1062,49 +1063,52 @@ function checkUserStatus() {
       </svg>
     CUENTA
     `;
-    }
+  }
+}
+</script>
 
-    function openLoginModal() {
-      document.getElementById('loginModal').classList.add('show');
-    }
-
-    function closeLoginModal() {
-      document.getElementById('loginModal').classList.remove('show');
-    }
-
-    document.getElementById('loginForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      const email = document.getElementById('loginEmail').value;
-      
-      localStorage.setItem('user', JSON.stringify({
-        name: email.split('@')[0],
-        email: email
-      }));
-      
-      closeLoginModal();
-      location.reload();
-    });
-
-    document.getElementById('loginModal').addEventListener('click', function(e) {
-      if (e.target === this) closeLoginModal();
-    });
-
-    checkUserStatus();
-    init();
-  </script>
-
-  <div class="modal" id="loginModal">
-    <div class="modal-content">
-      <span class="close" onclick="closeLoginModal()">&times;</span>
-      <h2>TU CUENTA. TUS REGLAS.</h2>
-      <p class="modal-subtitle">Trackeá pedidos, guardá favoritos, comprá más rápido</p>
-      <form id="loginForm">
-        <input type="email" id="loginEmail" placeholder="Email" required>
-        <input type="password" id="loginPassword" placeholder="Contraseña" required>
-        <button type="submit">INICIAR SESIÓN</button>
-      </form>
-      <p>¿Todavía no sos parte? <a href="#" onclick="showRegister()">Registrate gratis</a></p>
-    </div>
+<div class="modal" id="loginModal">
+  <div class="modal-content">
+    <span class="close" onclick="closeLoginModal()">&times;</span>
+    <h2>TU CUENTA. TUS REGLAS.</h2>
+    <p class="modal-subtitle">Trackeá pedidos, guardá favoritos, comprá más rápido</p>
+    <form id="loginForm">
+      <input type="email" id="loginEmail" placeholder="Email" required>
+      <input type="password" id="loginPassword" placeholder="Contraseña" required>
+      <button type="submit">INICIAR SESIÓN</button>
+    </form>
+    <p>¿Todavía no sos parte? <a href="#" onclick="showRegister()">Registrate gratis</a></p>
   </div>
+</div>
+
+<script>
+  function openLoginModal() {
+    document.getElementById('loginModal').classList.add('show');
+  }
+
+  function closeLoginModal() {
+    document.getElementById('loginModal').classList.remove('show');
+  }
+
+  document.getElementById('loginForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const email = document.getElementById('loginEmail').value;
+
+    localStorage.setItem('user', JSON.stringify({
+      name: email.split('@')[0],
+      email: email
+    }));
+
+    closeLoginModal();
+    location.reload();
+  });
+
+  document.getElementById('loginModal').addEventListener('click', function(e) {
+    if (e.target === this) closeLoginModal();
+  });
+
+  checkUserStatus();
+  init();
+</script>
 </body>
 </html>
