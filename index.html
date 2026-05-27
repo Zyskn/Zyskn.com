@@ -82,26 +82,53 @@
       pointer-events: none;
     }
 
-    @keyframes fadeOutOverlay {
-      0% { opacity: 1; }
-      100% { opacity: 0; }
-    }
+ @keyframes flyToCart {
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: 1;
+  }
+  50% {
+    /* Efecto de arco: sube un poco antes de bajar al carrito */
+    transform: translate(calc(var(--target-x) * 0.5), calc(var(--target-y) * 0.5 - 50px)) scale(0.8);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translate(var(--target-x), var(--target-y)) scale(0.1);
+    opacity: 0;
+  }
+}
 
-    body {
-      font-family: 'Inter', sans-serif;
-      background: #fff;
-      color: #000;
-      line-height: 1.4;
-      overflow-x: hidden;
-      position: relative;
-      animation: contentShine 0.4s ease-out forwards;
-      scroll-behavior: smooth;
-    }
+.fly-item {
+  position: fixed;
+  z-index: 9999;
+  pointer-events: none;
+  transition: none;
+  border-radius: 50%; /* Opcional: para que el rastro sea circular */
+  background: #000; /* Color que combine con tu diseño */
+  animation: flyToCart 0.8s cubic-bezier(0.42, 0, 0.58, 1) forwards;
+}
 
-    @keyframes contentShine {
-      0% { filter: brightness(0.5); }
-      100% { filter: brightness(1); }
-    }
+/* Tus estilos originales mantenidos */
+@keyframes fadeOutOverlay {
+  0% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: #fff;
+  color: #000;
+  line-height: 1.4;
+  overflow-x: hidden;
+  position: relative;
+  animation: contentShine 0.4s ease-out forwards;
+  scroll-behavior: smooth;
+}
+
+@keyframes contentShine {
+  0% { filter: brightness(0.5); }
+  100% { filter: brightness(1); }
+}
 
     .top-bar {
   background: var(--red);
@@ -802,9 +829,9 @@ header.scrolled { padding: 1.2rem 3rem; }
     </footer>
   </main>
 
-  <script>
+ <script>
     const products = [
-      {id:'t1', section:'arriba', category:'remeras', name:'VINTAGE TEE 01', price:25000, desc:'Remera 90s Cotton Blend. Estado 9/10.', img:'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=800&q=80', sizes:['S','M','L'], isNew: true},
+      {id:'t1', section:'arriba', category:'remeras', name:'Remera roja Overzise, price:25000, desc:'Remera 90s Cotton Blend. Estado 9/10.', img:'//images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=800&q=80', sizes:['S','M','L'], isNew: true},
       {id:'t2', section:'arriba', category:'chombas', name:'RETRO POLO NAVY', price:32000, desc:'Polo Lacoste vintage original.', img:'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=800&q=80', sizes:['M','L'], isNew: true},
       {id:'t3', section:'arriba', category:'hoodies', name:'CHAMPION HOODIE', price:45000, desc:'Hoodie heavyweight Champion.', img:'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=800&q=80', sizes:['L','XL']},
       {id:'t4', section:'arriba', category:'camisas', name:'FLANNEL SHIRT', price:28000, desc:'Camisa de franela a cuadros.', img:'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=800&q=80', sizes:['M','L','XL']},
@@ -816,6 +843,39 @@ header.scrolled { padding: 1.2rem 3rem; }
     let cart = [];
     let currentProduct = null;
     let selectedSize = null;
+
+    function animateToCart(event, cartSelector ) {
+      const button = event.currentTarget;
+      const cartEl = document.querySelector(cartSelector);
+      if (!cartEl) return;
+
+      const flyer = document.createElement('div');
+      flyer.className = 'fly-item';
+      flyer.style.width = '15px';
+      flyer.style.height = '15px';
+      flyer.style.background = '#000';
+      flyer.style.borderRadius = '50%';
+      
+      const rect = button.getBoundingClientRect();
+      flyer.style.left = `${rect.left + rect.width / 2}px`;
+      flyer.style.top = `${rect.top + rect.height / 2}px`;
+
+      const cartRect = cartEl.getBoundingClientRect();
+      const targetX = (cartRect.left + cartRect.width / 2) - (rect.left + rect.width / 2);
+      const targetY = (cartRect.top + cartRect.height / 2) - (rect.top + rect.height / 2);
+
+      flyer.style.setProperty('--target-x', `${targetX}px`);
+      flyer.style.setProperty('--target-y', `${targetY}px`);
+
+      document.body.appendChild(flyer);
+
+      flyer.addEventListener('animationend', () => {
+        flyer.remove();
+        // Efecto visual en el carrito al recibir el item
+        cartEl.style.transform = 'scale(1.3)';
+        setTimeout(() => cartEl.style.transform = 'scale(1)', 200);
+      });
+    }
 
     function init() {
       renderProducts(products, 'productsGrid');
