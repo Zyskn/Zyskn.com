@@ -65,7 +65,7 @@
 .social-item { display:flex; flex-direction:column; align-items:center; gap:16px; text-decoration:none; color:#000; }
 .social-circle { width:60px; height:60px; background:#000; border-radius:50%; display:flex; align-items:center; justify-content:center; transition:var(--transition); }
 .social-circle svg { width:24px; height:24px; fill:#fff; display: block; }
-.social-item.wa .social-circle svg { transform: translateY(-2px); }
+.social-item.wa .social-circle svg { width:28px; height:28px; transform: translateY(0px); }
 .social-item:hover .social-circle { transform:scale(1.1); }
 .social-item.wa:hover .social-circle { background:var(--whatsapp); }
 .social-item.ig:hover .social-circle { background:var(--instagram); }
@@ -154,12 +154,12 @@
 }
 .marquee-item span { 
   position: relative;
-  top: 0.5px;
+  top: 0px;
 }
 a[href*="wa.me"] svg,
 a[href*="whatsapp"] svg,
 a[href*="3544"] svg {
-  transform: translateY(-2px) !important;
+  transform: translateY(0px) !important;
 }
 @keyframes marquee-infinite {
   0% { transform: translateX(0); }
@@ -750,10 +750,10 @@ header.scrolled { padding: 1.2rem 3rem; }
       <div style="max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: flex-end;">
         <div style="text-align: left;">
           <h2 style="font-size: 1.4rem; font-weight: 900; text-transform: uppercase; margin-bottom: 0.5rem;">ZYSKN ★</h2>
-          <p style="font-size: 0.75rem; color: #aaa; text-transform: uppercase;">Curated Vintage & Streetwear. Córdoba, Argentina.</p>
+          <p style="font-size: 0.75rem; color: #aaa; text-transform: uppercase; margin: 0;">Curated Vintage & Streetwear. Córdoba, Argentina.</p>
         </div>
-        <div style="text-align: right;">
-          <p style="font-size: 0.7rem; color: #666; text-transform: uppercase;">© 2026 ZYSKN. TODOS LOS DERECHOS RESERVADOS.</p>
+        <div style="text-align: right; display: flex; align-items: flex-end;">
+          <p style="font-size: 0.75rem; color: #666; text-transform: uppercase; margin: 0;">© 2026 ZYSKN. TODOS LOS DERECHOS RESERVADOS.</p>
         </div>
       </div>
     </footer>
