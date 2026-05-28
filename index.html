@@ -1202,7 +1202,7 @@ function shareOnWhatsApp() {
       }
     });
 
-    iif(hamburger && navMain) {
+    if(hamburger && navMain) {
   hamburger.addEventListener('click', () => {
     const isOpening = !navMain.classList.contains('active');
     
@@ -1246,7 +1246,10 @@ function shareOnWhatsApp() {
         hamburger.classList.remove('active');
         navMain.classList.remove('active');
         if(navOverlay) navOverlay.classList.remove('active');
-        document.body.style.overflow = '';
+        document.body.style.position = '';
+        document.body.style.top = '';
+        document.body.style.width = '';
+        window.scrollTo(0, scrollY);
       });
     });
 
