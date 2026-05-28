@@ -136,44 +136,71 @@ footer#contact {
   scroll-margin-top: 0;
 }
 
-/* HEADER ESTILO NIKE - MÓVIL (VERSIÓN COMPACTA) */
+/* HEADER MÓVIL - COMPACTO CON LÍNEA ROJA */
 @media (max-width: 640px) {
   header {
-    padding: 1rem 1rem !important;
-    min-height: 60px;
+    padding: 0.9rem 0.9rem !important;
+    min-height: 58px;
+    border-top: 3px solid #ff0000 !important;
+    background: #fff !important;
   }
   header.scrolled {
-    padding: 0.8rem 1rem !important;
+    padding: 0.75rem 0.9rem !important;
+    border-top: 3px solid #ff0000 !important;
   }
   .logo {
-    font-size: 1.7rem !important;
+    font-size: 1.65rem !important;
+    font-weight: 900;
   }
-  .logo-slogan {
-    display: none !important;
-  }
+  .logo-slogan { display: none !important; }
+  
   .header-content {
-    gap: 0.9rem !important;
+    gap: 0.5rem !important;
+    justify-content: space-between !important;
+  }
+  
+  /* ICONOS MÁS JUNTOS */
+  .nav-icons {
+    gap: 0.3rem !important;
+    display: flex !important;
+    align-items: center !important;
+  }
+  .icon-btn, .auth-status, .search-icon, .cart-icon {
+    padding: 0.5rem !important;
+    margin: 0 !important;
   }
   .icon-btn svg,
   .search-icon svg,
   .cart-icon svg,
   .auth-status svg {
-    width: 23px !important;
-    height: 23px !important;
+    width: 22px !important;
+    height: 22px !important;
+    display: block !important;
   }
-  .nav-icons {
-    gap: 0.7rem !important;
-  }
+
+  /* HAMBURGUESA ||| ARREGLADA */
   .hamburger {
-    width: 26px !important;
-    height: 19px !important;
+    width: 24px !important;
+    height: 18px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    margin-right: 0.3rem !important;
   }
-  .nav-main {
-    padding-top: 5.5rem !important;
+  .hamburger span {
+    display: block !important;
+    width: 100% !important;
+    height: 2.5px !important;
+    background: #000 !important;
+    border-radius: 2px !important;
+    transition: all 0.3s !important;
   }
-  .top-bar {
-    display: none !important;
-  }
+
+  .nav-main { padding-top: 5.2rem !important; }
+  .top-bar { display: none !important; }
 }
 .top-bar {
   background: var(--red);
