@@ -1157,7 +1157,7 @@ function shareOnWhatsApp() {
       }); 
     }
 
-  function scrollToSection(id) { 
+ function scrollToSection(id) { 
   const el = document.getElementById(id);
   if(!el) return;
   
@@ -1165,6 +1165,7 @@ function shareOnWhatsApp() {
   const navMain = document.getElementById('navMain');
   const navOverlay = document.getElementById('nav-overlay');
   const isMenuOpen = navMain && navMain.classList.contains('active');
+  const isMobile = window.innerWidth <= 1024;
   
   if (isMenuOpen) {
     hamburger?.classList.remove('active');
@@ -1181,10 +1182,33 @@ function shareOnWhatsApp() {
     const elementPosition = el.getBoundingClientRect().top + window.pageYOffset;
     const offsetPosition = elementPosition - headerHeight - 20;
 
-    window.scrollTo({
-      top: offsetPosition,
-      behavior: 'smooth'
-    });
+    if (isMobile) {
+      // MÓVIL: smooth nativo (ya anda bien)
+      window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+    } else {
+      // PC: scroll personalizado más suave
+      const start = window.pageYOffset;
+      const distance = offsetPosition - start;
+      const duration = 1000; // 1 segundo, súper suave
+      let startTime = null;
+
+      function easeInOutCubic(t) {
+        return t < 0.5 ? 4*t*t*t : 1 - Math.pow(-2*t + 2, 3) / 2;
+      }
+
+      function animation(currentTime) {
+        if (startTime === null) startTime = currentTime;
+        const timeElapsed = currentTime - startTime;
+        const progress = Math.min(timeElapsed / duration, 1);
+        const ease = easeInOutCubic(progress);
+        
+        window.scrollTo(0, start + distance * ease);
+        
+        if (timeElapsed < duration) requestAnimationFrame(animation);
+      }
+      
+      requestAnimationFrame(animation);
+    }
   }, isMenuOpen ? 350 : 50);
 }
 
