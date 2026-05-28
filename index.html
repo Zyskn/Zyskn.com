@@ -133,7 +133,7 @@ footer#contact {
 #shop,
 #nuevo-section,
 #product-detail {
-  scroll-margin-top: 200px;
+  scroll-margin-top: 100px;
 }
 
 @media (max-width: 1024px) {
@@ -1173,7 +1173,7 @@ function shareOnWhatsApp() {
   setTimeout(() => {
     const headerHeight = document.getElementById('header').offsetHeight;
     const elementPosition = el.getBoundingClientRect().top + window.pageYOffset;
-    const extraMargin = isMobile ? 0 : 0;
+    const extraMargin = isMobile ? 20 : 120;
     const offsetPosition = elementPosition - headerHeight - extraMargin;
 
     if (isMobile) {
