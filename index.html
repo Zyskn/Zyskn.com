@@ -1173,7 +1173,8 @@ function shareOnWhatsApp() {
   setTimeout(() => {
     const headerHeight = document.getElementById('header').offsetHeight;
     const elementPosition = el.getBoundingClientRect().top + window.pageYOffset;
-    const offsetPosition = elementPosition - headerHeight - 20;
+    const extraMargin = isMobile ? 20 : 140;
+    const offsetPosition = elementPosition - headerHeight - extraMargin;
 
     if (isMobile) {
       // MÓVIL: smooth nativo (ya anda bien)
