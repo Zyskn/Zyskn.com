@@ -1163,7 +1163,6 @@ function shareOnWhatsApp() {
   const navOverlay = document.getElementById('nav-overlay');
   const isMenuOpen = navMain && navMain.classList.contains('active');
   
-  // Cierra menú si está abierto
   if (isMenuOpen) {
     hamburger?.classList.remove('active');
     navMain.classList.remove('active');
@@ -1174,9 +1173,15 @@ function shareOnWhatsApp() {
     window.scrollTo(0, scrollY);
   }
 
-  // Espera a que termine la animación y hace scroll
   setTimeout(() => {
-    el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    const headerHeight = document.getElementById('header').offsetHeight;
+    const elementPosition = el.getBoundingClientRect().top + window.pageYOffset;
+    const offsetPosition = elementPosition - headerHeight - 20;
+
+    window.scrollTo({
+      top: offsetPosition,
+      behavior: 'smooth'
+    });
   }, isMenuOpen ? 350 : 50);
 }
 
