@@ -935,13 +935,20 @@ header.scrolled { padding: 1.2rem 3rem; }
     }
 
     function toggleSearch() {
-      const header = document.getElementById('header');
-      const input = document.getElementById('searchInput');
-      header.classList.toggle('searching');
-      if(header.classList.contains('searching')) {
-        setTimeout(() => input.focus(), 100);
-      }
-    }
+  const header = document.getElementById('header');
+  const input = document.getElementById('searchInput');
+  header.classList.toggle('searching');
+  
+  // FIX: al cerrar búsqueda, asegurarse que el menú móvil quede cerrado
+  if(!header.classList.contains('searching')) {
+    document.getElementById('navMain')?.classList.remove('active');
+    document.getElementById('hamburger')?.classList.remove('active');
+    document.getElementById('nav-overlay')?.classList.remove('active');
+    document.body.style.overflow = '';
+  } else {
+    setTimeout(() => input.focus(), 100);
+  }
+}
 
     function handleSearch(e) {
       if(e.key === 'Enter') {
