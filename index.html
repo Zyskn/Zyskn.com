@@ -136,7 +136,7 @@ footer#contact {
   scroll-margin-top: 0;
 }
 
-/* ===== TOP-BAR VISIBLE EN PC Y MÓVIL ===== */
+/* ===== TOP-BAR VISIBLE EN PC Y MÓVIL - REEMPLAZO COMPLETO ===== */
 .top-bar {
   display: flex !important;
   position: fixed;
@@ -145,7 +145,7 @@ footer#contact {
   right: 0;
   z-index: 3000;
   height: 32px;
-  background: #ff0000 !important;
+  background: #9b0000 !important;
   color: #fff !important;
   align-items: center;
   justify-content: center;
@@ -154,53 +154,81 @@ footer#contact {
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.5px;
+  padding: 0 !important;
+  line-height: 1 !important;
+  transition: transform 0.3s ease;
 }
 
-/* animación del texto */
 .top-bar .marquee-content {
-  display: flex;
+  display: flex !important;
+  align-items: center !important;
+  height: 100% !important;
   width: max-content;
   animation: marquee-infinite 25s linear infinite;
-  gap: 60px;
+  gap: 30px !important;
 }
+
 @keyframes marquee-infinite {
   0% { transform: translateX(0); }
   100% { transform: translateX(-50%); }
 }
 
-/* header empujado en PC */
-header {
-  top: 32px !important;
+/* centra el texto y anula tus top:3px inline */
+.top-bar a,
+.top-bar a span,
+.top-bar a img,
+.top-bar .marquee-content span {
+  position: static !important;
+  top: 0 !important;
+  transform: none !important;
+  margin: 0 !important;
+  line-height: 1 !important;
+  display: flex !important;
+  align-items: center !important;
 }
+.top-bar a { gap: 6px !important; color: #fff !important; text-decoration: none !important; }
+.top-bar a img { width: 14px !important; height: 14px !important; }
+.top-bar .marquee-content > span { opacity: 0.7; margin: 0 15px !important; }
 
-/* ===== AJUSTES MÓVIL ===== */
+/* HEADER PC MÁS CHICO */
+header {
+  position: sticky;
+  top: 32px !important;
+  z-index: 2000;
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid #000;
+  transition: top 0.3s ease, padding 0.3s ease !important;
+  padding: 1rem 3rem !important;
+}
+header.scrolled { padding: 0.7rem 3rem !important; }
+.logo { font-size: 2rem !important; }
+.logo-slogan { font-size: 0.75rem !important; }
+
+/* ===== MÓVIL ===== */
 @media (max-width: 640px) {
   .top-bar {
     height: 28px !important;
     font-size: 0.7rem !important;
   }
-
   header {
     position: fixed !important;
     top: 28px !important;
-    left: 0;
-    right: 0;
+    left: 0; right: 0;
     z-index: 2999;
     padding: 0.9rem !important;
     min-height: 58px;
   }
-  
   header.scrolled {
     top: 28px !important;
     padding: 0.75rem 0.9rem !important;
   }
-  
   .logo { font-size: 1.65rem !important; }
   .logo-slogan { display: none !important; }
+  .header-content { gap: 0.5rem !important; }
   .nav-icons { gap: 0.3rem !important; }
   .icon-btn, .auth-status { padding: 0.5rem !important; }
   .icon-btn svg, .auth-status svg { width: 22px !important; height: 22px !important; }
-
   .hamburger {
     width: 24px !important;
     height: 18px !important;
@@ -214,11 +242,9 @@ header {
     height: 2.5px !important;
     background: #000 !important;
   }
-
-  .nav-main { 
-    padding-top: calc(28px + 58px + 16px) !important; 
-  }
+  .nav-main { padding-top: calc(28px + 58px + 16px) !important; }
 }
+    }
   background: var(--red);
   color: #fff;
   padding: 9px 0;
@@ -1214,12 +1240,22 @@ function shareOnWhatsApp() {
 }
 
     function setupScrollListener() { 
-      window.addEventListener('scroll', () => { 
-        const h=document.getElementById('header'); 
-        if(window.scrollY>50) h.classList.add('scrolled'); 
-        else h.classList.remove('scrolled'); 
-      }); 
+  const h = document.getElementById('header');
+  const topBar = document.querySelector('.top-bar');
+  window.addEventListener('scroll', () => { 
+    const isMobile = window.innerWidth <= 640;
+    const topBarHeight = isMobile ? 28 : 32;
+    if(window.scrollY > 20) {
+      h.classList.add('scrolled');
+      topBar.style.transform = 'translateY(-100%)';
+      h.style.top = '0px';
+    } else {
+      h.classList.remove('scrolled');
+      topBar.style.transform = 'translateY(0)';
+      h.style.top = topBarHeight + 'px';
     }
+  }); 
+}
 
  function scrollToSection(id) { 
   const el = document.getElementById(id);
