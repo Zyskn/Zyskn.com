@@ -1109,7 +1109,7 @@ function shareOnWhatsApp() {
     const header = document.getElementById('header');
     const headerHeight = header ? header.offsetHeight : 0;
     // +35px en móvil, +20px en desktop
-    const extra = window.innerWidth <= 1024 ? 35 : 20;
+    const extra = window.innerWidth <= 1024 ? 10 : 20;
     
     const top = el.getBoundingClientRect().top + window.pageYOffset - headerHeight - extra;
     
