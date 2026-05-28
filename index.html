@@ -513,27 +513,27 @@ header.scrolled { padding: 1.2rem 3rem; }
       .cart-icon svg { width: 22px; height: 22px; }
     }
 
-    @media (max-width: 640px) {
-      header { padding: 0.8rem 1rem; }
-      header.scrolled { padding: 0.65rem 1rem; }
-      .logo { font-size: 1.2rem; }
-      .logo-slogan { font-size: 0.58rem; }
-      .header-content { padding: 0; gap: 0.8rem; }
+   @media (max-width: 640px) {
+      header { padding: 1.3rem 1rem; }
+      header.scrolled { padding: 1rem 1rem; }
+      .logo { font-size: 1.8rem; }
+      .logo-slogan { font-size: 0.7rem; }
+      .header-content { padding: 0; gap: 1rem; }
 
-      .nav-main { padding: 4.5rem 1.3rem 2rem; }
-      .nav-item > a { padding: 1rem 1.1rem; font-size: 0.88rem; font-weight: 600; }
-      .sub-nav-item { padding: 0.9rem 2rem; font-size: 0.78rem; font-weight: 600; }
-      header.searching .search-input-container { width: 140px; }
-      .search-input-container input { font-size: 0.63rem; padding: 0.45rem 0.85rem; }
-      .icon-btn { padding: 0.55rem; }
-      .icon-btn svg { width: 21px; height: 21px; }
-      .auth-status { font-size: 0.6rem; display: flex; align-items: center; justify-content: center; padding: 0.45rem 0.5rem; white-space: nowrap; }
-      .auth-status svg { width: 21px; height: 21px; margin-right: 0.2rem; }
-      .search-icon svg { width: 21px; height: 21px; }
-      .cart-icon svg { width: 21px; height: 21px; }
-      .nav-icons { gap: 0.4rem; }
-      .hamburger { width: 24px; height: 18px; }
-      .hamburger span { height: 2.5px; }
+      .nav-main { padding: 5.5rem 1.3rem 2rem; }
+      .nav-item > a { padding: 1.2rem 1.1rem; font-size: 1rem; font-weight: 600; }
+      .sub-nav-item { padding: 1rem 2rem; font-size: 0.9rem; font-weight: 600; }
+      header.searching .search-input-container { width: 160px; }
+      .search-input-container input { font-size: 0.75rem; padding: 0.55rem 0.9rem; }
+      .icon-btn { padding: 0.65rem; }
+      .icon-btn svg { width: 24px; height: 24px; }
+      .auth-status { font-size: 0.75rem; display: flex; align-items: center; justify-content: center; padding: 0.55rem 0.6rem; white-space: nowrap; }
+      .auth-status svg { width: 24px; height: 24px; margin-right: 0.3rem; }
+      .search-icon svg { width: 24px; height: 24px; }
+      .cart-icon svg { width: 24px; height: 24px; }
+      .nav-icons { gap: 0.7rem; }
+      .hamburger { width: 28px; height: 20px; }
+      .hamburger span { height: 3px; }
     }
 
     section { padding: 6rem 2rem; max-width: var(--container-max); margin: 0 auto; }
@@ -1173,7 +1173,7 @@ function shareOnWhatsApp() {
   setTimeout(() => {
     const headerHeight = document.getElementById('header').offsetHeight;
     const elementPosition = el.getBoundingClientRect().top + window.pageYOffset;
-    const extraMargin = isMobile ? 0 : -45;
+    const extraMargin = isMobile ? 15 : -45;
     const offsetPosition = elementPosition - headerHeight - extraMargin;
 
     if (isMobile) {
