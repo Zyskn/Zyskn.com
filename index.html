@@ -611,20 +611,49 @@ body { padding-top: 86px !important; }
 
 @media (max-width: 1024px) {
   header#header { 
-    padding: 0.7rem 12px !important; 
-    min-height: 58px !important;
+    padding: 8px 10px !important; 
+    min-height: 56px !important;
   }
-  .header-content { padding: 0 !important; gap: 8px !important; }
-  .nav-icons { gap: 4px !important; }
-  .icon-btn { padding: 0.4rem !important; }
-  .icon-btn svg { width: 20px !important; height: 20px !important; }
-  .hamburger { 
-    width: 24px !important; 
-    height: 18px !important; 
-    margin-right: 4px !important; 
-    margin-left: 2px !important;
+  .header-content { padding: 0 !important; gap: 6px !important; }
+  
+  .nav-icons { 
+    gap: 2px !important; 
+    display: flex !important;
+    align-items: center !important;
   }
-  .auth-status { padding: 0.4rem !important; font-size: 0.6rem !important; }
+  
+  /* UNIFICA TAMAÑO */
+  .icon-btn, #userAuth, .hamburger {
+    width: 38px !important;
+    height: 38px !important;
+    min-width: 38px !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+  
+  .icon-btn svg, #userAuth svg {
+    width: 21px !important;
+    height: 21px !important;
+  }
+  
+  /* oculta texto LOGIN, deja solo ícono */
+  #userAuth { font-size: 0 !important; }
+  #userAuth svg { margin: 0 !important; }
+  
+  /* hamburguesa centrado */
+  .hamburger {
+    flex-direction: column !important;
+    justify-content: center !important;
+    gap: 4px !important;
+  }
+  .hamburger span {
+    width: 20px !important;
+    height: 2.5px !important;
+    display: block !important;
+  }
 }
 
 </style>
