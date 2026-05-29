@@ -603,11 +603,16 @@ header.scrolled { padding: 1.2rem 3rem; }
 .nav-main a:hover { border-bottom-color: #000; }
 .sub-nav-wrapper a:hover { border-bottom-color: transparent !important; }
 
-    /* Ocultar cruz en PC */
     @media (min-width: 1025px) {
-      .search-close-btn { display: none !important; }
-    }
-  </style>
+  .search-close-btn { display: none !important; }
+}
+
+/* === FORZAR HEADER FIJO === */
+.top-bar { position: fixed !important; top: 0 !important; left: 0 !important; right: 0 !important; z-index: 3000 !important; }
+header#header { position: fixed !important; top: 28px !important; left: 0 !important; right: 0 !important; z-index: 2999 !important; background: #fff !important; }
+body { padding-top: 86px !important; }
+
+</style>
 </head>
 <body>
     <header style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;">
