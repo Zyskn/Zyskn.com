@@ -1217,21 +1217,25 @@ function shareOnWhatsApp() {
 
   window.addEventListener('scroll', () => { 
     const mobile = isMobile();
-    const topBarHeight = mobile ? 28 : 32;
-    const threshold = mobile ? 10 : 5; // PC se oculta casi al instante
+    const threshold = mobile ? 10 : 5;
 
     if(window.scrollY > threshold) {
       h.classList.add('scrolled');
       topBar.style.transform = 'translateY(-100%)';
-      // en móvil y PC, la blanca queda pegada arriba
-      h.style.setProperty('top', '0px', 'important');
+      
+      if (!mobile) {
+        h.style.setProperty('top', '0px', 'important');
+      }
     } else {
       h.classList.remove('scrolled');
       topBar.style.transform = 'translateY(0)';
-      h.style.setProperty('top', topBarHeight + 'px', 'important');
+      
+      if (!mobile) {
+        h.style.setProperty('top', '32px', 'important');
+      }
     }
   }); 
-}
+    }
 
  function scrollToSection(id) { 
   const el = document.getElementById(id);
