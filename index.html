@@ -1231,18 +1231,24 @@ function shareOnWhatsApp() {
   const topBar = document.querySelector('.top-bar');
   const isMobile = () => window.innerWidth <= 640;
 
-  window.addEventListener('scroll', () => { 
-    const mobile = isMobile();
-    const threshold = mobile ? 10 : 5;
+  // En móvil dejamos todo fijo, no escondemos nada
+  if (isMobile()) {
+    h.style.setProperty('position', 'fixed', 'important');
+    h.style.setProperty('top', '28px', 'important');
+    topBar.style.transform = 'translateY(0)';
+    return;
+  }
 
-    if(window.scrollY > threshold) {
+  // Desktop sigue igual que antes
+  window.addEventListener('scroll', () => { 
+    if(window.scrollY > 5) {
       h.classList.add('scrolled');
       topBar.style.transform = 'translateY(-100%)';
       h.style.setProperty('top', '0px', 'important');
     } else {
       h.classList.remove('scrolled');
       topBar.style.transform = 'translateY(0)';
-      h.style.setProperty('top', mobile ? '28px' : '32px', 'important');
+      h.style.setProperty('top', '32px', 'important');
     }
   }); 
 }
