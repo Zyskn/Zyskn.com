@@ -118,12 +118,12 @@ footer#contact {
   line-height: 1.4;
   overflow-x: hidden;
   position: relative;
-  animation: contentShine 0.4s ease-out forwards;
+  animation: contentFadeIn 0.4s ease-out forwards;
 }
 
-@keyframes contentShine {
-  0% { filter: brightness(0.5); }
-  100% { filter: brightness(1); }
+@keyframes contentFadeIn {
+  0% { opacity: 0.5; }
+  100% { opacity: 1; }
 }
 
 /* --- FIX SCROLL MÓVIL Y PC --- */
@@ -625,6 +625,7 @@ body { padding-top: 0; }
     padding: 8px 10px !important; 
     min-height: 56px !important;
     background: #fff !important;
+    display: block !important; /* Añadido para asegurar visibilidad */
   }
   body { padding-top: 84px !important; }
   
@@ -1202,6 +1203,7 @@ function shareOnWhatsApp() {
   if (isMobile()) {
     h.style.setProperty('position', 'fixed', 'important');
     h.style.setProperty('top', '28px', 'important');
+    h.style.setProperty('display', 'block', 'important'); // Forzamos visibilidad
     topBar.style.transform = 'translateY(0)';
     return;
   }
@@ -1314,17 +1316,12 @@ function shareOnWhatsApp() {
 
     if(isOpening) {
       scrollY = window.scrollY;
-      document.body.style.position = 'fixed';
-      document.body.style.top = `-${scrollY}px`;
-      document.body.style.width = '100%';
+      // Bloqueamos el scroll sin mover el body de su sitio
+      document.body.style.overflow = 'hidden';
     } else {
-      document.body.style.position = '';
-      document.body.style.top = '';
-      document.body.style.width = '';
+      document.body.style.overflow = '';
       window.scrollTo(0, scrollY);
     }
-  });
-}
 
     if(navOverlay) {
   navOverlay.addEventListener('click', () => {
