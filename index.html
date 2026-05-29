@@ -118,9 +118,13 @@ footer#contact {
   line-height: 1.4;
   overflow-x: hidden;
   position: relative;
+  animation: contentShine 0.4s ease-out forwards;
   animation: contentFadeIn 0.4s ease-out forwards;
 }
 
+@keyframes contentShine {
+  0% { filter: brightness(0.5); }
+  100% { filter: brightness(1); }
 @keyframes contentFadeIn {
   0% { opacity: 0.5; }
   100% { opacity: 1; }
@@ -136,7 +140,7 @@ footer#contact {
   scroll-margin-top: 0;
 }
 
-/* ===== TOP-BAR Y HEADER OPTIMIZADOS (OCULTAR AL SCROLL + MARQUESINA 360) ===== */
+/* ===== TOP-BAR VISIBLE EN PC Y MÓVIL - REEMPLAZO COMPLETO ===== */
 .top-bar {
   display: flex !important;
   position: fixed;
@@ -156,24 +160,16 @@ footer#contact {
   letter-spacing: 0.5px;
   padding: 0 !important;
   line-height: 1 !important;
-  /* Transición suave para ocultarse */
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  transition: transform 0.15s ease;
 }
 
-/* Marquesina 360 sin cortes */
 .top-bar .marquee-content {
   display: flex !important;
   align-items: center !important;
   height: 100% !important;
   width: max-content;
-  animation: marquee-infinite 20s linear infinite;
-  gap: 0 !important; 
-}
-
-/* Espaciado entre textos de la marquesina */
-.top-bar .marquee-content > * {
-  margin: 0 40px !important; 
-  white-space: nowrap;
+  animation: marquee-infinite 25s linear infinite;
+  gap: 30px !important;
 }
 
 @keyframes marquee-infinite {
@@ -181,6 +177,24 @@ footer#contact {
   100% { transform: translateX(-50%); }
 }
 
+/* centra el texto y anula tus top:3px inline */
+.top-bar a,
+.top-bar a span,
+.top-bar a img,
+.top-bar .marquee-content span {
+  position: static !important;
+  top: 0 !important;
+  transform: none !important;
+  margin: 0 !important;
+  line-height: 1 !important;
+  display: flex !important;
+  align-items: center !important;
+}
+.top-bar a { gap: 6px !important; color: #fff !important; text-decoration: none !important; }
+.top-bar a img { width: 14px !important; height: 14px !important; }
+.top-bar .marquee-content > span { opacity: 0.7; margin: 0 15px !important; }
+
+/* HEADER PC MÁS CHICO */
 header {
   position: sticky;
   top: 32px;
@@ -188,11 +202,9 @@ header {
   background: rgba(255, 255, 255, 0.98);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid #000;
-  /* Transición para que el header suba cuando la barra roja se oculte */
-  transition: top 0.3s cubic-bezier(0.4, 0, 0.2, 1), padding 0.12s ease !important;
+  transition: top 0.12s ease, padding 0.12s ease !important;
   padding: 1rem 3rem !important;
 }
-
 header.scrolled { padding: 0.7rem 3rem !important; }
 .logo { font-size: 2rem !important; }
 .logo-slogan { font-size: 0.75rem !important; }
@@ -460,7 +472,7 @@ header.scrolled { padding: 1.2rem 3rem; }
 
     @media (max-width: 1024px) {
   .top-bar { height: 28px !important; font-size: 0.7rem !important; }
-  
+
   header { 
     position: fixed !important;
     top: 28px !important;
@@ -620,10 +632,10 @@ body { padding-top: 0; }
     display: block !important; /* Añadido para asegurar visibilidad */
   }
   body { padding-top: 84px !important; }
-  
+
   .header-content { padding: 0 !important; gap: 6px !important; }
   .nav-icons { gap: 2px !important; display: flex !important; align-items: center !important; }
-  
+
   .icon-btn, #userAuth, .hamburger {
     width: 38px !important; height: 38px !important; min-width: 38px !important;
     padding: 0 !important; margin: 0 !important;
@@ -1189,36 +1201,28 @@ function shareOnWhatsApp() {
     function setupScrollListener() { 
   const h = document.getElementById('header');
   const topBar = document.querySelector('.top-bar');
-  let lastScrollY = window.scrollY;
-  const topBarHeight = 32;
+  const isMobile = () => window.innerWidth <= 1024;
 
-  // Ajuste inicial para móviles
-  if (window.innerWidth <= 1024) {
+  // En móvil dejamos todo fijo, no escondemos nada
+  if (isMobile()) {
     h.style.setProperty('position', 'fixed', 'important');
-    h.style.setProperty('width', '100%', 'important');
-    h.style.setProperty('top', topBarHeight + 'px', 'important');
+    h.style.setProperty('top', '28px', 'important');
+    h.style.setProperty('display', 'block', 'important'); // Forzamos visibilidad
+    topBar.style.transform = 'translateY(0)';
+    return;
   }
 
+  // Desktop sigue igual que antes
   window.addEventListener('scroll', () => { 
-    const currentScrollY = window.scrollY;
-
-    // Header más chico al scrollear
-    if(currentScrollY > 5) {
+    if(window.scrollY > 5) {
       h.classList.add('scrolled');
-    } else {
-      h.classList.remove('scrolled');
-    }
-
-    // Ocultar/Mostrar barra roja al scrollear (PC y Móvil)
-    if (currentScrollY > lastScrollY && currentScrollY > topBarHeight) {
       topBar.style.transform = 'translateY(-100%)';
       h.style.setProperty('top', '0px', 'important');
     } else {
+      h.classList.remove('scrolled');
       topBar.style.transform = 'translateY(0)';
-      h.style.setProperty('top', topBarHeight + 'px', 'important');
+      h.style.setProperty('top', '32px', 'important');
     }
-
-    lastScrollY = currentScrollY;
   }); 
 }
 
@@ -1316,12 +1320,20 @@ function shareOnWhatsApp() {
 
     if(isOpening) {
       scrollY = window.scrollY;
+      document.body.style.position = 'fixed';
+      document.body.style.top = `-${scrollY}px`;
+      document.body.style.width = '100%';
       // Bloqueamos el scroll sin mover el body de su sitio
       document.body.style.overflow = 'hidden';
     } else {
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.width = '';
       document.body.style.overflow = '';
       window.scrollTo(0, scrollY);
     }
+  });
+}
 
     if(navOverlay) {
   navOverlay.addEventListener('click', () => {
@@ -1353,14 +1365,6 @@ function shareOnWhatsApp() {
     });
 
     init();
-    
-    document.addEventListener('DOMContentLoaded', () => {
-      const marquee = document.querySelector('.top-bar .marquee-content');
-      if (marquee) {
-        marquee.innerHTML += marquee.innerHTML;
-      }
-    });
-
   </script>
 </body>
 </html>
